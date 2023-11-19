@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "465270728652",
+    "firebase_url": "https://conectadeporte-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "conectadeporte",
+    "storage_bucket": "conectadeporte.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465270728652:android:d578123d0e2ab7282adf69",
+        "android_client_info": {
+          "package_name": "com.laner.conectadeporte"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUnCnr4BAfLaFJxTvYfn1NpaZINz-Xa9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
