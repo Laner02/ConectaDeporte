@@ -7,6 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray_light">#394F4F</color>
+    <color name="green_01">#00FF94</color>
+    <color name="green_02">#0B9159</color>
+
     <!-- PALETA DE COLORES DE LA APP -->
     <!-- se ordenan los colores de la paleta de oscuro a claro -->
     <color name="green_darker">#037462</color>
@@ -14,4 +18,5 @@
     <color name="green">#4FC5AD</color>
     <color name="green_light">#76D5B5</color>
     <color name="green_lighter">#B9ECD9</color>
+
 </resources>

@@ -1,0 +1,18 @@
+<resources name="ConectaDeporte" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Button_Green_dark">
+        <item name="buttonColor">@color/green_02</item> <!-- Color de fondo del botón -->
+        <item name="borderColor">@color/black</item> <!-- Color del borde del botón -->
+
+    </style>
+
+    <style name="Button_Green_light">
+        <item name="buttonColor">@color/green_01</item>
+        <item name="borderColor">@color/black</item>
+    </style>
+
+    <style name="Rectangle">
+        <item name="buttonColor">@color/white</item>
+        <item name="borderColor">@color/white</item>
+    </style>
+
+</resources>
