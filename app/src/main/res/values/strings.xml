@@ -11,7 +11,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 
-    <string name="registrate">Registrate</string>
+    <string name="registrarse">Registrarse</string>
     <string name="usuario_nombre">Nombre</string>
     <string name="usuario_apellidos">Apellidos</string>
     <string name="usuario_id">Usuario</string>
@@ -19,5 +19,7 @@
     <string name="usuario_telefono">Numero de telefono</string>
     <string name="boton_cancelar">Cancelar</string>
     <string name="boton_registrarse">Registrarse</string>
+
+    <string name="registrarse_log_in">¿No tienes cuenta? Registrarse</string>
 
 </resources>

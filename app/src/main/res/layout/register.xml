@@ -20,117 +20,111 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/registrate"
+                android:id="@+id/registrarse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:text="Registrate"
+                android:text="Registrarse"
                 android:textColor="@color/black"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
-            <TextView
+            <EditText
                 android:id="@+id/usuario_nombre"
-                style="@style/Rectangle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/rectangle"
+                android:layout_marginTop="22dp"
                 android:padding="15dp"
-                android:text="Nombre"
-                android:textColor="@color/gray_light"
-                android:textSize="18sp" />
+                android:hint="Nombre"
+                android:textSize="18sp"
+                android:background="@drawable/rectangle"
+                android:hintColor="@color/gray_light" />
 
-            <TextView
+            <EditText
                 android:id="@+id/usuario_apellido"
-                style="@style/Rectangle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle"
                 android:padding="15dp"
-                android:text="Apellidos"
-                android:textColor="@color/gray_light"
-                android:textSize="18sp" />
+                android:hint="Apellidos"
+                android:textSize="18sp"
+                android:background="@drawable/rectangle"
+                android:hintColor="@color/gray_light" />
 
-            <TextView
+            <EditText
                 android:id="@+id/usuario_id"
-                style="@style/Rectangle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle"
                 android:padding="15dp"
-                android:text="Nombre de usuario"
-                android:textColor="@color/gray_light"
-                android:textSize="18sp" />
+                android:hint="Nombre de usuario"
+                android:textSize="18sp"
+                android:background="@drawable/rectangle"
+                android:hintColor="@color/gray_light" />
 
-            <TextView
+            <EditText
                 android:id="@+id/usuario_contrasena"
-                style="@style/Rectangle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
+                android:padding="15dp"
+                android:hint="Contraseña"
+                android:textSize="18sp"
                 android:background="@drawable/rectangle"
-                android:padding="10dp"
-                android:text="Contraseña"
-                android:textColor="@color/gray_light"
-                android:textSize="18sp" />
+                android:hintColor="@color/gray_light"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/usuario_correo"
-                style="@style/Rectangle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle"
                 android:padding="15dp"
-                android:text="Correo electronico"
-                android:textColor="@color/gray_light"
-                android:textSize="18sp" />
+                android:hint="Correo electronico"
+                android:textSize="18sp"
+                android:background="@drawable/rectangle"
+                android:hintColor="@color/gray_light"/>
 
-            <TextView
+            <EditText
                 android:id="@+id/usuario_telefono"
-                style="@style/Rectangle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle"
                 android:padding="15dp"
-                android:text="Numero de telefono"
-                android:textColor="@color/gray_light"
-                android:textSize="18sp" />
+                android:hint="Numero de telefono"
+                android:textSize="18sp"
+                android:background="@drawable/rectangle"
+                android:hintColor="@color/gray_light"/>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="148dp"
+            android:layout_marginTop="30dp"
             android:gravity="center"
             android:orientation="horizontal">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/boton_cancelar"
-                style="@style/Button_Green_dark"
                 android:layout_width="160dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right"
-                android:layout_marginTop="20dp"
                 android:layout_marginRight="50dp"
-                android:background="@drawable/rectangle"
                 android:text="Cancelar"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:background="@drawable/rectangle_button_dark"
+                android:textColor="@color/white"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/boton_registrarse"
-                style="@style/Button_Green_light"
                 android:layout_width="160dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right"
-                android:background="@drawable/rectangle"
                 android:text="Registrarse"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:background="@drawable/rectangle_button_light"
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
@@ -153,7 +147,7 @@
                 android:id="@+id/contactanos"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:layout_gravity="right |bottom"
+                android:layout_gravity="right|bottom"
                 android:layout_marginLeft="50dp"
                 android:text="Contactanos"
                 android:textColor="@color/black"
