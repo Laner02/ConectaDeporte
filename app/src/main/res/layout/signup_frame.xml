@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@color/green_light">
+    android:background="@color/green_light"
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,52 +22,52 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Apuntarse"
                 android:textColor="@color/black"
                 android:textSize="30sp"
-                android:textStyle="bold"
-                android:text="Apuntarse"/>
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/nombre_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
+                android:hint="Nombre"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:hint="Nombre"/>
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/apellidos_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Apellidos"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:hint="Apellidos"/>
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/dni_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="DNI"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:hint="DNI"/>
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/fnac_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Fecha de nacimiento"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:hint="Fecha de nacimiento"/>
+                android:textStyle="bold" />
 
             <!-- TODO este ultimo hacerlo un deplegable con opciones -->
             <EditText
                 android:id="@+id/horario_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="L/X        19h-20h        14-16 años"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:hint="L/X        19h-20h        14-16 años"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -81,25 +81,24 @@
                 android:id="@+id/boton_cancelar"
                 android:layout_width="140dp"
                 android:layout_height="55dp"
-                android:layout_marginTop="20dp"
                 android:layout_gravity="top"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="50dp"
-                android:backgroundTint="@color/green_darker"
+                android:text="Cancelar"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:text="Cancelar" />
+                android:textSize="16sp" />
 
             <!-- TODO meter este color como color de boton aceptar cuando sara suba el commit -->
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/boton_registrarse"
                 android:layout_width="140dp"
                 android:layout_height="55dp"
-                android:layout_marginTop="20dp"
                 android:layout_gravity="top"
-                android:backgroundTint="#00FF94"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rectangle"
+                android:text="Apuntarse"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:text="Apuntarse"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -122,7 +121,7 @@
                 android:id="@+id/contactanos"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:layout_gravity="right |bottom"
+                android:layout_gravity="right|bottom"
                 android:layout_marginLeft="50dp"
                 android:text="Contactanos"
                 android:textColor="@color/black"
