@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/green_light">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="478dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:text="Apuntarse"/>
+
+            <EditText
+                android:id="@+id/nombre_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:hint="Nombre"/>
+
+            <EditText
+                android:id="@+id/apellidos_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:hint="Apellidos"/>
+
+            <EditText
+                android:id="@+id/dni_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:hint="DNI"/>
+
+            <EditText
+                android:id="@+id/fnac_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:hint="Fecha de nacimiento"/>
+
+            <!-- TODO este ultimo hacerlo un deplegable con opciones -->
+            <EditText
+                android:id="@+id/horario_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:hint="L/X        19h-20h        14-16 años"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="148dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/boton_cancelar"
+                android:layout_width="140dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="top"
+                android:layout_marginRight="50dp"
+                android:backgroundTint="@color/green_darker"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:text="Cancelar" />
+
+            <!-- TODO meter este color como color de boton aceptar cuando sara suba el commit -->
+            <Button
+                android:id="@+id/boton_registrarse"
+                android:layout_width="140dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="top"
+                android:backgroundTint="#00FF94"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:text="Apuntarse"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/condiciones_uso"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_gravity="left|bottom"
+                android:text="Condiciones de uso"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/contactanos"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="right |bottom"
+                android:layout_marginLeft="50dp"
+                android:text="Contactanos"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
