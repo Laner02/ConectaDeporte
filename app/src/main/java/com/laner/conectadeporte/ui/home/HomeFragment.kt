@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.laner.conectadeporte.databinding.FragmentHomeBinding
 
+// NOTA: Este codigo de creacion esta hecho automaticamente por AndoidStudio
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
@@ -28,10 +30,12 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
+        // AQUI SE VAN PILLANDO LOS OBJETOS DE LA VISTA EN VARIABLES
+        // val textView: TextView = binding.textHome
+        val card1 : CardView = binding.card1
+        /* homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        }
+        } */
         return root
     }
 

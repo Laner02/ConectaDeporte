@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green_light"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".ui.curso.ApuntarseFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +36,6 @@
                 android:padding="10dp"
                 android:background="@drawable/rectangle"
                 android:hint="Nombre"
-                android:hintColor="@color/gray_light"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -43,6 +43,9 @@
                 android:id="@+id/apellidos_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:padding="10dp"
+                android:background="@drawable/rectangle"
                 android:hint="Apellidos"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -51,6 +54,9 @@
                 android:id="@+id/dni_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:padding="10dp"
+                android:background="@drawable/rectangle"
                 android:hint="DNI"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -59,6 +65,9 @@
                 android:id="@+id/fnac_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:padding="10dp"
+                android:background="@drawable/rectangle"
                 android:hint="Fecha de nacimiento"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -68,6 +77,9 @@
                 android:id="@+id/horario_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:padding="10dp"
+                android:background="@drawable/rectangle"
                 android:hint="L/X        19h-20h        14-16 años"
                 android:textSize="20sp"
                 android:textStyle="bold" />
