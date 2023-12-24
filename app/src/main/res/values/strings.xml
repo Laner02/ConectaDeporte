@@ -15,7 +15,7 @@
     <string name="usuario_nombre">Nombre</string>
     <string name="usuario_apellidos">Apellidos</string>
     <string name="usuario_id">Usuario</string>
-    <string name="usuario_correo">Correo electronico</string>
+    <string name="usuario_email">email electronico</string>
     <string name="usuario_telefono">Numero de telefono</string>
     <string name="boton_cancelar">Cancelar</string>
     <string name="boton_registrarse">Registrarse</string>
