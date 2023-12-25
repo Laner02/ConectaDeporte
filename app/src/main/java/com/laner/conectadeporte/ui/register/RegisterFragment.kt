@@ -15,24 +15,28 @@ import androidx.appcompat.app.AppCompatActivity
 import com.laner.conectadeporte.databinding.RegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.laner.conectadeporte.databinding.LogInBinding
 
-class RegisterFragment : AppCompatActivity() {
+class RegisterFragment : Fragment() {
 
     private lateinit var binding: RegisterBinding
+    private lateinit var auth: FirebaseAuth
+    private lateinit var user : FirebaseUser
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
 
-    override fun onCreate(savedInstanceState: Bundle?){
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.log_in)
-
-        /// Analytics Event
-        val analytics = FirebaseAnalytics.getInstance(this)
-        val bundle = Bundle()
-        analytics.logEvent("InitScreen", bundle)
-
-        setup()
+    ): View? {
+        // Enlazamos esta clase a la vista xml que hemos creado
+        return inflater.inflate(R.layout.register, container, false)
     }
+
+
+
     private fun setup(){
 
         val usuario_nombre: EditText  = view.findViewById(R.id.usuario_nombre)
@@ -55,7 +59,7 @@ class RegisterFragment : AppCompatActivity() {
                 nombreId.isNotEmpty() && contrasena.isNotEmpty() && email.isNotEmpty()){
 
                 auth.createUserWithEmailAndPassword(email, contrasena)
-                    .addOnCompleteListener(this) {
+                    .addOnCompleteListener(requireActivity()) {
 
                         if (it.isSuccessful) {  // El email tiene que exitir
 
@@ -104,6 +108,9 @@ class RegisterFragment : AppCompatActivity() {
             putExtra("provider", provider.name)
             startActivity(homeIntent)
         }
+    }
+
+    private fun updateUI(user: FirebaseUser?){
 
     }
 }
