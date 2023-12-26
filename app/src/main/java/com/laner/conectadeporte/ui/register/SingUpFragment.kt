@@ -2,115 +2,68 @@ package com.laner.conectadeporte.ui.register
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.widget.AppCompatButton
-import android.widget.EditText
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.laner.conectadeporte.R
-import androidx.appcompat.app.AppCompatActivity
-import com.laner.conectadeporte.databinding.RegisterBinding
+import com.laner.conectadeporte.databinding.SignUpBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.auth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.laner.conectadeporte.databinding.LogInBinding
 
-class RegisterFragment : Fragment() {
+class SignUpFragment : Fragment() {
 
-    private lateinit var binding: RegisterBinding
-    private lateinit var auth: FirebaseAuth
-    private lateinit var user : FirebaseUser
+    private lateinit var binding: SignUpBinding
+    private lateinit var firebaseAuth: FirebaseAuth
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-
     ): View? {
-        // Enlazamos esta clase a la vista xml que hemos creado
-        return inflater.inflate(R.layout.register, container, false)
+        binding = SignUpBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        firebaseAuth = FirebaseAuth.getInstance()
 
-    private fun setup(){
+        binding.iniciarSesion.setOnClickListener {
+            val intent = Intent(requireContext(), LogInFragment::class.java)
+            startActivity(intent)
+        }
 
-        val usuario_nombre: EditText  = view.findViewById(R.id.usuario_nombre)
-        val usuario_apellido: EditText  = view.findViewById(R.id.usuario_apellido)
-        val usuario_telefono: EditText  = view.findViewById(R.id.usuario_telefono)
-        val usuario_id: EditText = view.findViewById(R.id.usuario_id)
-        val usuario_contrasena: EditText  = view.findViewById(R.id.usuario_contrasena)
-        val usuario_email: EditText  = view.findViewById(R.id.usuario_email)
-        val boton_registrarse: AppCompatButton = view.findViewById(R.id.boton_registrarse)
+        binding.botonRegistrarse.setOnClickListener() {
 
-        boton_registrarse.setOnClickListener(){
-            val nombre = usuario_nombre.text.toString().trim()
-            val apellido = usuario_apellido.text.toString().trim()
-            val telefono = usuario_telefono.text.toString().trim()
-            val nombreId = usuario_id.text.toString().trim()
-            val contrasena = usuario_contrasena.text.toString().trim()
-            val email = usuario_email.text.toString().trim()
+            val email = binding.usuarioEmail.text.toString()
+            val contrasena = binding.usuarioContrasena.text.toString()
+            val contrasenaRep = binding.usuarioContrasenaRep.text.toString()
+            val nombre = binding.usuarioNombre.text.toString()
+            val apellido = binding.usuarioApellido.text.toString()
+            val telefono = binding.usuarioTelefono.text.toString()
 
-            if(nombre.isNotEmpty() && apellido.isNotEmpty() && telefono.isNotEmpty() &&
-                nombreId.isNotEmpty() && contrasena.isNotEmpty() && email.isNotEmpty()){
+            if (nombre.isNotEmpty() && apellido.isNotEmpty() && telefono.isNotEmpty() &&
+                email.isNotEmpty() && contrasena.isNotEmpty() && contrasenaRep.isNotEmpty()
+            ) {
 
-                auth.createUserWithEmailAndPassword(email, contrasena)
-                    .addOnCompleteListener(requireActivity()) {
+                if (contrasena == contrasenaRep) {
 
-                        if (it.isSuccessful) {  // El email tiene que exitir
+                    firebaseAuth.createUserWithEmailAndPassword(email, contrasena)
+                        .addOnCompleteListener(requireActivity()) {
 
-                            showNextLayout(it.result?.user?.email?: "", ProviderType.BASIC)
-
-                            // Registro exitoso
-                       /*     val user: FirebaseUser? = auth.currentUser
-                            val userId = user?.uid
-
-                            // Guardar nombre y apellido en la base de datos
-                            if (userId != null) {
-                                val usuarioMap = mapOf(
-                                    "nombre" to nombre,
-                                    "apellido" to apellido,
-                                    "telefono" to telefono,
-                                    "email" to email,
-                                    "id" to nombreId
-                                )
-
-                                database.child("Usuario").child(userId).setValue(usuarioMap)
+                            if (it.isSuccessful) {
+                                val intent = Intent(requireContext(), LogInFragment::class.java)
+                                startActivity(intent)
+                            } else {
+                                Toast.makeText(requireContext(), it.exception.toString(), Toast.LENGTH_SHORT).show()
                             }
-*/
-                            // Puedes redirigir a la siguiente actividad o realizar otras acciones aquí
-                        } else {
-                            alerta()
                         }
-                    }
+                } else {
+                    Toast.makeText(requireContext(), "Password is not matching", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(requireContext(), "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
             }
         }
-
-
-    }
-
-    private fun alerta(){
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Error")
-        builder.setMessage("Se ha producido un error autenticando al usuario")
-        builder.setPositiveButton("Aceptar", null)
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
-    }
-
-    private fun showNextLayout(email: String, provider: ProviderType){
-        val homeIntent = Intent(this, LogInFragment::class.java).apply{
-            putExtra("email", email)
-            putExtra("provider", provider.name)
-            startActivity(homeIntent)
-        }
-    }
-
-    private fun updateUI(user: FirebaseUser?){
-
     }
 }

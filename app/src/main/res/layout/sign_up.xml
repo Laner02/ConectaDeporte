@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="@color/green_light"
-    tools:context=".ui.register.RegisterFragment">
+    tools:context=".ui.register.SingUpFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,8 +39,7 @@
                 android:padding="15dp"
                 android:hint="Nombre"
                 android:textSize="18sp"
-                android:background="@drawable/rectangle"
-                android:hintColor="@color/gray_light" />
+                android:background="@drawable/rectangle" />
 
             <EditText
                 android:id="@+id/usuario_apellido"
@@ -50,41 +49,7 @@
                 android:padding="15dp"
                 android:hint="Apellidos"
                 android:textSize="18sp"
-                android:background="@drawable/rectangle"
-                android:hintColor="@color/gray_light" />
-
-            <EditText
-                android:id="@+id/usuario_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:padding="15dp"
-                android:hint="Nombre de usuario"
-                android:textSize="18sp"
-                android:background="@drawable/rectangle"
-                android:hintColor="@color/gray_light" />
-
-            <EditText
-                android:id="@+id/usuario_contrasena"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:padding="15dp"
-                android:hint="Contraseña"
-                android:textSize="18sp"
-                android:background="@drawable/rectangle"
-                android:hintColor="@color/gray_light"/>
-
-            <EditText
-                android:id="@+id/usuario_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:padding="15dp"
-                android:hint="email electronico"
-                android:textSize="18sp"
-                android:background="@drawable/rectangle"
-                android:hintColor="@color/gray_light"/>
+                android:background="@drawable/rectangle" />
 
             <EditText
                 android:id="@+id/usuario_telefono"
@@ -94,40 +59,111 @@
                 android:padding="15dp"
                 android:hint="Numero de telefono"
                 android:textSize="18sp"
-                android:background="@drawable/rectangle"
-                android:hintColor="@color/gray_light"/>
+                android:background="@drawable/rectangle" />
+
+            <EditText
+                android:id="@+id/usuario_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="15dp"
+                android:hint="Correo electronico"
+                android:textSize="18sp"
+                android:background="@drawable/rectangle" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/usuario_contrasena1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/usuario_contrasena"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle"
+                    android:hint="Contraseña"
+                    android:textSize="18sp"
+                    android:inputType="textPassword"
+                    android:singleLine="true"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/usuario_contrasena2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/usuario_contrasena_rep"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle"
+                    android:hint="Contraseña"
+                    android:textSize="18sp"
+                    android:inputType="textPassword"
+                    android:singleLine="true"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="148dp"
-            android:layout_marginTop="30dp"
+            android:layout_height="71dp"
             android:gravity="center"
             android:orientation="horizontal">
 
-            <androidx.appcompat.widget.AppCompatButton
+            <!--androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/boton_cancelar"
                 android:layout_width="160dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right"
                 android:layout_marginRight="50dp"
-                android:text="Cancelar"
-                android:textSize="16sp"
                 android:background="@drawable/rectangle_button_dark"
-                android:textColor="@color/white"/>
+                android:text="Cancelar"
+                android:textColor="@color/white"
+                android:textSize="16sp" /-->
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/boton_registrarse"
                 android:layout_width="160dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right"
-                android:text="Registrarse"
-                android:textSize="16sp"
                 android:background="@drawable/rectangle_button_light"
-                android:textColor="@color/black" />
+                android:text="Registrarse"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
         </LinearLayout>
+
+        <!--TextView
+            android:id="@+id/iniciar_sesion"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="42dp"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center"
+            android:text="¿Ya tienes cuenta? Iniciar sesion"
+            android:textColor="@color/green_03"
+            android:textStyle="bold"
+            android:textSize="16sp" /-->
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/iniciar_sesion"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center"
+            android:text="¿Ya tienes cuenta? Iniciar sesion"
+            android:textColor="@color/green_03"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
