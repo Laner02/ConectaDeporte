@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import com.laner.conectadeporte.R
 import com.laner.conectadeporte.databinding.CursoFrameBinding
 import com.google.firebase.database.*
@@ -112,6 +113,8 @@ class CursoFragment : Fragment() {
         // Definimos la funcion que se realiza al pulsar el boton, en este metodo, porque lo ponemos una vez esta creada la vista
         boton_apuntarse.setOnClickListener {
             TODO("Meter aqui que se pase a la pantalla de apuntarse, y meter la sesion actual y usuario y tal")
+            // Pedimos al NavHostFragment que busque el fragmento de navegacion asociado a esta clase, y que navegue hacia otra pantalla mediante la accion definida en el navhostfragment
+            NavHostFragment.findNavController(CursoFragment.this).
         }
     }
 
