@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/green_light">
+    android:background="@color/green_light"
+    tools:context=".ui.register.RegisterFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,12 +76,12 @@
                 android:hintColor="@color/gray_light"/>
 
             <EditText
-                android:id="@+id/usuario_correo"
+                android:id="@+id/usuario_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:padding="15dp"
-                android:hint="Correo electronico"
+                android:hint="email electronico"
                 android:textSize="18sp"
                 android:background="@drawable/rectangle"
                 android:hintColor="@color/gray_light"/>

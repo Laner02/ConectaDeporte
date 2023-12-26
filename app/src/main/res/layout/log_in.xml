@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/green_light">
+    android:background="@color/green_light"
+    tools:context=".ui.register.LogInFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -33,14 +34,14 @@
             android:src="@drawable/image_app" />
 
         <EditText
-            android:id="@+id/usuario_id"
+            android:id="@+id/usuario_email"
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/rectangle"
             android:padding="15dp"
             android:hintColor="@color/gray_light"
-            android:hint="Nombre de usuario"
+            android:hint="Correo de usuario"
             android:textSize="18sp" />
 
         <EditText
