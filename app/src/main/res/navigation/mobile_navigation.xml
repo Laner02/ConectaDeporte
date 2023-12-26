@@ -41,7 +41,7 @@
         android:id="@+id/registrarse"
         android:name="com.laner.conectadeporte.ui.home.HomeFragment"
         android:label="Curso"
-        tools:layout="@layout/signup_frame" >
+        tools:layout="@layout/apuntarse_frame" >
     </fragment>
 
 </navigation>
