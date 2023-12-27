@@ -108,13 +108,13 @@ class CursoFragment : Fragment() {
                 TODO("Manejamos los errores de la imagen?")
             }
         })
-        
+
         // Definimos la funcion que se realiza al pulsar el boton, en este metodo, porque lo ponemos una vez esta creada la vista
         _binding.botonApuntarse.setOnClickListener {
             // TODO Meter aqui que se pase a la pantalla de apuntarse, y meter la sesion actual y usuario y tal
             // Pedimos al NavHostFragment que busque el fragmento de navegacion asociado a esta clase, y que navegue hacia otra pantalla mediante la accion definida en el navhostfragment
             // TODO NOTA RAUL: ESTO NO SE SI FUNCIONA LA VERDAD, HAY QUE PROBARLO
-            NavHostFragment.findNavController(this).navigate(R.id.action_curso_to_apuntarse)
+            NavHostFragment.findNavController(this).navigate(R.id.action_registrarse_to_curso)
         }
     }
 
