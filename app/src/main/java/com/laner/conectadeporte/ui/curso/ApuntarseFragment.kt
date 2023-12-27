@@ -40,6 +40,6 @@ class ApuntarseFragment : Fragment() {
         basedatos = FirebaseDatabase.getInstance()
         // usuarioApuntadoActual = basedatos.reference.child("UsuarioApuntado")
 
-        // TODO
+        // TODO hola (terminar, meter boton de apuntarse, que crea el usuario apuntado, lo mete en la BD y vuelve al curso en cuestion)
     }
 }

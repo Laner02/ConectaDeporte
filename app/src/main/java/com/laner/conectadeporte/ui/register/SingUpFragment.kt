@@ -7,8 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.laner.conectadeporte.databinding.SignUpBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.laner.conectadeporte.R
 
 class SignUpFragment : Fragment() {
 
@@ -29,8 +32,10 @@ class SignUpFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.iniciarSesion.setOnClickListener {
-            val intent = Intent(requireContext(), LogInFragment::class.java)
-            startActivity(intent)
+            /*val intent = Intent(requireContext(), LogInFragment::class.java)
+            startActivity(intent)*/
+            // Solo vuelve a la pantalla de Login
+            NavHostFragment.findNavController(this).navigate(R.id.action_signup_to_login)
         }
 
         binding.botonRegistrarse.setOnClickListener() {

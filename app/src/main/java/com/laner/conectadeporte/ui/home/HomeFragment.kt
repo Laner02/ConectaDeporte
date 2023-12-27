@@ -30,6 +30,8 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        // TODO terminar esto para que se pillen de la BD las tarjetas, hacerlas recycle, y meter boyones hacia otras vistas
+
         // AQUI SE VAN PILLANDO LOS OBJETOS DE LA VISTA EN VARIABLES
         // val textView: TextView = binding.textHome
         val card1 : CardView = binding.card1
