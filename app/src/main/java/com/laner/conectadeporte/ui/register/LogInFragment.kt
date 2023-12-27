@@ -1,6 +1,5 @@
 package com.laner.conectadeporte.ui.register
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.laner.conectadeporte.databinding.LogInBinding
-import com.laner.conectadeporte.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.laner.conectadeporte.R
-import com.laner.conectadeporte.ui.home.HomeFragment
 
 class LogInFragment : Fragment() {
 
@@ -27,7 +24,7 @@ class LogInFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {0
         super.onViewCreated(view, savedInstanceState)
 
         firebaseAuth = FirebaseAuth.getInstance()
@@ -39,13 +36,7 @@ class LogInFragment : Fragment() {
             NavHostFragment.findNavController(this).navigate(R.id.action_login_to_signup)
         }
 
-        // TODO PARA Sara: Poner esto con el acceso conectando a Firebase
-        // Prueba de Raul para ver si puede funcionar esto
         binding.botonAcceder.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(R.id.action_login_to_home)
-        }
-
-        /*binding.botonAcceder.setOnClickListener {
             val email = binding.usuarioEmail.text.toString()
             val contrasena = binding.usuarioContrasena.text.toString()
 
@@ -54,13 +45,15 @@ class LogInFragment : Fragment() {
                 firebaseAuth.signInWithEmailAndPassword(email, contrasena)
                     .addOnCompleteListener(requireActivity()) { task ->
                         if (task.isSuccessful) {
-                            val intent = Intent(requireContext(), HomeFragment::class.java)
-                            startActivity(intent)
+                           /* val intent = Intent(requireContext(), HomeFragment::class.java)
+                            startActivity(intent)*/
+                            NavHostFragment.findNavController(this).navigate(R.id.action_login_to_home)
+
                         } else {
                             Toast.makeText(requireContext(), task.exception.toString(), Toast.LENGTH_SHORT).show()
                         }
                     }
             }
-        }*/
+        }
     }
 }
