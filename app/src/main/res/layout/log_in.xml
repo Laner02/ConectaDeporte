@@ -23,7 +23,7 @@
             android:layout_marginTop="70dp"
             android:layout_marginEnd="20dp"
             android:contentDescription="app image"
-            android:src="@drawable/image_nameApp" />
+            android:src="@drawable/image_name_app" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -40,7 +40,6 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/rectangle"
             android:padding="15dp"
-            android:hintColor="@color/gray_light"
             android:hint="Correo de usuario"
             android:textSize="18sp" />
 
@@ -52,8 +51,20 @@
             android:background="@drawable/rectangle"
             android:padding="15dp"
             android:hint="Contraseña"
-            android:hintColor="@color/gray_light"
             android:textSize="18sp" />
+
+        <!--TextView
+            android:id="@+id/registrarse_log_in"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="42dp"
+            android:background="@android:color/transparent"
+            android:layout_gravity="left"
+            android:text="¿No tienes cuenta? Registrarse"
+            android:textColor="@color/green_03"
+            android:textStyle="bold"
+            android:textSize="16sp" /-->
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/registrarse_log_in"
@@ -63,10 +74,11 @@
             android:layout_gravity="left"
             android:text="¿No tienes cuenta? Registrarse"
             android:textColor="@color/green_03"
+            android:textStyle="bold"
             android:textSize="13sp" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/boton_registrarse"
+            android:id="@+id/boton_acceder"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
@@ -77,7 +89,7 @@
             android:textSize="15sp" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/boton_cancelar"
+            android:id="@+id/boton_invitado"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
