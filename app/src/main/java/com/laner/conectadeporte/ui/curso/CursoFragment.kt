@@ -77,11 +77,12 @@ class CursoFragment : Fragment() {
         basedatos = FirebaseDatabase.getInstance()
         // TODO NOTA RAUL: Si no funciona esto, poner .child(Curso).child(C_001)
         // cursoActual = basedatos.reference.child("Curso/C_001")
-        
+        cursoActual = basedatos.reference
         directorioAlmacenamiento = basedatos.reference.child("ImagenesCursos")
 
         // Ponemos los valores de la base de datos en los objetos de la vista
-        cursoActual.addValueEventListener(object : ValueEventListener {
+        //cursoActual.addValueEventListener(object : ValueEventListener {
+        cursoActual.child("Curso").child("C_001").addValueEventListener(object : ValueEventListener {
             // definimos lo que pasa cuando cambian los datos en la base de datos (a tiempo real)
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {

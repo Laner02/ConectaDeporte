@@ -68,9 +68,10 @@ class SignUpFragment : Fragment() {
                                 val user = hashMapOf(
                                     "nombre" to nombre,
                                     "apellidos" to apellido,
+                                    "email" to email,
                                     "telefono" to telefono
                                 )
-                            //    directorioAlmacenamiento.child("Usuario").child(email).setValue(user)
+                                directorioAlmacenamiento.child("Usuario").child(nombre).setValue(user)
 
                                 NavHostFragment.findNavController(this).navigate(R.id.action_signup_to_login)
                             } else {
@@ -81,7 +82,7 @@ class SignUpFragment : Fragment() {
                     Toast.makeText(requireContext(), "Password is not matching", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(requireContext(), "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Empty Fields Are not Allowed", Toast.LENGTH_SHORT).show()
             }
         }
     }
