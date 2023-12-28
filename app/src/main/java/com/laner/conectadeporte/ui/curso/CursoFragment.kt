@@ -85,7 +85,7 @@ class CursoFragment : Fragment() {
         cursoActual.child("Curso").child("C_001").addValueEventListener(object : ValueEventListener {
             // definimos lo que pasa cuando cambian los datos en la base de datos (a tiempo real)
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
+                if (snapshot.exists()) { 
                     // Asignamos los valores del curso en base de datos al curso actual
                     // TODO Tambien podemos crear aqui una clase con esos atributos, y mantenerla, que no es a tiempo real, pero es integro
                     // TODO Meter la localidad actual en la que este el usuario, del atributo session
