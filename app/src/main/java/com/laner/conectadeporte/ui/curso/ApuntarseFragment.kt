@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import com.google.firebase.database.*
 import com.laner.conectadeporte.R
 import com.laner.conectadeporte.databinding.ApuntarseFrameBinding
@@ -12,17 +13,23 @@ import com.laner.conectadeporte.databinding.ApuntarseFrameBinding
 class ApuntarseFragment : Fragment() {
 
     // Variable del propio bindeo del fragment con la vista
-    private lateinit var _binding : ApuntarseFrameBinding
+    private var _binding : ApuntarseFrameBinding? = null
+    private val binding get() = _binding!!
 
     // Variables de referencia al servidor de Firebase
     private lateinit var  basedatos : FirebaseDatabase
-    private lateinit var cursoActual : DatabaseReference
+    private lateinit var basedatosRef : DatabaseReference
+
+    private lateinit var cursoId : String
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Aqui es .toString()? o !!?
+        cursoId = arguments?.getString("cursoApuntarse")!!
+
         return inflater.inflate(R.layout.apuntarse_frame, container, false)
     }
 
@@ -30,16 +37,41 @@ class ApuntarseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Guardamos las View en variables
-        val nombre_apuntarse = _binding.nombreUsuario
-        val apellidos_apuntarse = _binding.apellidosUsuario
-        val dni_apuntarse = _binding.dniUsuario
-        val fnac_apuntarse = _binding.fnacUsuario
-        val horario_apuntarse = _binding.horarioUsuario
+        val nombre_apuntarse = binding.nombreUsuario
+        val apellidos_apuntarse = binding.apellidosUsuario
+        val dni_apuntarse = binding.dniUsuario
+        val fnac_apuntarse = binding.fnacUsuario
+        val horario_apuntarse = binding.horarioUsuario
 
         // Inicializamos el Firebase, y especificamos a que carpeta nos referimos
         basedatos = FirebaseDatabase.getInstance()
-        // usuarioApuntadoActual = basedatos.reference.child("UsuarioApuntado")
+        basedatosRef = basedatos.reference
 
         // TODO hola (terminar, meter boton de apuntarse, que crea el usuario apuntado, lo mete en la BD y vuelve al curso en cuestion)
+        binding.botonRegistrarse.setOnClickListener {
+
+            // TODO obtenemos el correo del usuario actual registrado, en una variable
+            val correoUsuarioActual = "prueba@gmail.com"
+
+            // Creamos un hashMap con los datos del usuario apuntado
+            val usuarioApuntado = hashMapOf(
+                "cursoApuntado" to cursoId,
+                "nombreApuntado" to nombre_apuntarse.text.toString(),
+                "apellidosApuntado" to apellidos_apuntarse.text.toString(),
+                "fnacApuntado" to fnac_apuntarse.text.toString(),
+                "horarioApuntado" to horario_apuntarse.text.toString()
+            )
+
+            // Metemos el usuario apuntado en la base de datos.
+            // Se organizan en UsuarioApuntado > UsuarioAsociado > DNIApuntado, por si se apuntan varios dni desde una misma cuenta
+            // TODO meter dni en un variable y comprobar que es un dni valido antes de meterlo
+            basedatosRef.child("UsuarioApuntado").child(correoUsuarioActual).child(dni_apuntarse.text.toString()).setValue(usuarioApuntado)
+
+            // La aplicacion vuelve a la pantalla anterior del curso
+            // TODO ocultar o eliminar esta pantalla para que no pueda volver con la flecha hacia atras
+            NavHostFragment.findNavController(this).navigate(R.id.action_apuntarse_to_curso)
+        }
+
+        // TODO RECUERDA MANEJAR ERROR DE LOS EDITTEXT, Y METEMOS TEXTO EN ROJO SI VEMOS ALGO MAL, LO DESTRUIMOS EN EL BOTON REGISTRASE
     }
 }

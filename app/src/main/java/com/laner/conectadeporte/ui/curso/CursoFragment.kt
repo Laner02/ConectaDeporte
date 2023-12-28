@@ -12,6 +12,9 @@ import androidx.navigation.fragment.NavHostFragment
 import com.laner.conectadeporte.R
 import com.laner.conectadeporte.databinding.CursoFrameBinding
 import com.google.firebase.database.*
+import com.laner.conectadeporte.src.Course
+import com.laner.conectadeporte.src.Ubicacion
+import java.io.File
 
 class CursoFragment : Fragment() {
 
@@ -27,13 +30,16 @@ class CursoFragment : Fragment() {
     // Variable de referencia al servidor de firebase para obtener los valores
     private lateinit var basedatos : FirebaseDatabase
     // Referencia al link del curso actual en firebase
-    private lateinit var cursoActual : DatabaseReference
+    private lateinit var basedatosRef : DatabaseReference
     // Referencia al link de la carpeta con el Almacenamiento Multimedia
-    // TODO no estoy muy seguro de si esto funciona
-    private lateinit var directorioAlmacenamiento : DatabaseReference
+    private lateinit var storage : DatabaseReference
 
     // titulo del curso de la pantalla actual, a nulo por defecto
     private var cursoId : String? = null
+    private var localidadActual : String? = null
+
+    // Variable para guardar el curso actual
+    private lateinit var cursoActual : Course
 
     // Override del metodo que crea la vista
     override fun onCreateView(
@@ -48,6 +54,7 @@ class CursoFragment : Fragment() {
 
         // Obtenemos el titulo del curso que nos llega por el objeto Bundle
         cursoId = arguments?.getString("cursoActual")
+        localidadActual = arguments?.getString("localidadActual")
 
         // TODO inicializamos las variables binding a pesar de no usarlas solo para evitar errores fatales
         _binding = CursoFrameBinding.inflate(inflater, container, false)
@@ -70,36 +77,33 @@ class CursoFragment : Fragment() {
         val contacto_curso : TextView = view.findViewById(R.id.contacto)
         val boton_apuntarse : Button = view.findViewById(R.id.boton_apuntarse)
 
-        // TODO quitar esto despues de probarlo
-        localidad_curso.text = cursoId
-
         // Inicializamos el Firebase, y decimos a que curso pertenece especificamente (TODO el que haya clickado el usuario, esto vendrá en el enlace o en el GET, o en el session)
         basedatos = FirebaseDatabase.getInstance()
-        // TODO NOTA RAUL: Si no funciona esto, poner .child(Curso).child(C_001)
-        // cursoActual = basedatos.reference.child("Curso/C_001")
-        cursoActual = basedatos.reference
-        directorioAlmacenamiento = basedatos.reference.child("ImagenesCursos")
+        basedatosRef = basedatos.reference
 
         // Ponemos los valores de la base de datos en los objetos de la vista
-        //cursoActual.addValueEventListener(object : ValueEventListener {
-        cursoActual.child("Curso").child("C_001").addValueEventListener(object : ValueEventListener {
+        basedatosRef.child("Curso").child(localidadActual!!).child(cursoId!!).addValueEventListener(object : ValueEventListener {
             // definimos lo que pasa cuando cambian los datos en la base de datos (a tiempo real)
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) { 
+                if (snapshot.exists()) {
                     // Asignamos los valores del curso en base de datos al curso actual
-                    // TODO Tambien podemos crear aqui una clase con esos atributos, y mantenerla, que no es a tiempo real, pero es integro
-                    // TODO Meter la localidad actual en la que este el usuario, del atributo session
-                    //val localidad = snapshot.child("ubicacion").value.toString()
+                    val localidad = localidadActual
                     // La imagen del curso se pone en un listener sobre la carpeta de almacenamiento
-                    val titulo = snapshot.child("titulo").value.toString()
+                    val titulo = snapshot.toString()
                     val descripcion = snapshot.child("descripcion").value.toString()
                     val ubicacion = snapshot.child("ubicacion").value.toString()
                     val profesor = snapshot.child("profesor").value.toString()
                     val contacto = snapshot.child("contacto").value.toString()
+                    val precio = snapshot.child("precio").value.toString().toFloat()
 
+                    // Creamos la clase Curso con los datos recibidos
+                    cursoActual = Course(titulo, descripcion, profesor, Ubicacion.valueOf(ubicacion), precio)
+
+                    // TODO meter en la clase los horarios y toda la vaina, y mostrarlos de alguna forma
+
+                    // TODO tomar los valores de la clase cursoActual
                     // Se asignan los valores en las variables a los objetos de la vista
-                    // TODO cambiar esto a como antes
-                    // localidad_curso.text = localidad
+                    localidad_curso.text = localidadActual
                     titulo_curso.text = titulo
                     descripcion_curso.text = descripcion
                     ubicacion_curso.text = ubicacion
@@ -114,14 +118,17 @@ class CursoFragment : Fragment() {
             }
         })
 
+
+
         // TODO esto puede no funcionar: el enlace de la carpeta de Storage es diferente al de las tablas en tiempo real
-        directorioAlmacenamiento.addValueEventListener(object : ValueEventListener {
+        basedatosRef.child("ImagenesCursos").addValueEventListener(object : ValueEventListener {
             // aqui definimos solo que la imagen vaya cambiando, pues esta en una carpeta diferente
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    val imagen = snapshot.child("AjedrezImg.png")
+                    val imagen = snapshot.child(cursoId!! + ".png")
 
-                    // TODO aqui hay que hacer un set a la imagen para poner la que acabamos de obtener
+                    // TODO terminar esto, probar a descargarlo en drawables y pillar el ID
+                    var imagenTmp = File.createTempFile("imagen", "png")
                 }
             }
 
@@ -132,7 +139,11 @@ class CursoFragment : Fragment() {
 
         // Definimos la funcion que se realiza al pulsar el boton, en este metodo, porque lo ponemos una vez esta creada la vista
         binding.botonApuntarse.setOnClickListener {
-            // TODO Meter aqui que se pase a la pantalla de apuntarse, y meter la sesion actual y usuario y tal
+            // Le pasamos a la pantalla de Apuntarse el titulo del curso al que se apunta el usuario,
+            // para meterlo en la BD y relacionarlos
+            val bundle = Bundle()
+            bundle.putString("cursoApuntarse", cursoActual.getTitle())
+
             // Pedimos al NavHostFragment que busque el fragmento de navegacion asociado a esta clase, y que navegue hacia otra pantalla mediante la accion definida en el navhostfragment
             NavHostFragment.findNavController(this).navigate(R.id.action_registrarse_to_curso)
         }
@@ -141,7 +152,7 @@ class CursoFragment : Fragment() {
     // TODO esto funciona pero comporbar bien como usarlo, que no le veo utilidad
     // Funcion para obtener el valor de una clave de Curso
     fun getValorPorClave(clave: String) {
-        cursoActual.child(clave).addListenerForSingleValueEvent(object : ValueEventListener {
+        basedatosRef.child(clave).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val valor = snapshot.value.toString()
                 // Aqui tenemos el valor que queremos, y lo usamos como se necesite

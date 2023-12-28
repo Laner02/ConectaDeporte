@@ -15,6 +15,15 @@
         android:orientation="vertical"
         android:gravity="top|center">
 
+        <TextView
+            android:id="@+id/localidad_actual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            android:text="Localidad"/>
+        
         <androidx.cardview.widget.CardView
             android:id="@+id/card1"
             android:layout_width="284dp"

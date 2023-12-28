@@ -48,7 +48,6 @@ class LogInFragment : Fragment() {
                            /* val intent = Intent(requireContext(), HomeFragment::class.java)
                             startActivity(intent)*/
                             NavHostFragment.findNavController(this).navigate(R.id.action_login_to_home)
-
                         } else {
                             Toast.makeText(requireContext(), task.exception.toString(), Toast.LENGTH_SHORT).show()
                         }

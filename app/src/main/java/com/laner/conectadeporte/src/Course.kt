@@ -4,14 +4,14 @@ import android.location.Location
 import android.media.Image
 
 // Clase Kotlin para almacenar los datos de un curso de la aplicacion
-class Course(title: String, description: String, price: Float) {
+class Course(title: String, description: String, professor: String, location: Ubicacion, price: Float) {
 
     // private var c_id: Int (TODO debería tener un id la clase? o esto es mejor en la BD?)
     private var title: String
     private var description: String
     private var image: Image?               // La interrogacion indica que puede ser nulo, inicializar luego
-    private var professor: String?
-    private var location: Location?         // LOL?
+    private var professor: String
+    private var location: Ubicacion         // LOL?
     private var price: Float
     private var horarios: ArrayList<Horario>?
 
@@ -19,8 +19,8 @@ class Course(title: String, description: String, price: Float) {
         this.title = title
         this.description = description
         image = null
-        professor = null
-        location = null
+        this.professor = professor
+        this.location = location
         this.price = price
         horarios = ArrayList()
     }
@@ -38,11 +38,11 @@ class Course(title: String, description: String, price: Float) {
         return image
     }
 
-    fun getProfessor() : String? {
+    fun getProfessor() : String {
         return professor
     }
 
-    fun getLocation() : Location? {
+    fun getLocation() : Ubicacion {
         return location
     }
 

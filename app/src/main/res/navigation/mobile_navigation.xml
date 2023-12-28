@@ -30,6 +30,9 @@
         android:name="com.laner.conectadeporte.ui.curso.ApuntarseFragment"
         android:label="Apuntarse a Curso"
         tools:layout="@layout/apuntarse_frame" >
+        <action
+            android:id="@+id/action_apuntarse_to_curso"
+            app:destination="@id/nav_curso" />
     </fragment>
 
     <fragment
