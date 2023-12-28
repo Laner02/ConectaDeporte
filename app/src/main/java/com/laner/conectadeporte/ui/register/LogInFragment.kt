@@ -29,10 +29,7 @@ class LogInFragment : Fragment() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        // Modificacion de Raul para que se pueda cambiar de fragment
         binding.registrarseLogIn.setOnClickListener {
-            /*val intent = Intent(requireContext(), SignUpFragment::class.java)
-            startActivity(intent)*/
             NavHostFragment.findNavController(this).navigate(R.id.action_login_to_signup)
         }
 
@@ -44,9 +41,8 @@ class LogInFragment : Fragment() {
                 // Iniciar sesión con Firebase Authentication
                 firebaseAuth.signInWithEmailAndPassword(email, contrasena)
                     .addOnCompleteListener(requireActivity()) { task ->
+
                         if (task.isSuccessful) {
-                           /* val intent = Intent(requireContext(), HomeFragment::class.java)
-                            startActivity(intent)*/
                             NavHostFragment.findNavController(this).navigate(R.id.action_login_to_home)
                         } else {
                             Toast.makeText(requireContext(), task.exception.toString(), Toast.LENGTH_SHORT).show()
@@ -54,5 +50,21 @@ class LogInFragment : Fragment() {
                     }
             }
         }
+
+        binding.botonInvitado.setOnClickListener{
+
+            firebaseAuth.signInAnonymously()
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(requireContext(), "Inicio de sesión anónimo exitoso", Toast.LENGTH_SHORT).show()
+                        NavHostFragment.findNavController(this).navigate(R.id.action_login_to_home)
+                    } else {
+                        Toast.makeText(requireContext(), task.exception.toString(), Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+
+        }
+
     }
 }
