@@ -17,7 +17,12 @@ class CursoFragment : Fragment() {
 
     // Variable del propio bindeo del fragment con la vista
     // private var _binding : CursoFrameBinding? = null     ????
-    private lateinit var _binding : CursoFrameBinding
+    private var _binding : CursoFrameBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    // Variable de referencia binding a la vista, asertando que no es null la inicilizacion del _binding
+    private val binding get() = _binding!!
 
     // Variable de referencia al servidor de firebase para obtener los valores
     private lateinit var basedatos : FirebaseDatabase
@@ -26,6 +31,9 @@ class CursoFragment : Fragment() {
     // Referencia al link de la carpeta con el Almacenamiento Multimedia
     // TODO no estoy muy seguro de si esto funciona
     private lateinit var directorioAlmacenamiento : DatabaseReference
+
+    // titulo del curso de la pantalla actual, a nulo por defecto
+    private var cursoId : String? = null
 
     // Override del metodo que crea la vista
     override fun onCreateView(
@@ -37,6 +45,12 @@ class CursoFragment : Fragment() {
         // _binding = CursoFrameBinding.inflate(inflater, container, false)
         // TODO esto es la variable de binding que solo existe en la sesion actual, solo entre onCreate y onDestroy, pero aun no se como funciona
         // val root : View = binding.root
+
+        // Obtenemos el titulo del curso que nos llega por el objeto Bundle
+        cursoId = arguments?.getString("cursoActual")
+
+        // TODO inicializamos las variables binding a pesar de no usarlas solo para evitar errores fatales
+        _binding = CursoFrameBinding.inflate(inflater, container, false)
 
         // Enlazamos esta clase a la vista xml que hemos creado
         return inflater.inflate(R.layout.curso_frame, container, false)
@@ -56,6 +70,9 @@ class CursoFragment : Fragment() {
         val contacto_curso : TextView = view.findViewById(R.id.contacto)
         val boton_apuntarse : Button = view.findViewById(R.id.boton_apuntarse)
 
+        // TODO quitar esto despues de probarlo
+        localidad_curso.text = cursoId
+
         // Inicializamos el Firebase, y decimos a que curso pertenece especificamente (TODO el que haya clickado el usuario, esto vendrá en el enlace o en el GET, o en el session)
         basedatos = FirebaseDatabase.getInstance()
         // TODO NOTA RAUL: Si no funciona esto, poner .child(Curso).child(C_001)
@@ -70,7 +87,7 @@ class CursoFragment : Fragment() {
                     // Asignamos los valores del curso en base de datos al curso actual
                     // TODO Tambien podemos crear aqui una clase con esos atributos, y mantenerla, que no es a tiempo real, pero es integro
                     // TODO Meter la localidad actual en la que este el usuario, del atributo session
-                    val localidad = snapshot.child("ubicacion").value.toString()
+                    //val localidad = snapshot.child("ubicacion").value.toString()
                     // La imagen del curso se pone en un listener sobre la carpeta de almacenamiento
                     val titulo = snapshot.child("titulo").value.toString()
                     val descripcion = snapshot.child("descripcion").value.toString()
@@ -79,7 +96,8 @@ class CursoFragment : Fragment() {
                     val contacto = snapshot.child("contacto").value.toString()
 
                     // Se asignan los valores en las variables a los objetos de la vista
-                    localidad_curso.text = localidad
+                    // TODO cambiar esto a como antes
+                    // localidad_curso.text = localidad
                     titulo_curso.text = titulo
                     descripcion_curso.text = descripcion
                     ubicacion_curso.text = ubicacion
@@ -89,7 +107,8 @@ class CursoFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Manejamos los errores de los datos en curso?")
+                // Manejamos los errores de los datos en curso?
+                // Log.w(TAG, "Database operation canceled. Error: ${error.message}")
             }
         })
 
@@ -105,12 +124,12 @@ class CursoFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Manejamos los errores de la imagen?")
+                // TODO Manejamos los errores de la imagen?
             }
         })
 
         // Definimos la funcion que se realiza al pulsar el boton, en este metodo, porque lo ponemos una vez esta creada la vista
-        _binding.botonApuntarse.setOnClickListener {
+        binding.botonApuntarse.setOnClickListener {
             // TODO Meter aqui que se pase a la pantalla de apuntarse, y meter la sesion actual y usuario y tal
             // Pedimos al NavHostFragment que busque el fragmento de navegacion asociado a esta clase, y que navegue hacia otra pantalla mediante la accion definida en el navhostfragment
             NavHostFragment.findNavController(this).navigate(R.id.action_registrarse_to_curso)
@@ -127,7 +146,7 @@ class CursoFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Manejamos los errores?")
+                // TODO Manejamos los errores?
             }
         })
     }
