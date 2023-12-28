@@ -76,7 +76,8 @@ class CursoFragment : Fragment() {
         // Inicializamos el Firebase, y decimos a que curso pertenece especificamente (TODO el que haya clickado el usuario, esto vendrá en el enlace o en el GET, o en el session)
         basedatos = FirebaseDatabase.getInstance()
         // TODO NOTA RAUL: Si no funciona esto, poner .child(Curso).child(C_001)
-        cursoActual = basedatos.reference.child("Curso/C_001")
+        // cursoActual = basedatos.reference.child("Curso/C_001")
+        
         directorioAlmacenamiento = basedatos.reference.child("ImagenesCursos")
 
         // Ponemos los valores de la base de datos en los objetos de la vista

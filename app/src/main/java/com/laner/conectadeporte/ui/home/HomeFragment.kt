@@ -1,5 +1,6 @@
 package com.laner.conectadeporte.ui.home
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -59,7 +60,6 @@ class HomeFragment : Fragment() {
 
         card1.setOnClickListener {
             // Se crea un objeto Bundle en el que se mete el curso especifico al que se accede
-            // TODO si esto no funciona, crear una variable cursoActual en el SharedPrefs
             NavHostFragment.findNavController(this).navigate(R.id.action_nav_home_to_nav_curso)
         }
 

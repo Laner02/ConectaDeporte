@@ -32,8 +32,6 @@
         tools:layout="@layout/apuntarse_frame" >
     </fragment>
 
-    <!-- TODO Meter el frame de Apuntarse -->
-
     <fragment
         android:id="@+id/log"
         android:name="com.laner.conectadeporte.ui.register.LogInFragment"
@@ -52,11 +50,9 @@
         android:name="com.laner.conectadeporte.ui.register.SignUpFragment"
         android:label="Curso"
         tools:layout="@layout/sign_up" >
-
         <action
             android:id="@+id/action_signup_to_login"
             app:destination="@id/log" />
-
     </fragment>
 
 
