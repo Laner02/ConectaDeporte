@@ -81,6 +81,7 @@ class CursoFragment : Fragment() {
         basedatos = FirebaseDatabase.getInstance()
         basedatosRef = basedatos.reference
 
+        // TODO eSTO DA NULL POINTER EXCEPTION, PERO CON EL PRIMER BOTON
         // Ponemos los valores de la base de datos en los objetos de la vista
         basedatosRef.child("Curso").child(localidadActual!!).child(cursoId!!).addValueEventListener(object : ValueEventListener {
             // definimos lo que pasa cuando cambian los datos en la base de datos (a tiempo real)

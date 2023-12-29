@@ -80,36 +80,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <include layout="@layout/card_blueprint"
-            android:layout_width="284dp"
-            android:layout_height="150dp"
-            android:layout_margin="10dp"
-            android:id="@+id/card2">
-
-            <!-- TODO La info de las tarjetas se pone desde el codigo kotlin, sacandolo de la BD, haciendo referencia a sus ids dentro de las tarjtetas -->
-
-        </include>
-
-        <include layout="@layout/card_blueprint"
-            android:layout_width="284dp"
-            android:layout_height="150dp"
-            android:layout_margin="10dp"
-            android:id="@+id/card3">
-
-            <!-- TODO La info de las tarjetas se pone desde el codigo kotlin, sacandolo de la BD, haciendo referencia a sus ids dentro de las tarjtetas -->
-
-        </include>
-
-        <include layout="@layout/card_blueprint"
-            android:layout_width="284dp"
-            android:layout_height="150dp"
-            android:layout_margin="10dp"
-            android:id="@+id/card4">
-
-            <!-- TODO La info de las tarjetas se pone desde el codigo kotlin, sacandolo de la BD, haciendo referencia a sus ids dentro de las tarjtetas -->
-
-        </include>
-
     </LinearLayout>
     </ScrollView>
 
