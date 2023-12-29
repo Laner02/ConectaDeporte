@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <!-- Linear Layout para poner las tarjetas de cada deporte -->
     <LinearLayout
         android:id="@+id/main_scroll_menu"
@@ -108,5 +111,6 @@
         </include>
 
     </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

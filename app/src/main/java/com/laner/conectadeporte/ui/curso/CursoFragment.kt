@@ -94,10 +94,14 @@ class CursoFragment : Fragment() {
                     val ubicacion = snapshot.child("ubicacion").value.toString()
                     val profesor = snapshot.child("profesor").value.toString()
                     val contacto = snapshot.child("contacto").value.toString()
-                    val precio = snapshot.child("precio").value.toString().toFloat()
+                    var precio : Float? = snapshot.child("precio").getValue(Float::class.java)
+
+                    // TODO El precio da un null pointer exception y no se por que, pero mientras el precio sera por defecto
+                    if (precio == null)
+                        precio = 40f
 
                     // Creamos la clase Curso con los datos recibidos
-                    cursoActual = Course(titulo, descripcion, profesor, Ubicacion.valueOf(ubicacion), precio)
+                    cursoActual = Course(titulo, descripcion, profesor, ubicacion, Ubicacion.valueOf(localidadActual!!), precio!!)
 
                     // TODO meter en la clase los horarios y toda la vaina, y mostrarlos de alguna forma
 
