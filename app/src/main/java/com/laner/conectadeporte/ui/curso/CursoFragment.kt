@@ -141,14 +141,14 @@ class CursoFragment : Fragment() {
         })
 
         // Definimos la funcion que se realiza al pulsar el boton, en este metodo, porque lo ponemos una vez esta creada la vista
-        binding.botonApuntarse.setOnClickListener {
+        boton_apuntarse.setOnClickListener {
             // Le pasamos a la pantalla de Apuntarse el titulo del curso al que se apunta el usuario,
             // para meterlo en la BD y relacionarlos
             val bundle = Bundle()
             bundle.putString("cursoApuntarse", cursoActual.getTitle())
 
             // Pedimos al NavHostFragment que busque el fragmento de navegacion asociado a esta clase, y que navegue hacia otra pantalla mediante la accion definida en el navhostfragment
-            NavHostFragment.findNavController(this).navigate(R.id.action_registrarse_to_curso)
+            NavHostFragment.findNavController(this).navigate(R.id.action_registrarse_to_curso, bundle)
         }
     }
 

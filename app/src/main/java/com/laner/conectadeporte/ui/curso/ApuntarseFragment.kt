@@ -1,6 +1,7 @@
 package com.laner.conectadeporte.ui.curso
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,9 @@ class ApuntarseFragment : Fragment() {
         // Aqui es .toString()? o !!?
         cursoId = arguments?.getString("cursoApuntarse")!!
 
+        // Incializamos la variable _binding
+        _binding = ApuntarseFrameBinding.inflate(inflater, container, false)
+
         return inflater.inflate(R.layout.apuntarse_frame, container, false)
     }
 
@@ -42,15 +46,18 @@ class ApuntarseFragment : Fragment() {
         val dni_apuntarse = binding.dniUsuario
         val fnac_apuntarse = binding.fnacUsuario
         val horario_apuntarse = binding.horarioUsuario
+        // Variables para botones para que funcione ponerles un onclicklistener
+        val boton_apuntarse = binding.botonRegistrarse
+        val boton_cancelar = binding.botonCancelar
 
         // Inicializamos el Firebase, y especificamos a que carpeta nos referimos
         basedatos = FirebaseDatabase.getInstance()
         basedatosRef = basedatos.reference
 
-        // TODO hola (terminar, meter boton de apuntarse, que crea el usuario apuntado, lo mete en la BD y vuelve al curso en cuestion)
-        binding.botonRegistrarse.setOnClickListener {
+        // TODO creo que ponerlo con binding y no en una variable hace que no funcione
+        boton_apuntarse.setOnClickListener {
 
-            // TODO obtenemos el correo del usuario actual registrado, en una variable
+            // TODO obtenemos el correo del usuario actual registrado, en una variable en SharedPreferences
             val correoUsuarioActual = "prueba@gmail.com"
 
             // Creamos un hashMap con los datos del usuario apuntado
@@ -69,6 +76,12 @@ class ApuntarseFragment : Fragment() {
 
             // La aplicacion vuelve a la pantalla anterior del curso
             // TODO ocultar o eliminar esta pantalla para que no pueda volver con la flecha hacia atras
+            // TODO NO FUNCIONA BIEN SI VUELVE AL CURSO ANTERIOR, NECESITAMOS QUE VUELVA A LA PANTALLA PRINCIPAL
+            NavHostFragment.findNavController(this).navigate(R.id.action_apuntarse_to_curso)
+        }
+
+        // Si el usuario pulsa el boton de cancelar, vuelve al curso sin crear el usuario
+        boton_cancelar.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(R.id.action_apuntarse_to_curso)
         }
 

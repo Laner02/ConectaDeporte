@@ -86,7 +86,6 @@ class HomeFragment : Fragment() {
             // Override al metodo que se ejecuta despues de que se recupere la BD
             override fun onCursosFetched(listaCursos: List<Course>) {
                 for (curso in listaCursos) {
-                    Log.v("[ListaCursos]", curso.toString())
 
                     // Variable inflater para meter las tarjetas
                     val inflater = LayoutInflater.from(requireContext())
