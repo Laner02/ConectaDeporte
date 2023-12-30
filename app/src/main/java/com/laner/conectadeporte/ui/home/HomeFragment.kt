@@ -71,14 +71,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // TODO terminar esto para hacer las tarjetas recycle, y meter boyones hacia otras vistas
+        // TODO terminar esto para hacer las tarjetas recycle
 
         // AQUI SE VAN PILLANDO LOS OBJETOS DE LA VISTA EN VARIABLES
         val localidadCurrente : TextView = binding.localidadActual
-        // TODO hacer un override del metodo tostring en Ubicacion que devuelva el nombre entero no las siglas
         localidadCurrente.text = localidadActual.toString()
-        // TODO cambiar la primera tarjeta
-        val card1 : CardView = binding.card1
+        // TODO hacer un override del metodo tostring en Ubicacion que devuelva el nombre entero no las siglas
+        // TODO pero entonces deberiamos cambiar las localizaciones en la BD
 
         // Llamamos a la funcion de recuperar los cursos de la base de datos, y overrideamos
         // la funcion final de completado, para que se ejecute este codigo DESPUES de que se ejecute lo de la base de datos
@@ -93,8 +92,6 @@ class HomeFragment : Fragment() {
                     val inflater = LayoutInflater.from(requireContext())
                     val tarjetaVista : View = inflater.inflate(R.layout.card_blueprint, binding.root, false)
 
-                    val idDinamico = ViewCompat.generateViewId()
-                    tarjetaVista.id = idDinamico
                     // TODO prueba para cambiar la imagen
                     // tarjetaVista.findViewById<ImageView>(R.id.card_img).setImageResource(resources.getIdentifier(curso.getTitle() + ".png", "drawable", "com.laner.conectadeporte"))
                     tarjetaVista.findViewById<TextView>(R.id.card_title).text = curso.getTitle()
@@ -102,6 +99,16 @@ class HomeFragment : Fragment() {
 
                     // Metemos la nueva tarjeta dentro del scroll
                     binding.mainScrollMenu.addView(tarjetaVista)
+
+                    // Le ponemos a la tarjeta un onclicklistener
+                    tarjetaVista.setOnClickListener {
+                        // Creamos una variable Bundle, para pasar al Fragment de Curso parametros
+                        val bundle = Bundle()
+                        bundle.putString("cursoActual", curso.getTitle())
+                        bundle.putString("localidadActual", localidadActual.toString())
+                        // NOTA RAUL: No se por que aqui pide un @HomeFragment, pero lo pide (._.)
+                        NavHostFragment.findNavController(this@HomeFragment).navigate(R.id.action_nav_home_to_nav_curso, bundle)
+                    }
                 }
             }
 
@@ -111,66 +118,17 @@ class HomeFragment : Fragment() {
 
         })
 
-        // TODO METER TODO ESTO DENTRO DE LA FUNCION ANTERIOR QUE SE EJECUTA TRAS RECOGER LOS DATOS DE LA BD
-        // TODO !!!!!!!!!!!!!!!!!!!!!!!!!
-        // Vamos recorriendo el array de tarjetas, y las ponemos un onClickListener
-        /*for (curso in listaCursos) {
-            // Creamos la tarjeta y la metemos en la vista, y le ponemos el onclicklistener
-            val tarjetaVista : View = inflater.inflate(R.layout.card_blueprint, binding.root, false)
-            // Guardamos el id que se le dara a la tarjeta para referenciarla luego
-            val idDinamico = ViewCompat.generateViewId()
-            tarjetaVista.id = idDinamico
-            // TODO prueba para cambiar la imagen
-            // tarjetaVista.findViewById<ImageView>(R.id.card_img).setImageResource(resources.getIdentifier(curso.getTitle() + ".png", "drawable", "com.laner.conectadeporte"))
-            tarjetaVista.findViewById<TextView>(R.id.card_title).text = curso.getTitle()
-            tarjetaVista.findViewById<TextView>(R.id.card_desc).text = curso.getDescription()
-
-            // Metemos la nueva tarjeta dentro del scroll
-            binding.mainScrollMenu.addView(tarjetaVista)*/
-
-            // Definimos la accion que se ejecuta al pulsar la tarjeta  NOTA: esto no se si se le podia hacer antes de meterla en la vista o no
-            /*binding.mainScrollMenu.findViewById<View>(idDinamico).setOnClickListener {
-                // Creamos un objeto Bundle, en el que pasamos el titulo del curso para saber que curso es
-                val bundle = Bundle()
-                bundle.putString("cursoActual", curso.getTitle())
-                bundle.putString("localidadActual", localidadActual.toString())
-
-                // Pasamos el bundle con el titulo del curso
-                NavHostFragment.findNavController(this).navigate(R.id.action_nav_home_to_nav_curso, bundle)
-            }*/
-        //}
-
-        // TODO eso o creamos una clase que ya tenga ese onclick en ella y el bindeo a us respectiva tarjeta?
-
-        /*basedatosRef.child("Curso").child(localidadActual.toString()).addValueEventListener(object : ValueEventListener {
-            // Se toman los datos de la base de datos, y se van creando las tarjetas segun se comprueba que aun queda un curso
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    // TODO hacer un for que recorra todos los hijos de la localidad, y vaya creando una tarjeta con el include para cada una
-                    // TODO luego ir insertando esas clases en la vista XML
-                    // Hacer esto para cada hijo de la localidad, ir recorriendolos, tomar en una variable el cursoDB actual, e ir cambiando cosas
-                    var card2DB : DataSnapshot = snapshot.child("Badminton La Rondilla")
-                    binding.card2.cardTitle.text = card2DB.toString()
-                    binding.card2.cardDesc.text = card2DB.child("descripcion").toString()
-                    // TODO faltaria cambiar la imagen pero no se como hacerlo :P
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // TODO Not yet implemented
-            }
-        })*/
-
-        card1.setOnClickListener {
+        /* card1.setOnClickListener {
             // Se crea un objeto Bundle en el que se mete el curso especifico al que se accede
             val bundle = Bundle()
             bundle.putString("cursoActual", "Club de Ajedrez")
             bundle.putString("localidadActual", localidadActual.toString())
 
-            NavHostFragment.findNavController(this).navigate(R.id.action_nav_home_to_nav_curso)
-        }
+
+        } */
     }
 
+    // Funcion que obtiene los datos de los Cursos desde la BD, y crea clases Curso y los mete en una lista
     fun fetchCursos(callback: CursoFetchCallback) {
 
         // Primero obtenemos los cursos de la localizacion actual desde la base de datos y los creamos
@@ -200,8 +158,6 @@ class HomeFragment : Fragment() {
 
                         // Creamos el curso actual y lo anadimos a la lista de cursos   NOTA: ubicacion y localidad estan al reves uwu
                         val cursoActual = Course(titulo_curso,descripcion_curso,profesor_curso,ubicacion_curso,localidadActual,precio_curso!!)
-
-                        Log.v("[Curso]", cursoActual.toString())
 
                         listaCursos.add(cursoActual)
                         cursos.add(cursoActual)

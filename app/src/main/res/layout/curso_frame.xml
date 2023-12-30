@@ -80,32 +80,75 @@
                 </LinearLayout>
 
                 <!-- TODO faltaría poner un tamaño fijo a un nuevo linearlayout vertical, y poner linearlayout horizontales dentro para imagenes y texto -->
-                <TextView
-                    android:id="@+id/ubicacion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="40dp"
-                    android:textColor="@color/black"
-                    android:text="Ubicación"/>
 
-                <TextView
-                    android:id="@+id/profesor"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginStart="40dp"
-                    android:textColor="@color/black"
-                    android:text="Profesor/es"/>
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="40dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:text="Ubicación:"/>
 
-                <TextView
-                    android:id="@+id/contacto"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/ubicacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/black"
+                        android:text=""/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginStart="40dp"
-                    android:textColor="@color/black"
-                    android:text="email/Teléfono"/>
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="40dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:text="Profesor/es:"/>
+
+                    <TextView
+                        android:id="@+id/profesor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/black"
+                        android:text=""/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="40dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:text="Email/teléfono:"/>
+
+                    <TextView
+                        android:id="@+id/contacto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/black"
+                        android:text=""/>
+                </LinearLayout>
 
                 <View
                     android:id="@+id/horarios"
@@ -119,12 +162,23 @@
 
                 </View>
 
+                <!-- TODO poner el Precio en ROJO??? -->
+                <TextView
+                    android:id="@+id/precio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="Precio" />
+
                 <Button
                     android:id="@+id/boton_apuntarse"
                     android:layout_width="170dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="80dp"
+                    android:layout_marginTop="10dp"
                     android:backgroundTint="@color/green_light"
                     android:textColor="@color/black"
                     android:textSize="18sp"

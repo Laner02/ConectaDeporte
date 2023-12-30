@@ -1,6 +1,7 @@
 package com.laner.conectadeporte.ui.curso
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -75,6 +76,7 @@ class CursoFragment : Fragment() {
         val ubicacion_curso : TextView = view.findViewById(R.id.ubicacion)
         val profesor_curso : TextView = view.findViewById(R.id.profesor)
         val contacto_curso : TextView = view.findViewById(R.id.contacto)
+        val precio_curso : TextView = view.findViewById(R.id.precio)
         val boton_apuntarse : Button = view.findViewById(R.id.boton_apuntarse)
 
         // Inicializamos el Firebase, y decimos a que curso pertenece especificamente (TODO el que haya clickado el usuario, esto vendrá en el enlace o en el GET, o en el session)
@@ -90,16 +92,12 @@ class CursoFragment : Fragment() {
                     // Asignamos los valores del curso en base de datos al curso actual
                     val localidad = localidadActual
                     // La imagen del curso se pone en un listener sobre la carpeta de almacenamiento
-                    val titulo = snapshot.toString()
+                    val titulo = snapshot.key!!
                     val descripcion = snapshot.child("descripcion").value.toString()
                     val ubicacion = snapshot.child("ubicacion").value.toString()
                     val profesor = snapshot.child("profesor").value.toString()
                     val contacto = snapshot.child("contacto").value.toString()
-                    var precio : Float? = snapshot.child("precio").getValue(Float::class.java)
-
-                    // TODO El precio da un null pointer exception y no se por que, pero mientras el precio sera por defecto
-                    if (precio == null)
-                        precio = 40f
+                    val precio : Float? = snapshot.child("precio").getValue(Float::class.java)
 
                     // Creamos la clase Curso con los datos recibidos
                     cursoActual = Course(titulo, descripcion, profesor, ubicacion, Ubicacion.valueOf(localidadActual!!), precio!!)
@@ -114,12 +112,12 @@ class CursoFragment : Fragment() {
                     ubicacion_curso.text = ubicacion
                     profesor_curso.text = profesor
                     contacto_curso.text = contacto
+                    precio_curso.text = precio.toString() + " €"
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Manejamos los errores de los datos en curso?
-                // Log.w(TAG, "Database operation canceled. Error: ${error.message}")
+                Log.e("[CDERROR]", "Error obteniendo datos del curso de la Base de Datos. Error: ${error.message}")
             }
         })
 
