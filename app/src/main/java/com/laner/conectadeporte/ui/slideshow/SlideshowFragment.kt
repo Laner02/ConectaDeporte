@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.laner.conectadeporte.databinding.FragmentSlideshowBinding
 
+
+// Codigo generado automaticamente por AS
 class SlideshowFragment : Fragment() {
 
     private var _binding: FragmentSlideshowBinding? = null

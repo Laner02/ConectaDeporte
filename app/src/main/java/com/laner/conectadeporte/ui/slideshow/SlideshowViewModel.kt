@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
+// No se que es esto, se ha generado automaticamente
 class SlideshowViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {

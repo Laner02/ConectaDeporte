@@ -39,5 +39,5 @@
         android:textColor="@color/black"
         android:textSize="17dp"
         android:textStyle="bold"
-        android:text="nombre_usuario" />
+        android:text="correo de usuario" />
 </LinearLayout>

@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_nav_home_to_nav_curso"
             app:destination="@id/nav_curso" />
+        <!-- Acciones del menu lateral -->
+        <action
+            android:id="@+id/action_to_perfil"
+            app:destination="@+id/nav_perfil" />
     </fragment>
 
     <fragment
@@ -23,6 +27,10 @@
         <action
             android:id="@+id/action_registrarse_to_curso"
             app:destination="@id/apuntarse_curso" />
+        <!-- Acciones del menu lateral -->
+        <action
+            android:id="@+id/action_to_perfil"
+            app:destination="@+id/nav_perfil" />
     </fragment>
 
     <fragment
@@ -33,6 +41,10 @@
         <action
             android:id="@+id/action_apuntarse_to_curso"
             app:destination="@id/nav_curso" />
+        <!-- Acciones del menu lateral -->
+        <action
+            android:id="@+id/action_to_perfil"
+            app:destination="@+id/nav_perfil" />
     </fragment>
 
     <fragment
@@ -58,6 +70,14 @@
             app:destination="@id/log" />
     </fragment>
 
-
+    <!-- Fragments de las opciones del menu -->
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.laner.conectadeporte.ui.menu.PerfilFragment"
+        android:label="Perfil"
+        tools:layout="@layout/perfil_frame" >
+        <!-- TODO si metemos editar perfil, meterlo aqui -->
+    </fragment>
+    <!-- TODO -->
 
 </navigation>

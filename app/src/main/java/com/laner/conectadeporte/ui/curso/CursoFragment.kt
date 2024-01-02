@@ -20,7 +20,6 @@ import java.io.File
 class CursoFragment : Fragment() {
 
     // Variable del propio bindeo del fragment con la vista
-    // private var _binding : CursoFrameBinding? = null     ????
     private var _binding : CursoFrameBinding? = null
 
     // This property is only valid between onCreateView and

@@ -22,7 +22,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="70dp"
             android:layout_marginEnd="20dp"
-            android:contentDescription="app image"
+            android:contentDescription="app title"
             android:src="@drawable/image_name_app" />
 
         <ImageView
