@@ -1,14 +1,13 @@
 package com.laner.conectadeporte.src
 
 // Clase Kotlin para usuarios de la aplicacion
-class Usuario (correo: String, nombre: String, apellidos: String, telefono: Telefono?,
-               listaLocalidades: ArrayList<Ubicacion>?) {
+class Usuario (correo: String, nombre: String, apellidos: String, telefono: String) {
 
     // El nombre de usuario deberia ser inmutable para no poder cambiar el identificador
     private var correo: String
     private var nombre: String
     private var apellidos: String
-    private var telefono: Telefono?
+    private var telefono: String
     private var listaLocalidades: ArrayList<Ubicacion>?
 
     init {
@@ -31,9 +30,13 @@ class Usuario (correo: String, nombre: String, apellidos: String, telefono: Tele
         return apellidos
     }
 
+    fun getNombreCompleto() :String {
+        return nombre + apellidos
+    }
+
     // No metemos un get de la contasenna? seria raro
 
-    fun getTelefono() : Telefono? {
+    fun getTelefono() : String {
         return telefono
     }
 

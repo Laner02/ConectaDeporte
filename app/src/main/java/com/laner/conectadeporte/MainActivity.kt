@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
         val fragmentManager = supportFragmentManager
         val currentFragment = fragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
 
-        // TODO Debug de control
+        // Debug de control
         if (currentFragment == null)
             Log.w("[MainActivity]", "El fragmento actual es NULO.")
 
@@ -103,8 +103,23 @@ class MainActivity : AppCompatActivity() {
         NavHostFragment.findNavController(currentFragment!!).navigate(R.id.action_to_perfil, bundle)
     }
 
+    // TODO esto se podria reutilizar la de arriba que solo cambia la accion realizada, y optimizamos codigo
     fun accesoCursosApuntados() {
-        // TODO FALTA POR IMPLEMENTAR, ES IGUAL QUE LA DE ARRIBA PERO DISTINTA ACCION DISTINTO DESTINO
+        // TODO Obtenemos el usuario desde SharedPrefs para pasarlo a la pagina del perfil
+        val bundle = Bundle()
+        // bundle.putString("usuarioActual", Sharedprefs.getString())
+        bundle.putString("usuarioActual", "Raul")
+
+        // Obtenemos el fragmento actual
+        val fragmentManager = supportFragmentManager
+        val currentFragment = fragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
+
+        // Debug de control
+        if (currentFragment == null)
+            Log.w("[MainActivity]", "El fragmento actual es NULO.")
+
+        // Poner la navegacion desde cualquier fragmento a las opciones de menu por si acaso
+        NavHostFragment.findNavController(currentFragment!!).navigate(R.id.action_to_cursos_apuntados, bundle)
     }
 
     fun activaModoOscuro() {

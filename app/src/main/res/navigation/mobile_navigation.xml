@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_to_perfil"
             app:destination="@+id/nav_perfil" />
+        <action
+            android:id="@+id/action_to_cursos_apuntados"
+            app:destination="@+id/nav_cursos_apuntados" />
     </fragment>
 
     <fragment
@@ -31,6 +34,9 @@
         <action
             android:id="@+id/action_to_perfil"
             app:destination="@+id/nav_perfil" />
+        <action
+            android:id="@+id/action_to_cursos_apuntados"
+            app:destination="@+id/nav_cursos_apuntados" />
     </fragment>
 
     <fragment
@@ -45,6 +51,9 @@
         <action
             android:id="@+id/action_to_perfil"
             app:destination="@+id/nav_perfil" />
+        <action
+            android:id="@+id/action_to_cursos_apuntados"
+            app:destination="@+id/nav_cursos_apuntados" />
     </fragment>
 
     <fragment
@@ -77,6 +86,14 @@
         android:label="Perfil"
         tools:layout="@layout/perfil_frame" >
         <!-- TODO si metemos editar perfil, meterlo aqui -->
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_cursos_apuntados"
+        android:name="com.laner.conectadeporte.ui.menu.CursosApuntadosFragment"
+        android:label="Cursos Apuntados"
+        tools:layout="@layout/cursos_apuntados_frame" >
+        <!-- TODO si metemos la flecha para atras meter la accion aqui y meter el boton accion -->
     </fragment>
     <!-- TODO -->
 

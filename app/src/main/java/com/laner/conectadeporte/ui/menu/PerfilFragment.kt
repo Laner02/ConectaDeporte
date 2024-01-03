@@ -1,14 +1,18 @@
 package com.laner.conectadeporte.ui.menu
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.laner.conectadeporte.R
 import com.laner.conectadeporte.databinding.PerfilFrameBinding
 import com.laner.conectadeporte.src.Usuario
@@ -54,10 +58,36 @@ class PerfilFragment : Fragment() {
         val telefonoContacto : TextView = binding.perfilTelefonoUsuario
         // TODO esta no me convece, o hacemos que retroceda al pulsar o lo quitamos, no quiero meter otra action
         val boton_atras : ImageView = view.findViewById(R.id.perfil_flechaAtras)
+        // TODO meter un onclicklistener en este boton
 
         basedatos = FirebaseDatabase.getInstance()
         basedatosRef = basedatos.reference
 
-        // TODO SEGUIR, pillar los datos del usuario y metelos en una clase Usuario
+        basedatosRef.child("Usuario").child(usuarioId!!).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    // Pillamos los datos del usuario
+                    val nombre = snapshot.child("nombre").toString()
+                    val apellidos = snapshot.child("apellidos").toString()
+                    val email = snapshot.child("email").toString()
+                    val telefono = snapshot.child("telefono").toString()
+
+                    // Creamos la clase usuario
+                    usuarioActual = Usuario(email,nombre,apellidos,telefono)
+                    // No metemos los cursos porque no los necesitamos
+
+                    nombreUsuario.text = usuarioId
+                    correoUsuario.text = usuarioActual.getCorreo()
+                    nombreCompleto.text = usuarioActual.getNombreCompleto()
+                    correoContacto.text = usuarioActual.getCorreo()
+                    telefonoContacto.text = usuarioActual.getTelefono()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("[CDERRORPerfil]", "Error obteniendo datos del usuario de la Base de Datos. Error: ${error.message}")
+                // TODO mandar un toast de que ha habido un error??
+            }
+        })
     }
 }
