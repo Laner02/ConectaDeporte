@@ -56,8 +56,8 @@ class LogInFragment : Fragment() {
 
                         if (task.isSuccessful) {
 
-                            prefs.saveEmail(email)
-                          //  prefs.saveVIP(cbVip.isChecked)
+                          //  prefs.saveEmail(email)
+
                             NavHostFragment.findNavController(this).navigate(R.id.action_login_to_home)
                         } else {
                             Toast.makeText(requireContext(), task.exception.toString(), Toast.LENGTH_SHORT).show()
