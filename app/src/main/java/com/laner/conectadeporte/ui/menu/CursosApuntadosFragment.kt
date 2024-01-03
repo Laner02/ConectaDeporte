@@ -131,7 +131,8 @@ class CursosApuntadosFragment : Fragment() {
         basedatos = FirebaseDatabase.getInstance()
         basedatosRef = basedatos.reference
 
-        basedatosRef.child("matricula").child(usuarioId!!).addValueEventListener(object : ValueEventListener {
+        // TODO de momento solo ponemos los de VALL, porque meter otro bucle for complica las cosas y no se como usar un mapa para arreglar esto
+        basedatosRef.child("matricula").child("VALL").child(usuarioId!!).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 // Por si acaso mantenemos una lista que se devuelve y otra global
                 listaCursosApuntados = ArrayList()
@@ -165,7 +166,7 @@ class CursosApuntadosFragment : Fragment() {
         var cursos : ArrayList<Course> = ArrayList()
 
         for (cursoId in listaCursos) {
-            basedatosRef.child("Curso").child(cursoId).addValueEventListener(object : ValueEventListener {
+            basedatosRef.child("Curso").child("VALL").child(cursoId).addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
                         Log.v("[CursoApuntado]", "Recuperando Curso Apuntado...")
