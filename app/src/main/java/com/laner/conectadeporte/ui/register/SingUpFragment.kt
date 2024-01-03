@@ -91,9 +91,9 @@ class SignUpFragment : Fragment() {
                                         // Obtiene el número de hijos
                                         val numeroDeHijos = dataSnapshot.childrenCount
                                         val num = numeroDeHijos + 1
-                                        val emailModificada = num.toString() + "-" + email.replace('.', '-')
+                                     //   val emailModificada = num.toString() + "-" + email.replace('.', '-')
 
-                                        directorioAlmacenamiento.child("Usuario").child(emailModificada).setValue(user)
+                                        directorioAlmacenamiento.child("Usuario").child(num.toString()).setValue(user)
 
                                         println("Número de hijos: $numeroDeHijos")
                                     }

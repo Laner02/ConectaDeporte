@@ -25,7 +25,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/backarrowicon"
-                android:background="none" />
+                 />
             
             <ImageView
                 android:id="@+id/perfil_ImagenUsuario"

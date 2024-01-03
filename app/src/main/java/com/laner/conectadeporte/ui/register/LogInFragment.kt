@@ -1,26 +1,38 @@
 package com.laner.conectadeporte.ui.register
 
+import android.app.Application
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
+import com.google.firebase.Firebase
 import com.laner.conectadeporte.databinding.LogInBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.firestore
 import com.laner.conectadeporte.R
+import com.laner.conectadeporte.UserApp.Companion.prefs
 
 class LogInFragment : Fragment() {
 
     private lateinit var binding: LogInBinding
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var database : FirebaseDatabase
+    private lateinit var directorioAlmacenamiento : DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
         binding = LogInBinding.inflate(inflater, container, false)
+        checkUserValues()
         return binding.root
     }
 
@@ -43,6 +55,9 @@ class LogInFragment : Fragment() {
                     .addOnCompleteListener(requireActivity()) { task ->
 
                         if (task.isSuccessful) {
+
+                            prefs.saveEmail(email)
+                          //  prefs.saveVIP(cbVip.isChecked)
                             NavHostFragment.findNavController(this).navigate(R.id.action_login_to_home)
                         } else {
                             Toast.makeText(requireContext(), task.exception.toString(), Toast.LENGTH_SHORT).show()
@@ -63,8 +78,16 @@ class LogInFragment : Fragment() {
                     }
                 }
 
-
         }
 
     }
+
+    fun checkUserValues() {
+
+        if (prefs.getEmail().isNotEmpty()) {
+
+            NavHostFragment.findNavController(this).navigate(R.id.action_login_to_home)
+        }
+    }
+
 }
