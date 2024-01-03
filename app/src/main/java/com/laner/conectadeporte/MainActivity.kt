@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
+import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -14,6 +16,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.navigation.NavHostController
 import androidx.navigation.fragment.NavHostFragment
 import com.laner.conectadeporte.databinding.ActivityMainBinding
@@ -31,13 +34,54 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-       /* setSupportActionBar(binding.appBarMain.toolbar)
+        // Activamos la toolbar de la aplicacion
+        val toolbar = binding.appBarMain.toolbar
+        setSupportActionBar(toolbar)
 
+        // Activamos el menu drawe (menu lateral)
+        val drawer: DrawerLayout = binding.drawerLayout
+        val toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer.addDrawerListener(toggle)
+        toggle.syncState()
+
+        // Creamos un listener para detectar los item que se seleccionan en el menu
+        val navView: NavigationView = binding.navView
+
+        navView.setNavigationItemSelectedListener {
+            // En funcion del item seleccionado, se realiza una accion u otra
+            when (it.itemId) {
+                R.id.nav_miPerfil -> {
+                    accesoPerfil()
+                }
+                R.id.nav_cursosApuntados -> {
+                    accesoCursosApuntados()
+                }
+                R.id.nav_modoOscuro -> {
+                    activaModoOscuro()
+                }
+                R.id.nav_cerrarSesion -> {
+                    cierraSesion()
+                }
+                else -> super.onOptionsItemSelected(it)
+            }
+            // Se cierra el menu lateral por la izquierda
+            val drawerLayout: DrawerLayout = binding.drawerLayout
+            drawerLayout.closeDrawer(GravityCompat.END)
+            true
+        }
+
+        // Si existe el nombre del usuario en el SharedPrefs, lo ponemos en la cabecera
+        // if taltal
+        val vista = navView.getHeaderView(0)
+        val nombreUsuario : TextView = vista.findViewById(R.id.nombre_usuario)
+        // TODO esto cambiarlo al perfil actual
+        nombreUsuario.text = "Raul"
+
+        /*
         binding.appBarMain.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
-        val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         // Passing each menu ID as a set of Ids because each
@@ -50,7 +94,7 @@ class MainActivity : AppCompatActivity() {
         */
     }
 
-    // Codigo que se encarga de crear el menu lateral
+    // Esto no nos sirve
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
@@ -62,9 +106,11 @@ class MainActivity : AppCompatActivity() {
     // El sistema llama a esta funcion cada vez que se selecciona un item del menu lateral.
     // Se pasa el item seleccionado
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Debug
+        Log.v("[SideMenu]", "Menu seleccionado, item: " + item.itemId.toString())
         // Obtenemos el id del item seleccionado, y devolvemos dependiendo de cual sea una cosa u otra
         return when (item.itemId) {
-            R.id.nav_perfil -> {
+            R.id.nav_miPerfil -> {
                 accesoPerfil()
                 true
             }
@@ -86,6 +132,7 @@ class MainActivity : AppCompatActivity() {
 
     // Metodo que se encarga de pasar a la pantalla del perfil de usuario
     fun accesoPerfil() {
+        Log.v("[AccesoPerfil]", "Accediendo al perfil...")
         // TODO Obtenemos el usuario desde SharedPrefs para pasarlo a la pagina del perfil
         val bundle = Bundle()
         // bundle.putString("usuarioActual", Sharedprefs.getString())
@@ -101,6 +148,7 @@ class MainActivity : AppCompatActivity() {
 
         // Poner la navegacion desde cualquier fragmento a las opciones de menu por si acaso
         NavHostFragment.findNavController(currentFragment!!).navigate(R.id.action_to_perfil, bundle)
+        Log.v("[AccesoPerfil]", "Hecho!")
     }
 
     // TODO esto se podria reutilizar la de arriba que solo cambia la accion realizada, y optimizamos codigo

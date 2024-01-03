@@ -6,11 +6,6 @@
 
     <!-- TODO meter aqui los items del menu con las opciones que tendremos -->
     <group android:checkableBehavior="single">
-        <!-- Plantilla para cada opcion
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" /> -->
         <item
             android:id="@+id/nav_miPerfil"
             android:title="Mi Perfil" />
