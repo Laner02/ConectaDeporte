@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/green_dark"
+    tools:context="com.laner.conectadeporte.ui.toolbar.Toolbar">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|start"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/toggle_menu"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/togglemenu" />
+
+        <!-- TODO meter aqui la barra del buscador -->
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_bar"
+            android:layout_width="270dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+
+        <ImageView
+            android:id="@+id/icono_perfil"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/iconoperfil" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
