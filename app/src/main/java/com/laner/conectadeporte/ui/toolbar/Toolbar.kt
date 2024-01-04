@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.laner.conectadeporte.R
 import com.laner.conectadeporte.databinding.ToolbarFrameBinding
+import com.laner.conectadeporte.src.Ubicacion
 
 class Toolbar : Fragment() {
     // Variable del propio bindeo del fragment con la vista
@@ -22,6 +23,7 @@ class Toolbar : Fragment() {
     // Variables de referencia al servidor de Firebase
     private lateinit var basedatos : FirebaseDatabase
     private lateinit var basedatosRef : DatabaseReference
+    private lateinit var listaFiltrada: MutableList<String>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +37,10 @@ class Toolbar : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        for (enum in Ubicacion.values()) {
+            listaFiltrada.add(enum.name)
+        }
 
         // Guardamos en variables las 3 vistas de la toolbar
         val menu_localidades : ImageView = binding.toggleMenu
