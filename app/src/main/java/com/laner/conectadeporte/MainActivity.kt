@@ -31,12 +31,13 @@ class MainActivity : AppCompatActivity() {
         // Activamos la toolbar de la aplicacion
         val toolbar = binding.appBarMain.toolbar
         setSupportActionBar(toolbar)
+        supportActionBar?.hide()
 
         // Activamos el menu drawe (menu lateral)
         val drawer: DrawerLayout = binding.drawerLayout
-        val toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        /*val toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.addDrawerListener(toggle)
-        toggle.syncState()
+        toggle.syncState()*/
 
         // Creamos un listener para detectar los item que se seleccionan en el menu
         val navView: NavigationView = binding.navView
@@ -89,17 +90,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Esto no nos sirve
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
-    }
+    }*/
 
     /* SECCION MENU LATERAL */
 
     // El sistema llama a esta funcion cada vez que se selecciona un item del menu lateral.
     // Se pasa el item seleccionado
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Debug
         Log.v("[SideMenu]", "Menu seleccionado, item: " + item.itemId.toString())
         // Obtenemos el id del item seleccionado, y devolvemos dependiendo de cual sea una cosa u otra
@@ -122,7 +123,7 @@ class MainActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
+    }*/
 
     // Metodo que se encarga de pasar a la pantalla del perfil de usuario
     fun accesoPerfil() {

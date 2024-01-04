@@ -1,56 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!-- Plantilla personalizada de una tarjeta de la app -->
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="284dp"
-    android:layout_height="150dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="15dp"
-    android:layout_margin="10dp">
+    android:layout_width="310dp"
+    android:layout_height="175dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <!-- TODO habria que ver como poner aqui el source y desc -->
-        <ImageView
-            android:id="@+id/card_img"
-            android:layout_width="100dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="284dp"
+        android:layout_height="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="15dp"
+        android:layout_margin="10dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <!-- TODO habria que ver como poner aqui ids autogenerados y el texto del titulo -->
-            <TextView
-                android:id="@+id/card_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:text="Titulo Deporte"/>
+            <!-- TODO habria que ver como poner aqui el source y desc -->
+            <ImageView
+                android:id="@+id/card_img"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp" />
 
-            <!-- TODO poner menos espacio entre titulo y descripcion -->
-            <TextView
-                android:id="@+id/card_desc"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="13sp"
-                android:textColor="@color/black"
-                android:text="Descripción breve del club que se oferta."/>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!-- TODO habria que ver como poner aqui ids autogenerados y el texto del titulo -->
+                <TextView
+                    android:id="@+id/card_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="Titulo Deporte"/>
+
+                <!-- TODO poner menos espacio entre titulo y descripcion -->
+                <TextView
+                    android:id="@+id/card_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/black"
+                    android:text="Descripción breve del club que se oferta."/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+<!-- Plantilla personalizada de una tarjeta de la app -->

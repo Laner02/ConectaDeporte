@@ -61,10 +61,10 @@ class CursosApuntadosFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Primero guardamos las View de la vista en variables
-        val imagenPerfil : ImageView = binding.cursosApuntadosImagenUsuario
-        val nombreUsuario : TextView = binding.cursosApuntadosNombreUsuario
+        val imagenPerfil : ImageView = view.findViewById(R.id.cursos_apuntados_ImagenUsuario)
+        val nombreUsuario : TextView = view.findViewById(R.id.cursos_apuntados_nombreUsuario)
         // TODO meter un onclicklistener en este boton
-        val boton_atras : ImageView = binding.cursosApuntadosFlechaAtras
+        val boton_atras : ImageView = view.findViewById(R.id.cursos_apuntados_flechaAtras)
 
         basedatos = FirebaseDatabase.getInstance()
         basedatosRef = basedatos.reference
@@ -73,10 +73,10 @@ class CursosApuntadosFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     // Pillamos los datos del usuario
-                    val nombre = snapshot.child("nombre").toString()
-                    val apellidos = snapshot.child("apellidos").toString()
-                    val email = snapshot.child("email").toString()
-                    val telefono = snapshot.child("telefono").toString()
+                    val nombre = snapshot.child("nombre").value.toString()
+                    val apellidos = snapshot.child("apellidos").value.toString()
+                    val email = snapshot.child("email").value.toString()
+                    val telefono = snapshot.child("telefono").value.toString()
 
                     // Buscamos los cursos a los que esta apuntado el usuario en otro dataChange
 
@@ -120,8 +120,6 @@ class CursosApuntadosFragment : Fragment() {
                 // TODO meter el control de errores
             }
         })
-
-
 
     }
 

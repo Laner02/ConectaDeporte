@@ -49,13 +49,14 @@ class PerfilFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // TODO PARA METER COSAS EN LAS VARIABLES DESDE LA BD, CON FINDVIEWBYID, CON BINDING NO FUNCIONA
         // Primero guardamos las View de la vista en variables
-        val imagenPerfil : ImageView = binding.perfilImagenUsuario
-        val nombreUsuario : TextView = binding.perfilNombreUsuario
-        val correoUsuario : TextView = binding.perfilCorreoUsuario
-        val nombreCompleto : TextView = binding.perfilNombreCompletoUsuario
-        val correoContacto : TextView = binding.perfilCorreoContactoUsuario
-        val telefonoContacto : TextView = binding.perfilTelefonoUsuario
+        val imagenPerfil : ImageView = view.findViewById(R.id.perfil_ImagenUsuario)
+        val nombreUsuario : TextView = view.findViewById(R.id.perfil_nombreUsuario)
+        val correoUsuario : TextView = view.findViewById(R.id.perfil_correoUsuario)
+        val nombreCompleto : TextView = view.findViewById(R.id.perfil_nombreCompletoUsuario)
+        val correoContacto : TextView = view.findViewById(R.id.perfil_correoContactoUsuario)
+        val telefonoContacto : TextView = view.findViewById(R.id.perfil_telefonoUsuario)
         // TODO esta no me convece, o hacemos que retroceda al pulsar o lo quitamos, no quiero meter otra action
         val boton_atras : ImageView = view.findViewById(R.id.perfil_flechaAtras)
         // TODO meter un onclicklistener en este boton
@@ -63,14 +64,17 @@ class PerfilFragment : Fragment() {
         basedatos = FirebaseDatabase.getInstance()
         basedatosRef = basedatos.reference
 
+        Log.w("[PERFIL]", "El usuario recibido es: " + usuarioId)
+
         basedatosRef.child("Usuario").child(usuarioId!!).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
+                    Log.v("PERFIL", "El snapshot recibido es: " + snapshot.toString())
                     // Pillamos los datos del usuario
-                    val nombre = snapshot.child("nombre").toString()
-                    val apellidos = snapshot.child("apellidos").toString()
-                    val email = snapshot.child("email").toString()
-                    val telefono = snapshot.child("telefono").toString()
+                    val nombre = snapshot.child("nombre").value.toString()
+                    val apellidos = snapshot.child("apellidos").value.toString()
+                    val email = snapshot.child("email").value.toString()
+                    val telefono = snapshot.child("telefono").value.toString()
 
                     // Creamos la clase usuario
                     usuarioActual = Usuario(email,nombre,apellidos,telefono)
