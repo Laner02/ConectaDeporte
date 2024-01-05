@@ -61,5 +61,14 @@ class Toolbar : Fragment() {
             Log.w("[TOOLBAR]", "El drawer es nulo.")
             drawerLayout.openDrawer(GravityCompat.END)
         }
+
+        binding.iconoPerfil.setOnClickListener {
+            Log.v("[TOOLBAR]", "Se accede al metodo del icono")
+            // Obtenemos el drawer menu pidiendoselo a la main activity
+            val drawerLayout : DrawerLayout = requireActivity().findViewById(R.id.drawer_layout)
+            // DEBUG
+            Log.w("[TOOLBAR]", "El drawer es nulo.")
+            drawerLayout.openDrawer(GravityCompat.END)
+        }
     }
 }

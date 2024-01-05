@@ -8,8 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.cardview.widget.CardView
+import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -73,15 +77,43 @@ class HomeFragment : Fragment() {
 
         // TODO terminar esto para hacer las tarjetas recycle
 
+        // Variables de los botones de la toolbar
+        val toolbarH : View = view.findViewById(R.id.home_toolbar)
+        val barra_busqueda : SearchView = toolbarH.findViewById(R.id.search_bar)
+        val boton_perfil : ImageView = toolbarH.findViewById<ImageView>(R.id.icono_perfil)
         // AQUI SE VAN PILLANDO LOS OBJETOS DE LA VISTA EN VARIABLES
         val localidadCurrente : TextView = binding.localidadActual
         localidadCurrente.text = localidadActual.toString()
         // TODO hacer un override del metodo tostring en Ubicacion que devuelva el nombre entero no las siglas
         // TODO pero entonces deberiamos cambiar las localizaciones en la BD
 
+
+
+        // TODO METE AQUI LOS BINDING ON CLICK LISTENER PARA LAS COSAS DE LA TOOLBAR, NO DESDE LA TOOLBAR
+        binding.homeToolbar.iconoPerfil.setOnClickListener {
+            Toast.makeText(requireContext(), "ImageView Clicked", Toast.LENGTH_SHORT).show()
+            // llamamos al metodo que abre el menu lateral
+            Log.v("[TOOLBAR]", "Se accede al metodo del icono")
+            // Obtenemos el drawer menu pidiendoselo a la main activity
+            val drawerLayout : DrawerLayout = requireActivity().findViewById(R.id.drawer_layout)
+            // DEBUG
+            Log.w("[TOOLBAR]", "El drawer es nulo.")
+            drawerLayout.openDrawer(GravityCompat.END)
+        }
+
+        boton_perfil.setOnClickListener {
+            Toast.makeText(requireContext(), "ImageView Clicked", Toast.LENGTH_SHORT).show()
+            // llamamos al metodo que abre el menu lateral
+            Log.v("[TOOLBAR]", "Se accede al metodo del icono")
+            // Obtenemos el drawer menu pidiendoselo a la main activity
+            val drawerLayout : DrawerLayout = requireActivity().findViewById(R.id.drawer_layout)
+            // DEBUG
+            Log.w("[TOOLBAR]", "El drawer es nulo.")
+            drawerLayout.openDrawer(GravityCompat.END)
+        }
+
         // Llamamos a la funcion de recuperar los cursos de la base de datos, y overrideamos
         // la funcion final de completado, para que se ejecute este codigo DESPUES de que se ejecute lo de la base de datos
-
         fetchCursos(object : CursoFetchCallback {
             // Override al metodo que se ejecuta despues de que se recupere la BD
             override fun onCursosFetched(listaCursos: List<Course>) {
@@ -116,15 +148,6 @@ class HomeFragment : Fragment() {
             }
 
         })
-
-        /* card1.setOnClickListener {
-            // Se crea un objeto Bundle en el que se mete el curso especifico al que se accede
-            val bundle = Bundle()
-            bundle.putString("cursoActual", "Club de Ajedrez")
-            bundle.putString("localidadActual", localidadActual.toString())
-
-
-        } */
     }
 
     // Funcion que obtiene los datos de los Cursos desde la BD, y crea clases Curso y los mete en una lista
