@@ -150,19 +150,4 @@ class CursoFragment : Fragment() {
             NavHostFragment.findNavController(this).navigate(R.id.action_registrarse_to_curso, bundle)
         }
     }
-
-    // TODO esto funciona pero comporbar bien como usarlo, que no le veo utilidad
-    // Funcion para obtener el valor de una clave de Curso
-    fun getValorPorClave(clave: String) {
-        basedatosRef.child(clave).addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val valor = snapshot.value.toString()
-                // Aqui tenemos el valor que queremos, y lo usamos como se necesite
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // TODO Manejamos los errores?
-            }
-        })
-    }
 }

@@ -46,11 +46,21 @@ class Toolbar : Fragment() {
         val menu_localidades : ImageView = binding.toggleMenu
         // TODO esto sara mete lo que uses
         val barra_busqueda : androidx.appcompat.widget.SearchView = binding.searchBar
+        val icono_usuario2 : ImageView = view.findViewById(R.id.icono_perfil)
         val icono_usuario : ImageView = binding.iconoPerfil
 
         // TODO hacer el onclick que muestra las ciudades
 
         // TODO hacer lo de la barra de busqueda
+
+        icono_usuario2.setOnClickListener {
+            Log.v("[TOOLBAR]", "Se accede al metodo del icono")
+            // Obtenemos el drawer menu pidiendoselo a la main activity
+            val drawerLayout : DrawerLayout = requireActivity().findViewById(R.id.drawer_layout)
+            // DEBUG
+            Log.w("[TOOLBAR]", "El drawer es nulo.")
+            drawerLayout.openDrawer(GravityCompat.END)
+        }
 
         // Accion de abrir el drawer menu cuando se pulsa este boton
         icono_usuario.setOnClickListener {
