@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_nav_home_to_nav_lista_busqueda"
             app:destination="@id/nav_lista_busqueda" />
+        <action
+            android:id="@+id/action_to_login"
+            app:destination="@+id/log" />
     </fragment>
 
     <fragment
@@ -43,6 +46,9 @@
         <action
             android:id="@+id/action_to_cursos_apuntados"
             app:destination="@+id/nav_cursos_apuntados" />
+        <action
+            android:id="@+id/action_to_login"
+            app:destination="@+id/log" />
     </fragment>
 
     <fragment
@@ -60,6 +66,9 @@
         <action
             android:id="@+id/action_to_cursos_apuntados"
             app:destination="@+id/nav_cursos_apuntados" />
+        <action
+            android:id="@+id/action_to_login"
+            app:destination="@+id/log" />
     </fragment>
 
     <fragment
@@ -95,6 +104,9 @@
         <action
             android:id="@+id/action_to_home"
             app:destination="@+id/nav_home" />
+        <action
+            android:id="@+id/action_to_login"
+            app:destination="@+id/log" />
     </fragment>
 
     <fragment
@@ -102,6 +114,9 @@
         android:name="com.laner.conectadeporte.ui.menu.CursosApuntadosFragment"
         android:label="Cursos Apuntados"
         tools:layout="@layout/cursos_apuntados_frame" >
+        <action
+            android:id="@+id/action_to_login"
+            app:destination="@+id/log" />
         <!-- TODO si metemos la flecha para atras meter la accion aqui y meter el boton accion -->
     </fragment>
 
@@ -109,11 +124,13 @@
         android:id="@+id/nav_lista_busqueda"
         android:name="com.laner.conectadeporte.ui.toolbar.ToolbarList"
         android:label="Lista busqueda"
-        tools:layout="@layout/toolbar_list"
-        >
+        tools:layout="@layout/toolbar_list" >
         <action
             android:id="@+id/action_nav_lista_busqueda_to_nav_home"
             app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_to_login"
+            app:destination="@+id/log" />
     </fragment>
     <!-- TODO -->
 

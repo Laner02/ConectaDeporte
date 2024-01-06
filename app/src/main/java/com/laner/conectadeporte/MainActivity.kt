@@ -1,13 +1,10 @@
 package com.laner.conectadeporte
 
-import android.app.Activity
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.TextView
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -22,7 +19,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.laner.conectadeporte.databinding.ActivityMainBinding
-import com.laner.conectadeporte.src.Ubicacion
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -206,6 +203,16 @@ class MainActivity : AppCompatActivity() {
 
     fun cierraSesion() {
         // TODO FALTA POR IMPLEMENTAR, QUITA EL USUARIO ACTUAL DEL SHAREDPREFS, CIERRA SESION EN FIREBASE SI SE PUEDE, Y VUELVE A LA PANTALLA DE LOGIN DESTRUYENDO TODAS LAS DEMAS
+        val sharedPrefs = this.getPreferences(Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sharedPrefs.edit()
+        editor.remove("usuarioActual")
+        editor.apply()
+
+        // Obtenemos el fragmento actual
+        val fragmentManager = supportFragmentManager
+        val currentFragment = fragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
+
+        NavHostFragment.findNavController(currentFragment!!).navigate(R.id.action_to_login)
     }
 
     override fun onSupportNavigateUp(): Boolean {

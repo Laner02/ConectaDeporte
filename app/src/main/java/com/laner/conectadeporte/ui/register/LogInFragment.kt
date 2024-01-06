@@ -109,11 +109,7 @@ class LogInFragment : Fragment() {
                                 }
                             })
 
-                            val bundle = Bundle()
-                            bundle.putString("localidadActual", "VALL")
-                            // TODO RAUL AQUI, cambia por el shared
-
-                            NavHostFragment.findNavController(this).navigate(R.id.action_login_to_home, bundle)
+                            NavHostFragment.findNavController(this).navigate(R.id.action_login_to_home)
                         } else {
                             Toast.makeText(requireContext(), task.exception.toString(), Toast.LENGTH_SHORT).show()
                         }
