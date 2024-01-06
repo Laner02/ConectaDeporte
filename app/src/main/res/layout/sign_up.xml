@@ -28,8 +28,7 @@
                 android:text="Registrarse"
                 android:textColor="@color/black"
                 android:textSize="30sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/usuario_nombre"
@@ -180,7 +179,7 @@
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/contactanos"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
@@ -188,7 +187,8 @@
                 android:layout_marginLeft="50dp"
                 android:text="Contactanos"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="13sp"
+                android:background="@android:color/transparent"/>
 
         </LinearLayout>
 

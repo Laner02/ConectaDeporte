@@ -85,6 +85,11 @@ class ApuntarseFragment : Fragment() {
             NavHostFragment.findNavController(this).navigate(R.id.action_apuntarse_to_curso)
         }
 
+        binding.contactanos.setOnClickListener{
+            NavHostFragment.findNavController(this).navigate(R.id.action_apuntarse_curso_to_nav_contactenos)
+        }
+
+
         // TODO RECUERDA MANEJAR ERROR DE LOS EDITTEXT, Y METEMOS TEXTO EN ROJO SI VEMOS ALGO MAL, LO DESTRUIMOS EN EL BOTON REGISTRASE
     }
 }

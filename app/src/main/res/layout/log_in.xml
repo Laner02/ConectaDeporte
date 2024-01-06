@@ -124,7 +124,7 @@
             android:textColor="@color/black"
             android:textSize="16sp" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/contactanos"
             android:layout_width="100dp"
             android:layout_height="50dp"
@@ -132,7 +132,8 @@
             android:layout_marginLeft="50dp"
             android:text="Contactanos"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="12sp"
+            android:background="@android:color/transparent"/>
 
     </LinearLayout>
 

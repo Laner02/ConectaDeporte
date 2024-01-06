@@ -116,6 +116,11 @@ class SignUpFragment : Fragment() {
                 Toast.makeText(requireContext(), "Empty Fields Are not Allowed", Toast.LENGTH_SHORT).show()
             }
         }
+
+        binding.contactanos.setOnClickListener{
+            NavHostFragment.findNavController(this).navigate(R.id.action_registrarse_to_nav_contactenos)
+        }
+
     }
 
     fun validarCadena(cadena: String): Boolean {

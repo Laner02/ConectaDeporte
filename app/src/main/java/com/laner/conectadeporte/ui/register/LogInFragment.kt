@@ -131,6 +131,10 @@ class LogInFragment : Fragment() {
 
         }
 
+        binding.contactanos.setOnClickListener{
+            NavHostFragment.findNavController(this).navigate(R.id.action_log_to_nav_contactenos)
+        }
+
     }
 
     fun checkUserValues() {

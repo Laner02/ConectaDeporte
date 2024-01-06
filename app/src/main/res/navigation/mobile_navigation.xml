@@ -72,6 +72,9 @@
         <action
             android:id="@+id/action_to_login"
             app:destination="@+id/log" />
+        <action
+            android:id="@+id/action_apuntarse_curso_to_nav_contactenos"
+            app:destination="@id/nav_contactenos" />
     </fragment>
 
     <fragment
@@ -85,6 +88,9 @@
         <action
             android:id="@+id/action_login_to_signup"
             app:destination="@id/registrarse" />
+        <action
+            android:id="@+id/action_log_to_nav_contactenos"
+            app:destination="@id/nav_contactenos" />
     </fragment>
 
     <fragment
@@ -95,6 +101,9 @@
         <action
             android:id="@+id/action_signup_to_login"
             app:destination="@id/log" />
+        <action
+            android:id="@+id/action_registrarse_to_nav_contactenos"
+            app:destination="@id/nav_contactenos" />
     </fragment>
 
     <!-- Fragments de las opciones del menu -->
@@ -135,6 +144,15 @@
             android:id="@+id/action_to_login"
             app:destination="@+id/log" />
     </fragment>
+
+    <fragment
+        android:id="@+id/nav_contactenos"
+        android:label="Contactos"
+        android:name="com.laner.conectadeporte.ui.register.Contactenos"
+        tools:layout="@layout/contactenos" >
+
+    </fragment>
+
     <!-- TODO -->
 
 </navigation>
