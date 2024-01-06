@@ -16,7 +16,7 @@
             android:layout_width="45dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
-            android:src="@drawable/togglemenu" />
+            android:src="@drawable/buscador" />
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_bar"

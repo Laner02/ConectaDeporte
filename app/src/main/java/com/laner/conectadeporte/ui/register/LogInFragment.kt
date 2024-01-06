@@ -59,12 +59,12 @@ class LogInFragment : Fragment() {
 
                           //  prefs.saveEmail(email)
                             // Obtenemos los SharedPrefs y metemos el usuario actual
-                            val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE) ?: return
+                          /*  val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE) ?: return
                             with(sharedPrefs.edit()) {
                                 putString("usuarioActual", usuarioActual)
                                 apply()
                             }
-
+*/
                             val bundle = Bundle()
                             bundle.putString("localidadActual", "VALL")
                             // TODO RAUL AQUI, cambia por el shared

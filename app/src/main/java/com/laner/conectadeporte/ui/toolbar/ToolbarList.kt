@@ -14,6 +14,7 @@ import com.laner.conectadeporte.databinding.ToolbarListBinding
 import com.laner.conectadeporte.src.Ubicacion
 
 class ToolbarList : Fragment(){
+
     private var _binding :  ToolbarListBinding? = null
     private val binding get() = _binding!!
 
