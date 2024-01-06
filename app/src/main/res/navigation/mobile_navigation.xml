@@ -92,6 +92,9 @@
         android:label="Perfil"
         tools:layout="@layout/perfil_frame" >
         <!-- TODO si metemos editar perfil, meterlo aqui -->
+        <action
+            android:id="@+id/action_to_home"
+            app:destination="@+id/nav_home" />
     </fragment>
 
     <fragment

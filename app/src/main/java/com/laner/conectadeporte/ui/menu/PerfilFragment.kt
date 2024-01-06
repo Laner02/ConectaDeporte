@@ -1,5 +1,6 @@
 package com.laner.conectadeporte.ui.menu
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -15,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.laner.conectadeporte.R
 import com.laner.conectadeporte.databinding.PerfilFrameBinding
+import com.laner.conectadeporte.src.Ubicacion
 import com.laner.conectadeporte.src.Usuario
 
 class PerfilFragment : Fragment() {
@@ -28,7 +31,7 @@ class PerfilFragment : Fragment() {
     private lateinit var basedatosRef : DatabaseReference
 
     // Variables para obtener el usuario que se pasa por bundle TODO QUITARLO, SE PUEDE PILLAR DESDE EL SHAREDPREFS
-    private var usuarioId : String? = null
+    private var usuarioId : Int? = null
 
     // Variable para guardar el usuario actual
     private lateinit var usuarioActual : Usuario
@@ -38,8 +41,13 @@ class PerfilFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Obtenemos el nombre de usuario que nos dan TODO QUITAR ESTO CUANDO SE HAGA LO DE ARRIBA
-        usuarioId = arguments?.getString("usuarioActual")
+        // Obtenemos el usuario actual desde el SharedPrefs
+        val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        usuarioId = sharedPrefs.getInt("usuarioActual", 0)
+
+        if (usuarioId == 0)
+            NavHostFragment.findNavController(this).navigate(R.id.action_to_home)
+
 
         _binding = PerfilFrameBinding.inflate(inflater, container, false)
 
@@ -66,7 +74,7 @@ class PerfilFragment : Fragment() {
 
         Log.w("[PERFIL]", "El usuario recibido es: " + usuarioId)
 
-        basedatosRef.child("Usuario").child(usuarioId!!).addValueEventListener(object : ValueEventListener {
+        basedatosRef.child("Usuario").child(usuarioId.toString()).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     Log.v("PERFIL", "El snapshot recibido es: " + snapshot.toString())
@@ -80,7 +88,7 @@ class PerfilFragment : Fragment() {
                     usuarioActual = Usuario(email,nombre,apellidos,telefono)
                     // No metemos los cursos porque no los necesitamos
 
-                    nombreUsuario.text = usuarioId
+                    nombreUsuario.text = usuarioActual.getNombre()
                     correoUsuario.text = usuarioActual.getCorreo()
                     nombreCompleto.text = usuarioActual.getNombreCompleto()
                     correoContacto.text = usuarioActual.getCorreo()

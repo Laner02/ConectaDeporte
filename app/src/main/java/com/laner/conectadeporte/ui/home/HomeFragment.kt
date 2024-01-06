@@ -1,5 +1,6 @@
 package com.laner.conectadeporte.ui.home
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -66,10 +67,11 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        localidadActual = Ubicacion.valueOf(arguments?.getString("localidadActual")!!)
-        /* homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        } */
+        // Obtenemos la localidad actual desde SharedPrefs
+        val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        val defaultValueLocalidad = "VALL"
+        localidadActual = Ubicacion.valueOf(sharedPrefs.getString("localidadActual", defaultValueLocalidad)!!)
+
         return root
     }
 
@@ -92,13 +94,8 @@ class HomeFragment : Fragment() {
 
         // TODO METE AQUI LOS BINDING ON CLICK LISTENER PARA LAS COSAS DE LA TOOLBAR, NO DESDE LA TOOLBAR
         binding.homeToolbar.iconoPerfil.setOnClickListener {
-            Toast.makeText(requireContext(), "ImageView Clicked", Toast.LENGTH_SHORT).show()
-            // llamamos al metodo que abre el menu lateral
-            Log.v("[TOOLBAR]", "Se accede al metodo del icono")
             // Obtenemos el drawer menu pidiendoselo a la main activity
             val drawerLayout : DrawerLayout = requireActivity().findViewById(R.id.drawer_layout)
-            // DEBUG
-            Log.w("[TOOLBAR]", "El drawer es nulo.")
             drawerLayout.openDrawer(GravityCompat.END)
         }
 
@@ -107,13 +104,8 @@ class HomeFragment : Fragment() {
         }
 
         boton_perfil.setOnClickListener {
-            Toast.makeText(requireContext(), "ImageView Clicked", Toast.LENGTH_SHORT).show()
-            // llamamos al metodo que abre el menu lateral
-            Log.v("[TOOLBAR]", "Se accede al metodo del icono")
             // Obtenemos el drawer menu pidiendoselo a la main activity
             val drawerLayout : DrawerLayout = requireActivity().findViewById(R.id.drawer_layout)
-            // DEBUG
-            Log.w("[TOOLBAR]", "El drawer es nulo.")
             drawerLayout.openDrawer(GravityCompat.END)
         }
 

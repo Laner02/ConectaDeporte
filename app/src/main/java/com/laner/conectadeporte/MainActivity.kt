@@ -16,6 +16,11 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.laner.conectadeporte.databinding.ActivityMainBinding
 import com.laner.conectadeporte.src.Ubicacion
 
@@ -24,6 +29,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
+    // Variables de Firebase
+    private lateinit var basedatos : FirebaseDatabase
+    private lateinit var basedatosRef : DatabaseReference
+
+    private var userId : Int = 0
+    private lateinit var username : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,14 +80,32 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Si existe el nombre del usuario en el SharedPrefs, lo ponemos en la cabecera
-        // if taltal
+        val sharedPrefs = this.getPreferences(Context.MODE_PRIVATE)
+        userId = sharedPrefs.getInt("usuarioActual", 0)
+
         val vista = navView.getHeaderView(0)
         val nombreUsuario : TextView = vista.findViewById(R.id.nombre_usuario)
-        // TODO esto cambiarlo al perfil actual
-        nombreUsuario.text = "Raul"
 
-        // Obtenemos en la variable sharedPrefs las preferencias de la app
-        val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
+        if (userId == 0)
+            nombreUsuario.text = "Anonimo"
+        else {
+            basedatos = FirebaseDatabase.getInstance()
+            basedatosRef = basedatos.reference
+
+            basedatosRef.child("Usuario").child(userId.toString()).addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        username = snapshot.child("nombre").value.toString()
+                        Log.v("[Usuario]", "El usuario es: " + username)
+                        nombreUsuario.text = username
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Manejar errores
+                }
+            })
+        }
 
         /*
         binding.appBarMain.fab.setOnClickListener { view ->
