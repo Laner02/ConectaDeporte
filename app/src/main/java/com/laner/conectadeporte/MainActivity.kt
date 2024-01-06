@@ -202,7 +202,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun cierraSesion() {
-        // TODO FALTA POR IMPLEMENTAR, QUITA EL USUARIO ACTUAL DEL SHAREDPREFS, CIERRA SESION EN FIREBASE SI SE PUEDE, Y VUELVE A LA PANTALLA DE LOGIN DESTRUYENDO TODAS LAS DEMAS
+        // TODO queda destruir el resto de pantallas, o la actual para que no pueda volver
         val sharedPrefs = this.getPreferences(Context.MODE_PRIVATE)
         val editor: SharedPreferences.Editor = sharedPrefs.edit()
         editor.remove("usuarioActual")

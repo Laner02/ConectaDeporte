@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -84,8 +85,11 @@ class CursoFragment : Fragment() {
 
         val toolbarC : View = view.findViewById(R.id.curso_toolbar)
         val boton_perfil : ImageView = toolbarC.findViewById<ImageView>(R.id.icono_perfil)
+        val barra_busqueda : SearchView = toolbarC.findViewById(R.id.search_bar)
         val boton_toggle : ImageView = toolbarC.findViewById(R.id.toggle_menu)
 
+        // Escondemos la barra de busqueda en el curso
+        barra_busqueda.visibility = View.INVISIBLE
 
         // Inicializamos el Firebase, y decimos a que curso pertenece especificamente (TODO el que haya clickado el usuario, esto vendrá en el enlace o en el GET, o en el session)
         basedatos = FirebaseDatabase.getInstance()

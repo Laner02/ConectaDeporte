@@ -88,6 +88,10 @@ class HomeFragment : Fragment() {
         val toolbarH : View = view.findViewById(R.id.home_toolbar)
         val barra_busqueda : SearchView = toolbarH.findViewById(R.id.search_bar)
         val boton_perfil : ImageView = toolbarH.findViewById<ImageView>(R.id.icono_perfil)
+
+        // Escondemos la barra de busqueda en el curso
+        barra_busqueda.visibility = View.INVISIBLE
+
         // AQUI SE VAN PILLANDO LOS OBJETOS DE LA VISTA EN VARIABLES
         val localidadCurrente : TextView = binding.localidadActual
         localidadCurrente.text = localidadActual.toString()

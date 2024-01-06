@@ -91,11 +91,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginStart="20dp"
+                        android:src="@drawable/locationimg"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:layout_marginStart="40dp"
+                        android:layout_marginStart="5dp"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:text="Ubicación:"/>
@@ -114,11 +122,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="20dp"
+                        android:src="@drawable/professorimg"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginStart="40dp"
+                        android:layout_marginStart="5dp"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:text="Profesor/es:"/>
@@ -127,7 +141,6 @@
                         android:id="@+id/profesor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:layout_marginStart="10dp"
                         android:textColor="@color/black"
                         android:text=""/>
@@ -137,11 +150,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="20dp"
+                        android:src="@drawable/contactimg"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginStart="40dp"
+                        android:layout_marginStart="5dp"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:text="Email/teléfono:"/>
@@ -150,30 +169,31 @@
                         android:id="@+id/contacto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:layout_marginStart="10dp"
                         android:textColor="@color/black"
                         android:text=""/>
                 </LinearLayout>
 
-                <View
+                <LinearLayout
                     android:id="@+id/horarios"
-                    android:layout_width="300dp"
-                    android:layout_height="200dp"
+                    android:layout_width="304dp"
+                    android:layout_height="210dp"
                     android:layout_marginTop="30dp"
-                    android:background="@color/green_light"
                     android:layout_gravity="center">
 
-                    <!-- TODO meter aqui la tabla con los horarios -->
+                    <include
+                        android:id="@+id/horarios_frame"
+                        layout="@layout/horarios_frame"
+                        />
 
-                </View>
+                </LinearLayout>
 
                 <!-- TODO poner el Precio en ROJO??? -->
                 <TextView
                     android:id="@+id/precio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:layout_gravity="center"
                     android:textStyle="bold"
                     android:textSize="20sp"
@@ -194,20 +214,7 @@
 
             </LinearLayout>
 
-
-
         </androidx.cardview.widget.CardView>
-
-        <!-- No funciona esto :(
-            <include layout="@layout/card_blueprint"
-            android:layout_width="350dp"
-            android:layout_height="600dp"
-            android:layout_margin="10dp"
-            android:id="@+id/course">
-
-            TODO aqui dentro meter detalles sobre el curso
-
-        </include>-->
 
     </LinearLayout>
 

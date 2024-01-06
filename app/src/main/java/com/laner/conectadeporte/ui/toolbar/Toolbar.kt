@@ -100,7 +100,6 @@ class Toolbar : Fragment() {
 
         // Guardamos en variables las 3 vistas de la toolbar
         val menu_localidades : ImageView = binding.toggleMenu
-        // TODO esto sara mete lo que uses
         val barra_busqueda : androidx.appcompat.widget.SearchView = binding.searchBar
         val icono_usuario : ImageView = binding.iconoPerfil
 
