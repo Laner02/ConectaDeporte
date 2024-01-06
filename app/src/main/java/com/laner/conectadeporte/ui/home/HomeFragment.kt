@@ -2,6 +2,7 @@ package com.laner.conectadeporte.ui.home
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,6 +24,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
 import com.laner.conectadeporte.R
 import com.laner.conectadeporte.databinding.CardBlueprintBinding
 import com.laner.conectadeporte.databinding.FragmentHomeBinding
@@ -48,6 +50,8 @@ class HomeFragment : Fragment() {
     // Variables para la base de datos
     private lateinit var basedatos : FirebaseDatabase
     private lateinit var basedatosRef : DatabaseReference
+    // Referencia al link de almacenamiento multimedia
+    private lateinit var storage : FirebaseStorage
 
     // TODO la localidad actual deberiamos ponerla de forma que se pueda cambiar desde la barra o el buscador. Desde fuera
     // Variables para guardar la localidad actual. La inicializamos en Valladolid por defecto
@@ -91,8 +95,6 @@ class HomeFragment : Fragment() {
         // TODO pero entonces deberiamos cambiar las localizaciones en la BD
 
 
-
-        // TODO METE AQUI LOS BINDING ON CLICK LISTENER PARA LAS COSAS DE LA TOOLBAR, NO DESDE LA TOOLBAR
         binding.homeToolbar.iconoPerfil.setOnClickListener {
             // Obtenemos el drawer menu pidiendoselo a la main activity
             val drawerLayout : DrawerLayout = requireActivity().findViewById(R.id.drawer_layout)
@@ -120,8 +122,20 @@ class HomeFragment : Fragment() {
                     val inflater = LayoutInflater.from(requireContext())
                     val tarjetaVista : View = inflater.inflate(R.layout.card_blueprint, binding.root, false)
 
-                    // TODO prueba para cambiar la imagen
-                    // tarjetaVista.findViewById<ImageView>(R.id.card_img).setImageResource(resources.getIdentifier(curso.getTitle() + ".png", "drawable", "com.laner.conectadeporte"))
+                    storage = FirebaseStorage.getInstance()
+                    val rutaImages = storage.reference.child("ImagenesCursos")
+                    val imageRef = rutaImages.child(curso.getTitle() + ".png")
+                    Log.v("[Imagen]", "nombreImagen " + imageRef )
+
+                    val ONE_MEGABYTE = 1024 * 1024.toLong()
+                    imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
+                        // La imagen se ha descargado correctamente
+                        val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+                        tarjetaVista.findViewById<ImageView>(R.id.card_img).setImageBitmap(bitmap)
+                    }.addOnFailureListener {
+                        // Ocurrió un error al descargar la imagen
+                    }
+
                     tarjetaVista.findViewById<TextView>(R.id.card_title).text = curso.getTitle()
                     tarjetaVista.findViewById<TextView>(R.id.card_desc).text = curso.getDescription()
 

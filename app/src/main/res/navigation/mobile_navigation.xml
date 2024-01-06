@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_registrarse_to_curso"
             app:destination="@id/apuntarse_curso" />
+        <action
+            android:id="@+id/action_to_search"
+            app:destination="@+id/nav_lista_busqueda" />
         <!-- Acciones del menu lateral -->
         <action
             android:id="@+id/action_to_perfil"

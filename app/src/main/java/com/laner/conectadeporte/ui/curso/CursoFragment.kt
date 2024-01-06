@@ -1,5 +1,6 @@
 package com.laner.conectadeporte.ui.curso
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,11 +9,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.laner.conectadeporte.R
 import com.laner.conectadeporte.databinding.CursoFrameBinding
 import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
 import com.laner.conectadeporte.src.Course
 import com.laner.conectadeporte.src.Ubicacion
 import java.io.File
@@ -31,8 +35,8 @@ class CursoFragment : Fragment() {
     private lateinit var basedatos : FirebaseDatabase
     // Referencia al link del curso actual en firebase
     private lateinit var basedatosRef : DatabaseReference
-    // Referencia al link de la carpeta con el Almacenamiento Multimedia
-    private lateinit var storage : DatabaseReference
+    // Referencia al link de almacenamiento multimedia
+    private lateinit var storage : FirebaseStorage
 
     // titulo del curso de la pantalla actual, a nulo por defecto
     private var cursoId : String? = null
@@ -78,6 +82,13 @@ class CursoFragment : Fragment() {
         val precio_curso : TextView = view.findViewById(R.id.precio)
         val boton_apuntarse : Button = view.findViewById(R.id.boton_apuntarse)
 
+        val toolbarC : View = view.findViewById(R.id.curso_toolbar)
+        val boton_perfil : ImageView = toolbarC.findViewById<ImageView>(R.id.icono_perfil)
+
+        binding.cursoToolbar.toggleMenu.setOnClickListener {
+            NavHostFragment.findNavController(this).navigate(R.id.action_to_search)
+        }
+
         // Inicializamos el Firebase, y decimos a que curso pertenece especificamente (TODO el que haya clickado el usuario, esto vendrá en el enlace o en el GET, o en el session)
         basedatos = FirebaseDatabase.getInstance()
         basedatosRef = basedatos.reference
@@ -112,6 +123,20 @@ class CursoFragment : Fragment() {
                     profesor_curso.text = profesor
                     contacto_curso.text = contacto
                     precio_curso.text = precio.toString() + " €"
+
+                    storage = FirebaseStorage.getInstance()
+                    val rutaImages = storage.reference.child("ImagenesCursos")
+                    val imageRef = rutaImages.child(cursoActual.getTitle() + ".png")
+                    Log.v("[Imagen]", "nombreImagen " + imageRef )
+
+                    val ONE_MEGABYTE = 1024 * 1024.toLong()
+                    imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
+                        // La imagen se ha descargado correctamente
+                        val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+                        imagen_curso.setImageBitmap(bitmap)
+                    }.addOnFailureListener {
+                        // Ocurrió un error al descargar la imagen
+                    }
                 }
             }
 
@@ -120,7 +145,17 @@ class CursoFragment : Fragment() {
             }
         })
 
+        binding.cursoToolbar.iconoPerfil.setOnClickListener {
+            // Obtenemos el drawer menu pidiendoselo a la main activity
+            val drawerLayout : DrawerLayout = requireActivity().findViewById(R.id.drawer_layout)
+            drawerLayout.openDrawer(GravityCompat.END)
+        }
 
+        boton_perfil.setOnClickListener {
+            // Obtenemos el drawer menu pidiendoselo a la main activity
+            val drawerLayout : DrawerLayout = requireActivity().findViewById(R.id.drawer_layout)
+            drawerLayout.openDrawer(GravityCompat.END)
+        }
 
         // TODO esto puede no funcionar: el enlace de la carpeta de Storage es diferente al de las tablas en tiempo real
         basedatosRef.child("ImagenesCursos").addValueEventListener(object : ValueEventListener {
@@ -138,6 +173,8 @@ class CursoFragment : Fragment() {
                 // TODO Manejamos los errores de la imagen?
             }
         })
+
+
 
         // Definimos la funcion que se realiza al pulsar el boton, en este metodo, porque lo ponemos una vez esta creada la vista
         boton_apuntarse.setOnClickListener {
