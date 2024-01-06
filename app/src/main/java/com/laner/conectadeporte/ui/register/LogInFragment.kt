@@ -14,18 +14,23 @@ import androidx.navigation.fragment.NavHostFragment
 import com.google.firebase.Firebase
 import com.laner.conectadeporte.databinding.LogInBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.database
 import com.google.firebase.firestore.firestore
 import com.laner.conectadeporte.R
 import com.laner.conectadeporte.UserApp.Companion.prefs
+import com.laner.conectadeporte.src.Usuario
 
 class LogInFragment : Fragment() {
 
     private lateinit var binding: LogInBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database : FirebaseDatabase
-    private lateinit var directorioAlmacenamiento : DatabaseReference
+    private lateinit var databaseRef : DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,13 +62,52 @@ class LogInFragment : Fragment() {
 
                         if (task.isSuccessful) {
 
-                            // Obtenemos los SharedPrefs y metemos el usuario actual y la localidad actual
+                            database = FirebaseDatabase.getInstance()
+
+                            databaseRef = database.reference
+
+                            val usersRef = databaseRef.child("Usuario")
+                            var userId : Int = 0
+
                             val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE)
-                            with(sharedPrefs.edit()) {
-                                putInt("usuarioActual", 3)
-                                putString("localidadActual", "VALL")
-                                apply()
-                            }
+
+                            // val userList = ArrayList<String>()
+                            usersRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                    for (userSnapshot in dataSnapshot.children) {
+                                        Log.v("[Usuario]", "userspan " + userSnapshot )
+
+                                        val correo = userSnapshot.child("email").getValue(String::class.java)
+
+                                        if(correo == email){
+
+                                            userId = userSnapshot.key!!.toInt()
+                                            Log.v("[Usuario]", "Id " + userId )
+                                            Log.v("[Usuario]", "Id ha entrado " )
+
+                                            with(sharedPrefs.edit()) {
+                                                putInt("usuarioActual", userId)
+                                                apply()
+                                            }
+
+                                            userId = sharedPrefs.getInt("usuarioActual", 0)
+
+                                            Log.v("[Usuario]", "Id shared " + userId )
+
+
+                                            break
+
+                                        }
+                                        Log.v("[Usuario]", "correo " + correo )
+
+
+                                      //  userList.add(correo!!)
+                                    }
+                                }
+                                override fun onCancelled(databaseError: DatabaseError) {
+                                    // Manejar errores aquí
+                                }
+                            })
 
                             val bundle = Bundle()
                             bundle.putString("localidadActual", "VALL")
