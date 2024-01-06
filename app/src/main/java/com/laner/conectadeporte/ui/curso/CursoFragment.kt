@@ -84,10 +84,8 @@ class CursoFragment : Fragment() {
 
         val toolbarC : View = view.findViewById(R.id.curso_toolbar)
         val boton_perfil : ImageView = toolbarC.findViewById<ImageView>(R.id.icono_perfil)
+        val boton_toggle : ImageView = toolbarC.findViewById(R.id.toggle_menu)
 
-        binding.cursoToolbar.toggleMenu.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(R.id.action_to_search)
-        }
 
         // Inicializamos el Firebase, y decimos a que curso pertenece especificamente (TODO el que haya clickado el usuario, esto vendrá en el enlace o en el GET, o en el session)
         basedatos = FirebaseDatabase.getInstance()
@@ -174,7 +172,9 @@ class CursoFragment : Fragment() {
             }
         })
 
-
+        boton_toggle.setOnClickListener {
+            NavHostFragment.findNavController(this).navigate(R.id.action_to_search)
+        }
 
         // Definimos la funcion que se realiza al pulsar el boton, en este metodo, porque lo ponemos una vez esta creada la vista
         boton_apuntarse.setOnClickListener {

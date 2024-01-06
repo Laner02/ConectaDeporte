@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.ListView
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.laner.conectadeporte.R
@@ -34,6 +37,9 @@ class ToolbarList : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val toolbarB : View = view.findViewById(R.id.busqueda_toolbar)
+        val boton_perfil : ImageView = toolbarB.findViewById<ImageView>(R.id.icono_perfil)
 
         listaFiltrada = mutableListOf()
 
@@ -71,6 +77,12 @@ class ToolbarList : Fragment(){
             bundle.putString("localidadActual", elementoClicado)
             // NOTA RAUL: No se por que aqui pide un @HomeFragment, pero lo pide (._.)
             NavHostFragment.findNavController(this).navigate(R.id.action_nav_lista_busqueda_to_nav_home, bundle)
+        }
+
+        boton_perfil.setOnClickListener {
+            // Obtenemos el drawer menu pidiendoselo a la main activity
+            val drawerLayout : DrawerLayout = requireActivity().findViewById(R.id.drawer_layout)
+            drawerLayout.openDrawer(GravityCompat.END)
         }
 
     }
