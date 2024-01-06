@@ -20,6 +20,12 @@
         <action
             android:id="@+id/action_to_cursos_apuntados"
             app:destination="@+id/nav_cursos_apuntados" />
+        <action
+            android:id="@+id/action_to_search"
+            app:destination="@+id/nav_lista_busqueda" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_lista_busqueda"
+            app:destination="@id/nav_lista_busqueda" />
     </fragment>
 
     <fragment
@@ -94,6 +100,17 @@
         android:label="Cursos Apuntados"
         tools:layout="@layout/cursos_apuntados_frame" >
         <!-- TODO si metemos la flecha para atras meter la accion aqui y meter el boton accion -->
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_lista_busqueda"
+        android:name="com.laner.conectadeporte.ui.toolbar.ToolbarList"
+        android:label="Lista busqueda"
+        tools:layout="@layout/toolbar_list"
+        >
+        <action
+            android:id="@+id/action_nav_lista_busqueda_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
     <!-- TODO -->
 

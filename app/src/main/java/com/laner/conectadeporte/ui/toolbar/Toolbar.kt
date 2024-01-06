@@ -5,7 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.ListView
+import android.widget.SearchView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -24,6 +27,10 @@ class Toolbar : Fragment() {
     private lateinit var basedatos : FirebaseDatabase
     private lateinit var basedatosRef : DatabaseReference
     private lateinit var listaFiltrada: MutableList<String>
+    private lateinit var listView: ListView
+    private lateinit var searchView: SearchView
+    private lateinit var arrayAdapter: ArrayAdapter<String>
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,9 +45,58 @@ class Toolbar : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+     /*   for (enum in Ubicacion.values()) {
+
+            listaFiltrada.add(enum.name)
+
+            val inflater = LayoutInflater.from(requireContext())
+            val ubicacionEtiqueta: View = inflater.inflate(R.layout.toolbar_list, binding.root, false)
+
+            ubicacionEtiqueta.findViewById<View>(R.id.lista_ubicaciones) = enum.toString()
+
+            binding.ubicacionLista.addView(ubicacionEtiqueta)
+
+            tarjetaLista.setOnClickListener {
+                // Creamos una variable Bundle, para pasar al Fragment de Curso parametros
+                val bundle = Bundle()
+                bundle.putString("Enum", enum.toString())
+
+                NavHostFragment.findNavController(this@Toolbar).navigate(R.id.action_nav_home_to_nav_home, bundle)
+            }
+
+
+        }
         for (enum in Ubicacion.values()) {
+
             listaFiltrada.add(enum.name)
         }
+
+        listView = view.findViewById(R.id.listView)
+        searchView = view.findViewById(R.id.search_bar)
+
+
+        arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, listaFiltrada)
+        listView.adapter = arrayAdapter
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Log.v("[BUSQUEDA]", "Buscar ciudad " + query )
+
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                arrayAdapter.filter.filter(newText)
+                return true
+            }
+        })
+
+
+        */
+
+
+
+
 
         // Guardamos en variables las 3 vistas de la toolbar
         val menu_localidades : ImageView = binding.toggleMenu
