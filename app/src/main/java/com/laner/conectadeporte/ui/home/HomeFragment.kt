@@ -66,6 +66,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        localidadActual = Ubicacion.valueOf(arguments?.getString("localidadActual")!!)
         /* homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         } */
@@ -99,6 +100,10 @@ class HomeFragment : Fragment() {
             // DEBUG
             Log.w("[TOOLBAR]", "El drawer es nulo.")
             drawerLayout.openDrawer(GravityCompat.END)
+        }
+
+        binding.homeToolbar.toggleMenu.setOnClickListener {
+            NavHostFragment.findNavController(this).navigate(R.id.action_to_search)
         }
 
         boton_perfil.setOnClickListener {

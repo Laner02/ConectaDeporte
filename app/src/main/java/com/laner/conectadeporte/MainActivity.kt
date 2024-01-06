@@ -1,5 +1,7 @@
 package com.laner.conectadeporte
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -15,6 +17,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import com.google.android.material.navigation.NavigationView
 import com.laner.conectadeporte.databinding.ActivityMainBinding
+import com.laner.conectadeporte.src.Ubicacion
 
 class MainActivity : AppCompatActivity() {
 
@@ -71,6 +74,9 @@ class MainActivity : AppCompatActivity() {
         val nombreUsuario : TextView = vista.findViewById(R.id.nombre_usuario)
         // TODO esto cambiarlo al perfil actual
         nombreUsuario.text = "Raul"
+
+        // Obtenemos en la variable sharedPrefs las preferencias de la app
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
 
         /*
         binding.appBarMain.fab.setOnClickListener { view ->

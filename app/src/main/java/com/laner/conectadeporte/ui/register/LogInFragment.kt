@@ -2,6 +2,7 @@ package com.laner.conectadeporte.ui.register
 
 import android.app.Application
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -57,8 +58,18 @@ class LogInFragment : Fragment() {
                         if (task.isSuccessful) {
 
                           //  prefs.saveEmail(email)
+                            // Obtenemos los SharedPrefs y metemos el usuario actual
+                            val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE) ?: return
+                            with(sharedPrefs.edit()) {
+                                putString("usuarioActual", usuarioActual)
+                                apply()
+                            }
 
-                            NavHostFragment.findNavController(this).navigate(R.id.action_login_to_home)
+                            val bundle = Bundle()
+                            bundle.putString("localidadActual", "VALL")
+                            // TODO RAUL AQUI, cambia por el shared
+
+                            NavHostFragment.findNavController(this).navigate(R.id.action_login_to_home, bundle)
                         } else {
                             Toast.makeText(requireContext(), task.exception.toString(), Toast.LENGTH_SHORT).show()
                         }
