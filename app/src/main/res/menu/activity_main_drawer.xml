@@ -15,6 +15,7 @@
         <!-- TODO poner una vista especial con un switch verde aqui -->
         <item
             android:id="@+id/nav_modoOscuro"
+            android:checkable="false"
             app:actionViewClass="android.widget.Switch"
             android:title="Modo Oscuro" />
         <item

@@ -73,8 +73,13 @@ class HomeFragment : Fragment() {
 
         // Obtenemos la localidad actual desde SharedPrefs
         val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE)
-        val defaultValueLocalidad = "VALL"
-        localidadActual = Ubicacion.valueOf(sharedPrefs.getString("localidadActual", defaultValueLocalidad)!!)
+        localidadActual = Ubicacion.valueOf(sharedPrefs.getString("localidadActual", null)!!)
+
+        // Comprobacion de que se obtiene bien la localidad
+        if (localidadActual == null) {
+            Log.e("[HOME]", "La localidad obtenida era nula")
+            localidadActual = Ubicacion.VALL
+        }
 
         return root
     }

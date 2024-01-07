@@ -67,7 +67,11 @@ class PerfilFragment : Fragment() {
         val telefonoContacto : TextView = view.findViewById(R.id.perfil_telefonoUsuario)
         // TODO esta no me convece, o hacemos que retroceda al pulsar o lo quitamos, no quiero meter otra action
         val boton_atras : ImageView = view.findViewById(R.id.perfil_flechaAtras)
-        // TODO meter un onclicklistener en este boton
+
+        boton_atras.setOnClickListener {
+            // LLeva al usuario a la pagina anterior, imitando el boton de atras
+            requireActivity().onBackPressed()
+        }
 
         basedatos = FirebaseDatabase.getInstance()
         basedatosRef = basedatos.reference

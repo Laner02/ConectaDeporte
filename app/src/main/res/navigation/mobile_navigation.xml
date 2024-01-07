@@ -129,7 +129,6 @@
         <action
             android:id="@+id/action_to_login"
             app:destination="@+id/log" />
-        <!-- TODO si metemos la flecha para atras meter la accion aqui y meter el boton accion -->
     </fragment>
 
     <fragment
@@ -152,7 +151,5 @@
         tools:layout="@layout/contactenos" >
 
     </fragment>
-
-    <!-- TODO -->
 
 </navigation>

@@ -1,5 +1,6 @@
 package com.laner.conectadeporte.ui.toolbar
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -73,10 +74,14 @@ class ToolbarList : Fragment(){
         listView.setOnItemClickListener{ parent, view, position, id ->
             val elementoClicado = listaFiltrada[position]
 
-            val bundle = Bundle()
-            bundle.putString("localidadActual", elementoClicado)
-            // NOTA RAUL: No se por que aqui pide un @HomeFragment, pero lo pide (._.)
-            NavHostFragment.findNavController(this).navigate(R.id.action_nav_lista_busqueda_to_nav_home, bundle)
+            // Cambiamos la localidad actual por la seleccionada en toda la app
+            val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE)
+            with(sharedPrefs.edit()) {
+                putString("localidadActual", elementoClicado)
+                apply()
+            }
+
+            NavHostFragment.findNavController(this).navigate(R.id.action_nav_lista_busqueda_to_nav_home)
         }
 
         boton_perfil.setOnClickListener {

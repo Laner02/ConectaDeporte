@@ -82,13 +82,13 @@ class ApuntarseFragment : Fragment() {
 
         // Si el usuario pulsa el boton de cancelar, vuelve al curso sin crear el usuario
         boton_cancelar.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(R.id.action_apuntarse_to_curso)
+            // LLeva al usuario a la pagina anterior, imitando el boton de atras
+            requireActivity().onBackPressed()
         }
 
         binding.contactanos.setOnClickListener{
             NavHostFragment.findNavController(this).navigate(R.id.action_apuntarse_curso_to_nav_contactenos)
         }
-
 
         // TODO RECUERDA MANEJAR ERROR DE LOS EDITTEXT, Y METEMOS TEXTO EN ROJO SI VEMOS ALGO MAL, LO DESTRUIMOS EN EL BOTON REGISTRASE
     }

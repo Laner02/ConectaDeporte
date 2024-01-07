@@ -46,9 +46,6 @@ class MainActivity : AppCompatActivity() {
 
         // Activamos el menu drawe (menu lateral)
         val drawer: DrawerLayout = binding.drawerLayout
-        /*val toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer.addDrawerListener(toggle)
-        toggle.syncState()*/
 
         // Creamos un listener para detectar los item que se seleccionan en el menu
         val navView: NavigationView = binding.navView
@@ -73,6 +70,8 @@ class MainActivity : AppCompatActivity() {
             // Se cierra el menu lateral por la izquierda
             val drawerLayout: DrawerLayout = binding.drawerLayout
             drawerLayout.closeDrawer(GravityCompat.END)
+            // Se desactiva la opcion pulsada
+            it.isChecked = false
             true
         }
 
@@ -103,67 +102,11 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         }
-
-        /*
-        binding.appBarMain.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
-        val navView: NavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
-
-        */
     }
-
-    // Esto no nos sirve
-    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-    }*/
-
-    /* SECCION MENU LATERAL */
-
-    // El sistema llama a esta funcion cada vez que se selecciona un item del menu lateral.
-    // Se pasa el item seleccionado
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Debug
-        Log.v("[SideMenu]", "Menu seleccionado, item: " + item.itemId.toString())
-        // Obtenemos el id del item seleccionado, y devolvemos dependiendo de cual sea una cosa u otra
-        return when (item.itemId) {
-            R.id.nav_miPerfil -> {
-                accesoPerfil()
-                true
-            }
-            R.id.nav_cursosApuntados -> {
-                accesoCursosApuntados()
-                true
-            }
-            R.id.nav_modoOscuro -> {
-                activaModoOscuro()
-                true
-            }
-            R.id.nav_cerrarSesion -> {
-                cierraSesion()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }*/
 
     // Metodo que se encarga de pasar a la pantalla del perfil de usuario
     fun accesoPerfil() {
         Log.v("[AccesoPerfil]", "Accediendo al perfil...")
-        // TODO Obtenemos el usuario desde SharedPrefs para pasarlo a la pagina del perfil
-        val bundle = Bundle()
-        // bundle.putString("usuarioActual", Sharedprefs.getString())
-        bundle.putString("usuarioActual", "Raul")
 
         // Obtenemos el fragmento actual
         val fragmentManager = supportFragmentManager
@@ -174,7 +117,7 @@ class MainActivity : AppCompatActivity() {
             Log.w("[MainActivity]", "El fragmento actual es NULO.")
 
         // Poner la navegacion desde cualquier fragmento a las opciones de menu por si acaso
-        NavHostFragment.findNavController(currentFragment!!).navigate(R.id.action_to_perfil, bundle)
+        NavHostFragment.findNavController(currentFragment!!).navigate(R.id.action_to_perfil)
         Log.v("[AccesoPerfil]", "Hecho!")
     }
 
@@ -182,8 +125,7 @@ class MainActivity : AppCompatActivity() {
     fun accesoCursosApuntados() {
         // TODO Obtenemos el usuario desde SharedPrefs para pasarlo a la pagina del perfil
         val bundle = Bundle()
-        // bundle.putString("usuarioActual", Sharedprefs.getString())
-        bundle.putString("usuarioActual", "Raul")
+        bundle.putString("usuarioActual", username)
 
         // Obtenemos el fragmento actual
         val fragmentManager = supportFragmentManager

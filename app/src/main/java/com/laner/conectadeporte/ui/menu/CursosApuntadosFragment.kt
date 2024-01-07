@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -19,6 +20,7 @@ import com.laner.conectadeporte.databinding.CursosApuntadosFrameBinding
 import com.laner.conectadeporte.src.Course
 import com.laner.conectadeporte.src.Ubicacion
 import com.laner.conectadeporte.src.Usuario
+import kotlin.concurrent.fixedRateTimer
 
 // Interfaz para recuperar los cursos del usuario para meterlos uno a uno
 interface CursoApuntadoFetchCallback {
@@ -63,8 +65,12 @@ class CursosApuntadosFragment : Fragment() {
         // Primero guardamos las View de la vista en variables
         val imagenPerfil : ImageView = view.findViewById(R.id.cursos_apuntados_ImagenUsuario)
         val nombreUsuario : TextView = view.findViewById(R.id.cursos_apuntados_nombreUsuario)
-        // TODO meter un onclicklistener en este boton
         val boton_atras : ImageView = view.findViewById(R.id.cursos_apuntados_flechaAtras)
+
+        boton_atras.setOnClickListener {
+            // LLeva al usuario a la pagina anterior, imitando el boton de atras
+            requireActivity().onBackPressed()
+        }
 
         basedatos = FirebaseDatabase.getInstance()
         basedatosRef = basedatos.reference

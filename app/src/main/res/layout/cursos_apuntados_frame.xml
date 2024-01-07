@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/green_light"
     tools:context=".ui.menu.CursosApuntadosFragment">
 
@@ -73,6 +74,111 @@
             android:padding="35dp"
             android:gravity="center"
             android:orientation="vertical">
+
+            <!-- De momento por falta de tiempo metemos cursos falsos -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fake_card_1"
+                android:layout_width="284dp"
+                android:layout_height="150dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="15dp"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <!-- TODO habria que ver como poner aqui el source y desc -->
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:src="@drawable/img_chess"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <!-- TODO habria que ver como poner aqui ids autogenerados y el texto del titulo -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:text="Club Ajedrez"/>
+
+                        <!-- TODO poner menos espacio entre titulo y descripcion -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textSize="13sp"
+                            android:textColor="@color/black"
+                            android:text="Somos un club de ajedrez de La Pilarica, amigables y abiertos. ¡No dudes en unirte!"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fake_card_2"
+                android:layout_width="284dp"
+                android:layout_height="150dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="15dp"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <!-- TODO habria que ver como poner aqui el source y desc -->
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:src="@drawable/atletismo" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <!-- TODO habria que ver como poner aqui ids autogenerados y el texto del titulo -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:text="Atletismo Plantio"/>
+
+                        <!-- TODO poner menos espacio entre titulo y descripcion -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textSize="13sp"
+                            android:textColor="@color/black"
+                            android:text="¡¡Atletas con pasión en busca de nuevos miembros!!"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
