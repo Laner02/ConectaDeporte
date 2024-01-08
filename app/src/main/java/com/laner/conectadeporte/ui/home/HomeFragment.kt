@@ -55,7 +55,7 @@ class HomeFragment : Fragment() {
 
     // TODO la localidad actual deberiamos ponerla de forma que se pueda cambiar desde la barra o el buscador. Desde fuera
     // Variables para guardar la localidad actual. La inicializamos en Valladolid por defecto
-    private var localidadActual : Ubicacion = Ubicacion.VALL
+    private var localidadActual : Ubicacion = Ubicacion.Valladolid
 
     // Variable para almacenar todos los cursos que se pillen de la BD
     private lateinit var listaCursos : ArrayList<Course>
@@ -86,7 +86,7 @@ class HomeFragment : Fragment() {
         // Comprobacion de que se obtiene bien la localidad
         if (localidadActual == null) {
             Log.e("[HOME]", "La localidad obtenida era nula")
-            localidadActual = Ubicacion.VALL
+            localidadActual = Ubicacion.Valladolid
         }
 
         return root
@@ -107,7 +107,7 @@ class HomeFragment : Fragment() {
 
         // AQUI SE VAN PILLANDO LOS OBJETOS DE LA VISTA EN VARIABLES
         val localidadCurrente : TextView = binding.localidadActual
-        localidadCurrente.text = localidadActual.toString()
+        localidadCurrente.text = localidadActual.stringValue
         // TODO hacer un override del metodo tostring en Ubicacion que devuelva el nombre entero no las siglas
         // TODO pero entonces deberiamos cambiar las localizaciones en la BD
 

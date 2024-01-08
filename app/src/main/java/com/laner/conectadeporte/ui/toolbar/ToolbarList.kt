@@ -16,7 +16,6 @@ import androidx.navigation.fragment.NavHostFragment
 import com.laner.conectadeporte.R
 import com.laner.conectadeporte.databinding.ToolbarListBinding
 import com.laner.conectadeporte.src.Ubicacion
-import com.laner.conectadeporte.src.UbicacionCompleta
 
 class ToolbarList : Fragment(){
 
@@ -45,7 +44,7 @@ class ToolbarList : Fragment(){
 
         listaFiltrada = mutableListOf()
 
-        for (enum in UbicacionCompleta.values()) {
+        for (enum in Ubicacion.values()) {
 
             listaFiltrada.add(enum.stringValue)
         }
@@ -71,7 +70,7 @@ class ToolbarList : Fragment(){
         })
 
         listView.setOnItemClickListener{ parent, view, position, id ->
-            val elementoClicado = listaFiltrada[position].substring(0, 4)
+            val elementoClicado = listaFiltrada[position].replace(" ", "_")
 
             // Cambiamos la localidad actual por la seleccionada en toda la app
             val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE)
