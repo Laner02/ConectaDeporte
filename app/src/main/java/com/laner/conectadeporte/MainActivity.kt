@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         // Si existe el nombre del usuario en el SharedPrefs, lo ponemos en la cabecera
         val sharedPrefs = this.getPreferences(Context.MODE_PRIVATE)
         userId = sharedPrefs.getInt("usuarioActual", 0)
-        correoUser = sharedPrefs.getString("correoActual", null)!!
+        correoUser = sharedPrefs.getString("correoActual", "correo")!!
 
         // TODO SI PILLA UN USUARIO, SALTA A LA PAGINA DE MAIN, SIN LOGIN
 

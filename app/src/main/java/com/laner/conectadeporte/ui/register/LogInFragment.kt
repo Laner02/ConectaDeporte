@@ -16,7 +16,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.laner.conectadeporte.R
-import com.laner.conectadeporte.UserApp.Companion.prefs
 
 class LogInFragment : Fragment() {
 
@@ -31,7 +30,6 @@ class LogInFragment : Fragment() {
 
     ): View? {
         binding = LogInBinding.inflate(inflater, container, false)
-        checkUserValues()
         return binding.root
     }
 
@@ -76,7 +74,7 @@ class LogInFragment : Fragment() {
 
                                             with(sharedPrefs.edit()) {
                                                 putInt("usuarioActual", userId)
-                                                putString("correoActual", email)
+                                                putString("correoActual", correo)
                                                 apply()
                                             }
                                             userId = sharedPrefs.getInt("usuarioActual", 0)
@@ -118,12 +116,6 @@ class LogInFragment : Fragment() {
             NavHostFragment.findNavController(this).navigate(R.id.action_log_to_nav_contactenos)
         }
 
-    }
-
-    fun checkUserValues() {
-        if (prefs.getEmail().isNotEmpty()) {
-            NavHostFragment.findNavController(this).navigate(R.id.action_login_to_home)
-        }
     }
 
 }
