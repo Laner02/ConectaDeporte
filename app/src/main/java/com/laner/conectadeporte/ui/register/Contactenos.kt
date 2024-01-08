@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.laner.conectadeporte.databinding.ContactenosBinding
-import com.laner.conectadeporte.databinding.SignUpBinding
 
 class Contactenos : Fragment() {
 
