@@ -94,35 +94,62 @@ class ApuntarseFragment : Fragment() {
 
         // TODO creo que ponerlo con binding y no en una variable hace que no funcione
         boton_apuntarse.setOnClickListener {
-            if(horario_seleccionado != "") {
+            if(horario_seleccionado == "") {
+                horario_seleccionado = horario_curso[0]
+            }
+
+            if (comprobarDNI(dni_apuntarse.text.toString())) {
 
                 val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE)
                 val usuarioId = sharedPrefs.getInt("usuarioActual", 0)
 
                 Log.v("[Apuntarse]", "Usuario: $usuarioId")
 
+                val referenciaNodoPrincipal  = basedatos.getReference("UsuarioApuntado")
+
                 // TODO O hacemos un numero de ID, y el dni como atributo
+                referenciaNodoPrincipal.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                // Creamos un hashMap con los datos del usuario apuntado
-                val usuarioApuntado = hashMapOf(
-                    "cursoApuntado" to cursoId,
-                    "nombreApuntado" to nombre_apuntarse.text.toString(),
-                    "apellidosApuntado" to apellidos_apuntarse.text.toString(),
-                    "fnacApuntado" to fnac_apuntarse.text.toString(),
-                    "horarioApuntado" to horario_seleccionado
-                )
 
-                Log.v("[Apuntarse]", "Usuario Apuntado: $usuarioApuntado")
-                Log.v("[Apuntarse]", "Usuario: $basedatosRef")
+                    // Creamos un hashMap con los datos del usuario apuntado
+                        val usuarioApuntado = hashMapOf(
+                            "dniApuntado" to dni_apuntarse.text.toString(),
+                            "cursoApuntado" to cursoId,
+                            "nombreApuntado" to nombre_apuntarse.text.toString(),
+                            "apellidosApuntado" to apellidos_apuntarse.text.toString(),
+                            "fnacApuntado" to fnac_apuntarse.text.toString(),
+                            "horarioApuntado" to horario_seleccionado
+                        )
 
-                // Metemos el usuario apuntado en la base de datos.
-                // Se organizan en UsuarioApuntado > UsuarioAsociado > DNIApuntado, por si se apuntan varios dni desde una misma cuenta
-                // TODO esto no va
-                basedatosRef.child("UsuarioApuntado").child(usuarioId.toString())
-                    .child(dni_apuntarse.text.toString()).setValue(usuarioApuntado)
 
-                Toast.makeText(requireContext(), "Apuntado correctamente", Toast.LENGTH_SHORT).show()
+                        val numeroDeHijos = dataSnapshot.child(usuarioId.toString()).childrenCount
 
+                            Log.v("[Apuntarse]", "Numero hijos: $numeroDeHijos")
+                        val num_dni = (numeroDeHijos + 1).toString() + " -> " + dni_apuntarse.text.toString()
+                            Log.v("[Apuntarse]", "numero y dni: $num_dni")
+                            basedatosRef.child("UsuarioApuntado").child(usuarioId.toString())
+                                .child(num_dni).setValue(usuarioApuntado)
+
+                        Log.v("[Apuntarse]", "Usuario Apuntado: $usuarioApuntado")
+                        Log.v("[Apuntarse]", "Usuario: $basedatosRef")
+
+                    // Metemos el usuario apuntado en la base de datos.
+                    // Se organizan en UsuarioApuntado > UsuarioAsociado > DNIApuntado, por si se apuntan varios dni desde una misma cuenta
+                    // TODO esto no va
+                 /*   basedatosRef.child("UsuarioApuntado").child(usuarioId.toString())
+                        .child(dni_apuntarse.text.toString()).setValue(usuarioApuntado)*/
+
+
+
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        println("Error al obtener datos: ")
+                    }
+                })
+
+               Toast.makeText(requireContext(), "Apuntado correctamente", Toast.LENGTH_SHORT).show()
                 // La aplicacion vuelve a la pantalla anterior del curso
                 /*val bundle = Bundle()
                 bundle.putString("cursoActual", cursoId)
@@ -130,8 +157,10 @@ class ApuntarseFragment : Fragment() {
 
                 NavHostFragment.findNavController(this).navigate(R.id.action_apuntarse_to_curso, bundle)*/
                 requireActivity().onBackPressed()
+
+
             }else{
-                horario_seleccionado = horario_curso[0]
+                Toast.makeText(requireContext(), "Formato del dni incorrecto", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -147,4 +176,16 @@ class ApuntarseFragment : Fragment() {
 
         // TODO RECUERDA MANEJAR ERROR DE LOS EDITTEXT, Y METEMOS TEXTO EN ROJO SI VEMOS ALGO MAL, LO DESTRUIMOS EN EL BOTON REGISTRASE
     }
+
+    fun comprobarDNI(dni: String): Boolean {
+        if((dni.length - 1) == 8 ){
+            val ultimaLetra = dni.last().uppercaseChar()
+            if (ultimaLetra.isLetter() && ultimaLetra in 'A'..'Z'){
+                return true
+            }
+        }
+
+        return false
+    }
+
 }
