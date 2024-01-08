@@ -2,6 +2,7 @@ package com.laner.conectadeporte.ui.register
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -110,7 +111,11 @@ class LogInFragment : Fragment() {
                 .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(requireContext(), "Inicio de sesión anónimo exitoso", Toast.LENGTH_SHORT).show()
+                        val sharedPreferen = requireActivity().getPreferences(Context.MODE_PRIVATE)
+                        val userId = sharedPreferen.getInt("usuarioActual", 0)
+                        Log.v("[]","usuario: $userId")
                         NavHostFragment.findNavController(this).navigate(R.id.action_login_to_home)
+
                     } else {
                         Toast.makeText(requireContext(), "Error al iniciar sesion anonimamente", Toast.LENGTH_SHORT).show()
                     }
