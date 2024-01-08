@@ -47,7 +47,7 @@ class ToolbarList : Fragment(){
 
         for (enum in UbicacionCompleta.values()) {
 
-            listaFiltrada.add(enum.name)
+            listaFiltrada.add(enum.stringValue)
         }
         Log.w("[ListaFiltrada]", "Lista: " + listaFiltrada)
 
