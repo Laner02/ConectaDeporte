@@ -86,6 +86,7 @@ class MainActivity : AppCompatActivity() {
 
         // TODO SI PILLA UN USUARIO, SALTA A LA PAGINA DE MAIN, SIN LOGIN
 
+
         val vista = navView.getHeaderView(0)
         val nombreUsuario : TextView = vista.findViewById(R.id.nombre_usuario)
         val correoUsuario : TextView = vista.findViewById(R.id.correo_usuario)

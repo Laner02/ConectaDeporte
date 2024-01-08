@@ -1,5 +1,6 @@
 package com.laner.conectadeporte.ui.curso
 
+import android.content.Context
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
@@ -182,13 +183,16 @@ class CursoFragment : Fragment() {
 
         // Definimos la funcion que se realiza al pulsar el boton, en este metodo, porque lo ponemos una vez esta creada la vista
         boton_apuntarse.setOnClickListener {
-            // Le pasamos a la pantalla de Apuntarse el titulo del curso al que se apunta el usuario,
-            // para meterlo en la BD y relacionarlos
-            val bundle = Bundle()
-            bundle.putString("cursoApuntarse", cursoActual.getTitle())
+            val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE)
+            val userId = sharedPrefs.getInt("usuarioActual", 0)
+            if (userId != 0) {
+                val bundle = Bundle()
+                bundle.putString("cursoApuntarse", cursoActual.getTitle())
 
-            // Pedimos al NavHostFragment que busque el fragmento de navegacion asociado a esta clase, y que navegue hacia otra pantalla mediante la accion definida en el navhostfragment
-            NavHostFragment.findNavController(this).navigate(R.id.action_registrarse_to_curso, bundle)
+                // Pedimos al NavHostFragment que busque el fragmento de navegacion asociado a esta clase, y que navegue hacia otra pantalla mediante la accion definida en el navhostfragment
+                NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_registrarse_to_curso, bundle)
+            }
         }
     }
 }
