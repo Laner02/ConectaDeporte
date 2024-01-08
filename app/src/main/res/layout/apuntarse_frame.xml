@@ -23,7 +23,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Apuntarse"
+                android:text="@string/apuntarse_title"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -35,7 +35,7 @@
                 android:layout_marginTop="25dp"
                 android:padding="10dp"
                 android:background="@drawable/rectangle"
-                android:hint="Nombre"
+                android:hint="@string/apuntarse_nombre_usuario"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -46,7 +46,7 @@
                 android:layout_marginTop="15dp"
                 android:padding="10dp"
                 android:background="@drawable/rectangle"
-                android:hint="Apellidos"
+                android:hint="@string/apuntarse_apellidos_usuario"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -57,7 +57,7 @@
                 android:layout_marginTop="15dp"
                 android:padding="10dp"
                 android:background="@drawable/rectangle"
-                android:hint="DNI"
+                android:hint="@string/apuntase_dni_usuario"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -68,9 +68,10 @@
                 android:layout_marginTop="15dp"
                 android:padding="10dp"
                 android:background="@drawable/rectangle"
-                android:hint="Fecha de nacimiento"
+                android:hint="@string/apuntarse_fnac"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:inputType="date" />
 
             <!-- TODO este ultimo hacerlo un deplegable con opciones -->
             <EditText
@@ -80,7 +81,7 @@
                 android:layout_marginTop="15dp"
                 android:padding="10dp"
                 android:background="@drawable/rectangle"
-                android:hint="L/X        19h-20h        14-16 años"
+                android:hint="@string/apuntase_horario"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -98,9 +99,9 @@
                 android:layout_height="55dp"
                 android:layout_gravity="top"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
                 android:background="@drawable/rectangle_button_dark"
-                android:text="Cancelar"
+                android:text="@string/apuntarse_cancelar"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -112,7 +113,7 @@
                 android:layout_gravity="top"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/rectangle_button_light"
-                android:text="Apuntarse"
+                android:text="@string/apuntarse_apuntarse"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -129,7 +130,7 @@
                 android:layout_width="160dp"
                 android:layout_height="50dp"
                 android:layout_gravity="start|bottom"
-                android:text="Condiciones de uso"
+                android:text="@string/apuntarse_condiciones"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -139,7 +140,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="end|bottom"
                 android:layout_marginStart="50dp"
-                android:text="Contactanos"
+                android:text="@string/apuntarse_contactanos"
                 android:textColor="@color/black"
                 android:textSize="13sp"
                 android:background="@android:color/transparent"/>
