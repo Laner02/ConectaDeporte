@@ -190,6 +190,7 @@ class CursoFragment : Fragment() {
             if (userId != 0) {
                 val bundle = Bundle()
                 bundle.putString("cursoApuntarse", cursoActual.getTitle())
+                bundle.putString("localidadActual", localidadActual)
 
                 // Pedimos al NavHostFragment que busque el fragmento de navegacion asociado a esta clase, y que navegue hacia otra pantalla mediante la accion definida en el navhostfragment
                 NavHostFragment.findNavController(this)

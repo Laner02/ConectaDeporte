@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.navigation.NavigationBarView.OnItemSelectedListener
@@ -29,6 +31,7 @@ class ApuntarseFragment : Fragment() {
     private lateinit var basedatosRef : DatabaseReference
 
     private lateinit var cursoId : String
+    private lateinit var localidadActual : String
     private lateinit var arrayAdapter: ArrayAdapter<String>
 
     override fun onCreateView(
@@ -38,6 +41,7 @@ class ApuntarseFragment : Fragment() {
     ): View? {
         // Aqui es .toString()? o !!?
         cursoId = arguments?.getString("cursoApuntarse")!!
+        localidadActual = arguments?.getString("localidadActual")!!
 
         // Incializamos la variable _binding
         _binding = ApuntarseFrameBinding.inflate(inflater, container, false)
@@ -49,14 +53,14 @@ class ApuntarseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Guardamos las View en variables
-        val nombre_apuntarse = binding.nombreUsuario
-        val apellidos_apuntarse = binding.apellidosUsuario
-        val dni_apuntarse = binding.dniUsuario
-        val fnac_apuntarse = binding.fnacUsuario
+        val nombre_apuntarse: EditText = view.findViewById(R.id.apuntarse_nombre_usuario)
+        val apellidos_apuntarse: EditText = view.findViewById(R.id.apellidos_usuario)
+        val dni_apuntarse: EditText = view.findViewById(R.id.dni_usuario)
+        val fnac_apuntarse: EditText = view.findViewById(R.id.fnac_usuario)
         var horario_seleccionado : String = ""
         //val horario_apuntarse = binding.horarioUsuario
         // Variables para botones para que funcione ponerles un onclicklistener
-        val boton_apuntarse = binding.botonRegistrarse
+        val boton_apuntarse : AppCompatButton = view.findViewById(R.id.apuntarse_boton_apuntarse)
         val boton_cancelar = binding.botonCancelar
 
 
@@ -93,7 +97,11 @@ class ApuntarseFragment : Fragment() {
             if(horario_seleccionado != "") {
 
                 val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE)
-                val usuarioId = sharedPrefs.getString("usuarioActual", null)!!
+                val usuarioId = sharedPrefs.getInt("usuarioActual", 0)
+
+                Log.v("[Apuntarse]", "Usuario: $usuarioId")
+
+                // TODO O hacemos un numero de ID, y el dni como atributo
 
                 // Creamos un hashMap con los datos del usuario apuntado
                 val usuarioApuntado = hashMapOf(
@@ -104,18 +112,24 @@ class ApuntarseFragment : Fragment() {
                     "horarioApuntado" to horario_seleccionado
                 )
 
+                Log.v("[Apuntarse]", "Usuario Apuntado: $usuarioApuntado")
+                Log.v("[Apuntarse]", "Usuario: $basedatosRef")
+
                 // Metemos el usuario apuntado en la base de datos.
                 // Se organizan en UsuarioApuntado > UsuarioAsociado > DNIApuntado, por si se apuntan varios dni desde una misma cuenta
-                // TODO meter dni en un variable y comprobar que es un dni valido antes de meterlo
-                basedatosRef.child("UsuarioApuntado").child(usuarioId)
+                // TODO esto no va
+                basedatosRef.child("UsuarioApuntado").child(usuarioId.toString())
                     .child(dni_apuntarse.text.toString()).setValue(usuarioApuntado)
 
                 Toast.makeText(requireContext(), "Apuntado correctamente", Toast.LENGTH_SHORT).show()
 
                 // La aplicacion vuelve a la pantalla anterior del curso
-                // TODO ocultar o eliminar esta pantalla para que no pueda volver con la flecha hacia atras
-                // TODO NO FUNCIONA BIEN SI VUELVE AL CURSO ANTERIOR, NECESITAMOS QUE VUELVA A LA PANTALLA PRINCIPAL
-                NavHostFragment.findNavController(this).navigate(R.id.action_apuntarse_to_curso)
+                /*val bundle = Bundle()
+                bundle.putString("cursoActual", cursoId)
+                bundle.putString("localidadActual", localidadActual)
+
+                NavHostFragment.findNavController(this).navigate(R.id.action_apuntarse_to_curso, bundle)*/
+                requireActivity().onBackPressed()
             }else{
                 horario_seleccionado = horario_curso[0]
             }

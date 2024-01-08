@@ -29,7 +29,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/nombre_usuario"
+                android:id="@+id/apuntarse_nombre_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -113,7 +113,7 @@
 
             <!-- TODO meter este color como color de boton aceptar cuando sara suba el commit -->
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/boton_registrarse"
+                android:id="@+id/apuntarse_boton_apuntarse"
                 android:layout_width="140dp"
                 android:layout_height="55dp"
                 android:layout_gravity="top"
