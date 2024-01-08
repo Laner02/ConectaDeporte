@@ -125,22 +125,13 @@ class ApuntarseFragment : Fragment() {
 
                         val numeroDeHijos = dataSnapshot.child(usuarioId.toString()).childrenCount
 
-                            Log.v("[Apuntarse]", "Numero hijos: $numeroDeHijos")
                         val num_dni = (numeroDeHijos + 1).toString() + " -> " + dni_apuntarse.text.toString()
-                            Log.v("[Apuntarse]", "numero y dni: $num_dni")
-                            basedatosRef.child("UsuarioApuntado").child(usuarioId.toString())
-                                .child(num_dni).setValue(usuarioApuntado)
+
+                        // Se organizan en UsuarioApuntado > UsuarioAsociado > DNIApuntado, por si se apuntan varios dni desde una misma cuenta
+                        basedatosRef.child("UsuarioApuntado").child(usuarioId.toString()).child(num_dni).setValue(usuarioApuntado)
 
                         Log.v("[Apuntarse]", "Usuario Apuntado: $usuarioApuntado")
                         Log.v("[Apuntarse]", "Usuario: $basedatosRef")
-
-                    // Metemos el usuario apuntado en la base de datos.
-                    // Se organizan en UsuarioApuntado > UsuarioAsociado > DNIApuntado, por si se apuntan varios dni desde una misma cuenta
-                    // TODO esto no va
-                 /*   basedatosRef.child("UsuarioApuntado").child(usuarioId.toString())
-                        .child(dni_apuntarse.text.toString()).setValue(usuarioApuntado)*/
-
-
 
                     }
 
@@ -150,12 +141,7 @@ class ApuntarseFragment : Fragment() {
                 })
 
                Toast.makeText(requireContext(), "Apuntado correctamente", Toast.LENGTH_SHORT).show()
-                // La aplicacion vuelve a la pantalla anterior del curso
-                /*val bundle = Bundle()
-                bundle.putString("cursoActual", cursoId)
-                bundle.putString("localidadActual", localidadActual)
 
-                NavHostFragment.findNavController(this).navigate(R.id.action_apuntarse_to_curso, bundle)*/
                 requireActivity().onBackPressed()
 
 
