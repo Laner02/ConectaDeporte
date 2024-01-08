@@ -82,12 +82,20 @@ class MainActivity : AppCompatActivity() {
         /* Si existe el nombre del usuario en el SharedPrefs, lo ponemos en la cabecera
         val sharedPrefs = this.getPreferences(Context.MODE_PRIVATE)
         userId = sharedPrefs.getInt("usuarioActual", 0)
-        // correoUser = sharedPrefs.getString("correoActual", "correo")!!
+        // correoUser = sharedPrefs.getString("correoActual", "correo")!! */
+
+        Log.v("[MAIN]", "Usuario: $userId")
 
         // TODO SI PILLA UN USUARIO, SALTA A LA PAGINA DE MAIN, SIN LOGIN
+        if (userId != 0)
+        {
+            val fragmentManager = supportFragmentManager
+            val currentFragment = fragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
 
+            NavHostFragment.findNavController(currentFragment!!).navigate(R.id.action_login_to_home)
+        }
 
-        val vista = navView.getHeaderView(0)
+        /* val vista = navView.getHeaderView(0)
         val nombreUsuario : TextView = vista.findViewById(R.id.nombre_usuario)
         val correoUsuario : TextView = vista.findViewById(R.id.correo_usuario)
 
