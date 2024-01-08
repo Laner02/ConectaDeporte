@@ -22,7 +22,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="70dp"
             android:layout_marginEnd="20dp"
-            android:contentDescription="app title"
+            android:contentDescription="@string/login_title_desc"
             android:src="@drawable/image_name_app" />
 
         <ImageView
@@ -30,7 +30,7 @@
             android:layout_height="146dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:contentDescription="app image"
+            android:contentDescription="@string/login_logo_desc"
             android:src="@drawable/image_app" />
 
         <EditText
@@ -40,7 +40,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/rectangle"
             android:padding="15dp"
-            android:hint="Correo de usuario"
+            android:hint="@string/login_correo"
             android:textSize="18sp"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -55,33 +55,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rectangle"
-                android:hint="Contraseña"
+                android:hint="@string/login_pass"
                 android:textSize="18sp"
                 android:inputType="textPassword"
                 android:singleLine="true"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--TextView
-            android:id="@+id/registrarse_log_in"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="42dp"
-            android:background="@android:color/transparent"
-            android:layout_gravity="left"
-            android:text="¿No tienes cuenta? Registrarse"
-            android:textColor="@color/green_03"
-            android:textStyle="bold"
-            android:textSize="16sp" /-->
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/registrarse_log_in"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:background="@android:color/transparent"
-            android:layout_gravity="left"
-            android:text="¿No tienes cuenta? Registrarse"
+            android:layout_gravity="start"
+            android:text="@string/login_registrate"
             android:textColor="@color/green_03"
             android:textStyle="bold"
             android:textSize="13sp" />
@@ -93,7 +80,7 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/rectangle_button_light"
             android:backgroundTint="@color/green_01"
-            android:text="Acceder"
+            android:text="@string/login_acceder"
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -103,7 +90,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/rectangle_button_dark"
-            android:text="Acceder como invitado"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="15sp" />
     </LinearLayout>
@@ -119,8 +106,8 @@
             android:id="@+id/condiciones_uso"
             android:layout_width="160dp"
             android:layout_height="50dp"
-            android:layout_gravity="left|bottom"
-            android:text="Condiciones de uso"
+            android:layout_gravity="start|bottom"
+            android:text="@string/login_condiciones"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -128,9 +115,9 @@
             android:id="@+id/contactanos"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_gravity="right|bottom"
-            android:layout_marginLeft="50dp"
-            android:text="Contactanos"
+            android:layout_gravity="end|bottom"
+            android:layout_marginStart="50dp"
+            android:text="@string/login_contacto"
             android:textColor="@color/black"
             android:textSize="12sp"
             android:background="@android:color/transparent"/>

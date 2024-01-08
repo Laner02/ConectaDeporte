@@ -73,6 +73,14 @@ class HomeFragment : Fragment() {
 
         // Obtenemos la localidad actual desde SharedPrefs
         val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE)
+        // Prueba para ver si se soluciona el error de la app desde le inicio
+        if (sharedPrefs.getString("localidadActual", null) == null) {
+            with(sharedPrefs.edit()) {
+                putString("localidadActual", localidadActual.toString())
+                apply()
+            }
+        }
+
         localidadActual = Ubicacion.valueOf(sharedPrefs.getString("localidadActual", null)!!)
 
         // Comprobacion de que se obtiene bien la localidad

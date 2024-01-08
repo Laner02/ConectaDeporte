@@ -87,6 +87,7 @@ class LogInFragment : Fragment() {
 
                                             with(sharedPrefs.edit()) {
                                                 putInt("usuarioActual", userId)
+                                                putString("correoActual", email)
                                                 apply()
                                             }
 

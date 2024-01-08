@@ -54,7 +54,7 @@
                         android:textSize="25sp"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:text="Usuario" />
+                        android:text="@string/usuario_id" />
 
                     <TextView
                         android:id="@+id/perfil_correoUsuario"
@@ -63,13 +63,12 @@
                         android:layout_gravity="center"
                         android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:text="correo de usuario" />
+                        android:text="@string/nav_correo" />
 
                 </LinearLayout>
 
-
-
             </LinearLayout>
+
         </LinearLayout>
 
         <!-- Contenido -->
@@ -82,10 +81,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:text="Nombre Completo:" />
+                android:text="@string/perfil_nombre_completo" />
 
             <TextView
                 android:id="@+id/perfil_nombreCompletoUsuario"
@@ -93,18 +92,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="2dp"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                android:text="Nombre del usuario" />
+                android:text="@string/perfil_nombre_completo_hint" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:text="Correo de Contacto:" />
+                android:text="@string/perfil_correo" />
 
             <!-- No quiero que se qude vacia la pantalla asi que ponemos otra vez esto -->
             <TextView
@@ -113,18 +112,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="2dp"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                android:text="Correo del usuario" />
+                android:text="@string/perfil_correo_hint" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:text="Teléfono de Contacto:" />
+                android:text="@string/perfil_telefono" />
 
             <TextView
                 android:id="@+id/perfil_telefonoUsuario"
@@ -132,9 +131,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="2dp"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                android:text="Telefono del uusario" />
+                android:text="@string/perfil_telefono_hint" />
 
         </LinearLayout>
 
