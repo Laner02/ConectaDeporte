@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         // TODO prueba, deberia funcionar
         cambiarCabecera()
 
-        /*// Si existe el nombre del usuario en el SharedPrefs, lo ponemos en la cabecera
+        /* Si existe el nombre del usuario en el SharedPrefs, lo ponemos en la cabecera
         val sharedPrefs = this.getPreferences(Context.MODE_PRIVATE)
         userId = sharedPrefs.getInt("usuarioActual", 0)
         // correoUser = sharedPrefs.getString("correoActual", "correo")!!

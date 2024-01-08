@@ -16,8 +16,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.laner.conectadeporte.MainActivity
 import com.laner.conectadeporte.R
-import com.laner.conectadeporte.UserApp.Companion.prefs
 import com.laner.conectadeporte.databinding.LogInBinding
+
 
 class LogInFragment : Fragment() {
 
@@ -32,7 +32,6 @@ class LogInFragment : Fragment() {
 
     ): View? {
         binding = LogInBinding.inflate(inflater, container, false)
-        checkUserValues()
         return binding.root
     }
 
@@ -123,12 +122,6 @@ class LogInFragment : Fragment() {
             NavHostFragment.findNavController(this).navigate(R.id.action_log_to_nav_contactenos)
         }
 
-    }
-
-    fun checkUserValues() {
-        if (prefs.getEmail().isNotEmpty()) {
-            NavHostFragment.findNavController(this).navigate(R.id.action_login_to_home)
-        }
     }
 
 }
