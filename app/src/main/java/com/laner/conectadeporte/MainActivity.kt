@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var basedatosRef : DatabaseReference
 
     private var userId : Int = 0
+    private lateinit var correoUser : String
     private lateinit var username : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,12 +79,19 @@ class MainActivity : AppCompatActivity() {
         // Si existe el nombre del usuario en el SharedPrefs, lo ponemos en la cabecera
         val sharedPrefs = this.getPreferences(Context.MODE_PRIVATE)
         userId = sharedPrefs.getInt("usuarioActual", 0)
+        correoUser = sharedPrefs.getString("correoActual", null)!!
+
+        // TODO SI PILLA UN USUARIO, SALTA A LA PAGINA DE MAIN, SIN LOGIN
 
         val vista = navView.getHeaderView(0)
         val nombreUsuario : TextView = vista.findViewById(R.id.nombre_usuario)
+        val correoUsuario : TextView = vista.findViewById(R.id.correo_usuario)
 
-        if (userId == 0)
+        if (userId == 0) {
             nombreUsuario.text = "Anonimo"
+            correoUsuario.text = ""
+        }
+
         else {
             basedatos = FirebaseDatabase.getInstance()
             basedatosRef = basedatos.reference
@@ -93,7 +101,7 @@ class MainActivity : AppCompatActivity() {
                     if (snapshot.exists()) {
                         username = snapshot.child("nombre").value.toString()
                         Log.v("[Usuario]", "El usuario es: " + username)
-                        nombreUsuario.text = username
+                        nombreUsuario.text = correoUser
                     }
                 }
 
@@ -146,9 +154,18 @@ class MainActivity : AppCompatActivity() {
     fun cierraSesion() {
         // TODO queda destruir el resto de pantallas, o la actual para que no pueda volver
         val sharedPrefs = this.getPreferences(Context.MODE_PRIVATE)
-        val editor: SharedPreferences.Editor = sharedPrefs.edit()
+        /*val editor: SharedPreferences.Editor = sharedPrefs.edit()
         editor.remove("usuarioActual")
-        editor.apply()
+        editor.remove("correoActual")
+        editor.apply()*/
+
+        if (userId != 0) {
+            with(sharedPrefs.edit()) {
+                remove("usuarioActual")
+                remove("correoActual")
+                apply()
+            }
+        }
 
         // Obtenemos el fragmento actual
         val fragmentManager = supportFragmentManager

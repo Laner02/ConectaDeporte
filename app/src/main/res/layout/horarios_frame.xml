@@ -19,28 +19,28 @@
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_superior"
-                android:text="Días" />
+                android:text="@string/horario_dias" />
             <TextView
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_superior"
-                android:text="Horario" />
+                android:text="@string/horario_horario" />
             <TextView
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_superior"
-                android:text="Edad" />
+                android:text="@string/horario_edad" />
             <TextView
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_superior"
-                android:text="Precio" />
+                android:text="@string/horario_precio" />
         </TableRow>
 
         <TableRow>
@@ -50,28 +50,28 @@
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_interior"
-                android:text="L/X" />
+                android:text="@string/horario_lx" />
             <TextView
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_interior"
-                android:text="19h-20h" />
+                android:text="@string/horario_1920" />
             <TextView
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_interior"
-                android:text="14-16" />
+                android:text="@string/horario_1416" />
             <TextView
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_interior"
-                android:text="20€/día" />
+                android:text="@string/horario_precio1" />
         </TableRow>
 
         <TableRow>
@@ -81,28 +81,28 @@
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_interior"
-                android:text="M/J" />
+                android:text="@string/horario_mj" />
             <TextView
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_interior"
-                android:text="17h-18h" />
+                android:text="@string/horario_1718" />
             <TextView
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_interior"
-                android:text="17-19" />
+                android:text="@string/horario_1719" />
             <TextView
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_interior"
-                android:text="20€/día" />
+                android:text="@string/horario_precio1" />
         </TableRow>
 
         <TableRow>
@@ -112,28 +112,28 @@
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_interior"
-                android:text="L/X" />
+                android:text="@string/horario_lx" />
             <TextView
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_interior"
-                android:text="20h-22h" />
+                android:text="@string/horario_2022" />
             <TextView
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_interior"
-                android:text="19-22" />
+                android:text="@string/horario_1922" />
             <TextView
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@drawable/borde_tabla_interior"
-                android:text="25€/día" />
+                android:text="@string/horario_precio2" />
         </TableRow>
 
         <TableRow>
