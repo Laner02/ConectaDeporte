@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -185,6 +186,7 @@ class CursoFragment : Fragment() {
         boton_apuntarse.setOnClickListener {
             val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE)
             val userId = sharedPrefs.getInt("usuarioActual", 0)
+            Log.v("[CURSO]", "Id de usuario: $userId")
             if (userId != 0) {
                 val bundle = Bundle()
                 bundle.putString("cursoApuntarse", cursoActual.getTitle())
@@ -193,6 +195,8 @@ class CursoFragment : Fragment() {
                 NavHostFragment.findNavController(this)
                     .navigate(R.id.action_registrarse_to_curso, bundle)
             }
+            else
+                Toast.makeText(requireContext(), "Registrate para apuntarte", Toast.LENGTH_SHORT).show()
         }
     }
 }

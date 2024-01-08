@@ -90,7 +90,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/rectangle_button_dark"
-            android:text=""
+            android:text="Acceder como invitado"
             android:textColor="@color/white"
             android:textSize="15sp" />
     </LinearLayout>

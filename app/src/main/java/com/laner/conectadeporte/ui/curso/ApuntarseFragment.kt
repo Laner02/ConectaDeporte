@@ -1,5 +1,6 @@
 package com.laner.conectadeporte.ui.curso
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -73,8 +74,8 @@ class ApuntarseFragment : Fragment() {
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, posicion: Int, id: Long) {
-                myTextView.text = horario_curso[posicion]
                 horario_seleccionado = horario_curso[posicion]
+                myTextView.text = horario_seleccionado
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -91,9 +92,8 @@ class ApuntarseFragment : Fragment() {
         boton_apuntarse.setOnClickListener {
             if(horario_seleccionado != "") {
 
-
-                // TODO obtenemos el correo del usuario actual registrado, en una variable en SharedPreferences
-                val correoUsuarioActual = "prueba@gmail.com"
+                val sharedPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE)
+                val usuarioId = sharedPrefs.getString("usuarioActual", null)!!
 
                 // Creamos un hashMap con los datos del usuario apuntado
                 val usuarioApuntado = hashMapOf(
@@ -107,8 +107,10 @@ class ApuntarseFragment : Fragment() {
                 // Metemos el usuario apuntado en la base de datos.
                 // Se organizan en UsuarioApuntado > UsuarioAsociado > DNIApuntado, por si se apuntan varios dni desde una misma cuenta
                 // TODO meter dni en un variable y comprobar que es un dni valido antes de meterlo
-                basedatosRef.child("UsuarioApuntado").child(correoUsuarioActual)
+                basedatosRef.child("UsuarioApuntado").child(usuarioId)
                     .child(dni_apuntarse.text.toString()).setValue(usuarioApuntado)
+
+                Toast.makeText(requireContext(), "Apuntado correctamente", Toast.LENGTH_SHORT).show()
 
                 // La aplicacion vuelve a la pantalla anterior del curso
                 // TODO ocultar o eliminar esta pantalla para que no pueda volver con la flecha hacia atras
