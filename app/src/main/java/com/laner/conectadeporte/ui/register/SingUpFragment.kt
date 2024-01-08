@@ -13,10 +13,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.IgnoreExtraProperties
 import com.google.firebase.database.ValueEventListener
 import com.laner.conectadeporte.R
-import com.laner.conectadeporte.src.Usuario
 
 class SignUpFragment : Fragment() {
 
@@ -41,9 +39,6 @@ class SignUpFragment : Fragment() {
         directorioAlmacenamiento = database.reference
 
         binding.iniciarSesion.setOnClickListener {
-            /*val intent = Intent(requireContext(), LogInFragment::class.java)
-            startActivity(intent)*/
-            // Solo vuelve a la pantalla de Login
             NavHostFragment.findNavController(this).navigate(R.id.action_signup_to_login)
         }
 
@@ -56,10 +51,8 @@ class SignUpFragment : Fragment() {
             val apellido = binding.usuarioApellido.text.toString()
             val telefono = binding.usuarioTelefono.text.toString()
 
-            if (validarCadena(telefono)) {
-                println("La cadena es válida.")
-            } else {
-                println("La cadena no es válida.")
+            if (!validarCadena(telefono)) {
+                Toast.makeText(requireContext(), "El numero de telefono debe ser de 9 digitos", Toast.LENGTH_SHORT).show()
             }
 
 
@@ -106,14 +99,14 @@ class SignUpFragment : Fragment() {
                                 NavHostFragment.findNavController(this).navigate(R.id.action_signup_to_login)
 
                             } else {
-                                Toast.makeText(requireContext(), it.exception.toString(), Toast.LENGTH_SHORT).show()
+                                Toast.makeText(requireContext(), "Error al registrar usuario", Toast.LENGTH_SHORT).show()
                             }
                         }
                 } else {
-                    Toast.makeText(requireContext(), "Password is not matching", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "La contraseña no coincide", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(requireContext(), "Empty Fields Are not Allowed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Hay algun campo vacio", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -124,23 +117,20 @@ class SignUpFragment : Fragment() {
     }
 
     fun validarCadena(cadena: String): Boolean {
-        // Comprobar longitud
         if (cadena.length != 9) {
             return false
         }
 
-        // Comprobar que todos los caracteres son dígitos
         if (!cadena.all { it.isDigit() }) {
             return false
         }
 
-        // Opcional: Comprobar si la cadena es convertible a Int (si es necesario)
+        // Comprobar si la cadena es convertible a Int (si es necesario)
         val numero: Int? = cadena.toIntOrNull()
         if (numero == null) {
             return false
         }
 
-        // Todas las comprobaciones pasaron, la cadena es válida
         return true
     }
 

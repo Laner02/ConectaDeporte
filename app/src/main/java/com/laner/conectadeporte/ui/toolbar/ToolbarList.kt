@@ -59,8 +59,6 @@ class ToolbarList : Fragment(){
 
         searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-
-
                 return false
             }
 
@@ -80,7 +78,6 @@ class ToolbarList : Fragment(){
                 putString("localidadActual", elementoClicado)
                 apply()
             }
-
             NavHostFragment.findNavController(this).navigate(R.id.action_nav_lista_busqueda_to_nav_home)
         }
 
