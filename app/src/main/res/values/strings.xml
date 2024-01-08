@@ -22,4 +22,15 @@
 
     <string name="registrarse_log_in">¿No tienes cuenta? Registrarse</string>
 
+    <!-- Apuntarse -->
+    <string name="apuntarse_title">Apuntarse</string>
+    <string name="apuntarse_nombre_usuario">Nombre</string>
+    <string name="apuntarse_apellidos_usuario">Apellidos</string>
+    <string name="apuntase_dni_usuario">DNI</string>
+    <string name="apuntarse_fnac">Fecha de nacimiento</string>
+    <string name="apuntase_horario">L/X 19h-20h 14-16 años</string>
+    <string name="apuntarse_cancelar">Cancelar</string>
+    <string name="apuntarse_apuntarse">Apuntarse</string>
+    <string name="apuntarse_condiciones">Condiciones de uso</string>
+    <string name="apuntarse_contactanos">Contactanos</string>
 </resources>
