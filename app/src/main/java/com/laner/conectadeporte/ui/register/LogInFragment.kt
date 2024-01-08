@@ -8,14 +8,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
-import com.laner.conectadeporte.databinding.LogInBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.laner.conectadeporte.MainActivity
 import com.laner.conectadeporte.R
+import com.laner.conectadeporte.databinding.LogInBinding
+
 
 class LogInFragment : Fragment() {
 
@@ -78,6 +80,10 @@ class LogInFragment : Fragment() {
                                                 apply()
                                             }
                                             userId = sharedPrefs.getInt("usuarioActual", 0)
+
+                                            // TODO prueba
+                                            // Llamamos al metodo de cambiar cabecera del main activity
+                                            (activity as MainActivity?)!!.cambiarCabecera()
 
                                             break
 

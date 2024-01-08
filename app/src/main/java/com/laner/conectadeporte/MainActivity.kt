@@ -76,12 +76,16 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        // Si existe el nombre del usuario en el SharedPrefs, lo ponemos en la cabecera
+        // TODO prueba, deberia funcionar
+        cambiarCabecera()
+
+        /* Si existe el nombre del usuario en el SharedPrefs, lo ponemos en la cabecera
         val sharedPrefs = this.getPreferences(Context.MODE_PRIVATE)
         userId = sharedPrefs.getInt("usuarioActual", 0)
-        correoUser = sharedPrefs.getString("correoActual", "correo")!!
+        // correoUser = sharedPrefs.getString("correoActual", "correo")!!
 
         // TODO SI PILLA UN USUARIO, SALTA A LA PAGINA DE MAIN, SIN LOGIN
+
 
         val vista = navView.getHeaderView(0)
         val nombreUsuario : TextView = vista.findViewById(R.id.nombre_usuario)
@@ -91,7 +95,6 @@ class MainActivity : AppCompatActivity() {
             nombreUsuario.text = "Anonimo"
             correoUsuario.text = ""
         }
-
         else {
             basedatos = FirebaseDatabase.getInstance()
             basedatosRef = basedatos.reference
@@ -101,7 +104,8 @@ class MainActivity : AppCompatActivity() {
                     if (snapshot.exists()) {
                         username = snapshot.child("nombre").value.toString()
                         Log.v("[Usuario]", "El usuario es: " + username)
-                        nombreUsuario.text = correoUser
+                        nombreUsuario.text = username
+                        correoUsuario.text = ""
                     }
                 }
 
@@ -109,7 +113,7 @@ class MainActivity : AppCompatActivity() {
                     // Manejar errores
                 }
             })
-        }
+        }*/
     }
 
     // Metodo que se encarga de pasar a la pantalla del perfil de usuario
@@ -172,6 +176,44 @@ class MainActivity : AppCompatActivity() {
         val currentFragment = fragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
 
         NavHostFragment.findNavController(currentFragment!!).navigate(R.id.action_to_login)
+    }
+
+    fun cambiarCabecera() {
+        val navView: NavigationView = binding.navView
+        // Si existe el nombre del usuario en el SharedPrefs, lo ponemos en la cabecera
+        val sharedPrefs = this.getPreferences(Context.MODE_PRIVATE)
+        userId = sharedPrefs.getInt("usuarioActual", 0)
+        // correoUser = sharedPrefs.getString("correoActual", "correo")!!
+
+        // TODO SI PILLA UN USUARIO, SALTA A LA PAGINA DE MAIN, SIN LOGIN
+
+        val vista = navView.getHeaderView(0)
+        val nombreUsuario : TextView = vista.findViewById(R.id.nombre_usuario)
+        val correoUsuario : TextView = vista.findViewById(R.id.correo_usuario)
+
+        if (userId == 0) {
+            nombreUsuario.text = "Anonimo"
+            correoUsuario.text = ""
+        }
+        else {
+            basedatos = FirebaseDatabase.getInstance()
+            basedatosRef = basedatos.reference
+
+            basedatosRef.child("Usuario").child(userId.toString()).addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        username = snapshot.child("nombre").value.toString()
+                        Log.v("[Usuario]", "El usuario es: " + username)
+                        nombreUsuario.text = username
+                        correoUsuario.text = ""
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Manejar errores
+                }
+            })
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
