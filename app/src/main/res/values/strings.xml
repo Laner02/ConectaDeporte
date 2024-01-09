@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ConectaDeporte</string>
+    <string name="app_name">Conecta\nDeporte</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -86,7 +86,7 @@
     <string name="login_registrate">¿No tienes cuenta? Regístrate</string>
     <string name="login_acceder">Acceder</string>
     <string name="login_acceder_invitado">Acceder como invitado</string>
-    <string name="login_condiciones">Condiciones de uso</string>
+    <string name="login_ayuntamiento">¿Eres ayuntamiento?</string>
     <string name="login_contacto">Contáctanos</string>
 
     <!-- Nav Header -->

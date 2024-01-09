@@ -102,6 +102,8 @@ class LogInFragment : Fragment() {
                             Toast.makeText(requireContext(), "Usuario no encontrado", Toast.LENGTH_SHORT).show()
                         }
                     }
+            }else {
+                Toast.makeText(requireContext(), "Algun dato esta incompleto", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -127,6 +129,9 @@ class LogInFragment : Fragment() {
             NavHostFragment.findNavController(this).navigate(R.id.action_log_to_nav_contactenos)
         }
 
+        binding.logAyuntamiento.setOnClickListener{
+            NavHostFragment.findNavController(this).navigate(R.id.action_log_to_nav_log_in_ayuntamiento2)
+        }
     }
 
 }

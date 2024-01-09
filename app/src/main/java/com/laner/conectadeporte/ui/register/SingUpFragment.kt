@@ -114,6 +114,10 @@ class SignUpFragment : Fragment() {
             NavHostFragment.findNavController(this).navigate(R.id.action_registrarse_to_nav_contactenos)
         }
 
+        binding.logAyuntamiento.setOnClickListener{
+            NavHostFragment.findNavController(this).navigate(R.id.action_registrarse_to_nav_log_in_ayuntamiento)
+        }
+
     }
 
     fun validarCadena(cadena: String): Boolean {

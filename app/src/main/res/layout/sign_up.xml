@@ -171,11 +171,11 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/condiciones_uso"
+                android:id="@+id/log_ayuntamiento"
                 android:layout_width="160dp"
                 android:layout_height="50dp"
                 android:layout_gravity="start|bottom"
-                android:text="@string/login_condiciones"
+                android:text="@string/login_ayuntamiento"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 

@@ -91,6 +91,12 @@
         <action
             android:id="@+id/action_log_to_nav_contactenos"
             app:destination="@id/nav_contactenos" />
+        <action
+            android:id="@+id/action_log_to_nav_log_in_ayuntamiento"
+            app:destination="@id/nav_log_in_ayuntamiento" />
+        <action
+            android:id="@+id/action_log_to_nav_log_in_ayuntamiento2"
+            app:destination="@id/nav_log_in_ayuntamiento" />
     </fragment>
 
     <fragment
@@ -104,6 +110,9 @@
         <action
             android:id="@+id/action_registrarse_to_nav_contactenos"
             app:destination="@id/nav_contactenos" />
+        <action
+            android:id="@+id/action_registrarse_to_nav_log_in_ayuntamiento"
+            app:destination="@id/nav_log_in_ayuntamiento" />
     </fragment>
 
     <!-- Fragments de las opciones del menu -->
@@ -149,7 +158,29 @@
         android:label="Contactos"
         android:name="com.laner.conectadeporte.ui.register.Contactenos"
         tools:layout="@layout/contactenos" >
+    </fragment>
 
+    <fragment
+        android:id="@+id/nav_log_in_ayuntamiento"
+        android:label="Log Ayuntamiento"
+        android:name="com.laner.conectadeporte.ui.register.LogInAyuntamientoFragment"
+        tools:layout="@layout/log_in_ayuntamiento" >
+        <action
+            android:id="@+id/action_nav_log_in_ayuntamiento_to_nav_curso_ayuntamientos"
+            app:destination="@id/nav_curso_ayuntamientos" />
+        <action
+            android:id="@+id/action_nav_log_in_ayuntamiento_to_nav_contactenos"
+            app:destination="@id/nav_contactenos" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_curso_ayuntamientos"
+        android:label="Cuso Ayuntamiento"
+        android:name="com.laner.conectadeporte.ui.curso.CursoAyuntamientoFragment"
+        tools:layout="@layout/fragment_home_ayuntamiento" >
+        <action
+            android:id="@+id/action_nav_curso_ayuntamientos_to_log"
+            app:destination="@id/log" />
     </fragment>
 
 </navigation>

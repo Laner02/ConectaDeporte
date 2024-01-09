@@ -6,38 +6,37 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="@color/green_light"
-    tools:context=".ui.register.LogInFragment">
+    tools:context=".ui.register.LogInAyuntamientoFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:gravity="center"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginEnd="20dp"
-            android:contentDescription="@string/login_title_desc"
-            android:src="@drawable/image_name_app" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="Inicio sesión"
+            android:textSize="30sp"
+            android:textColor="@color/green_darker"/>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="146dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:contentDescription="@string/login_logo_desc"
-            android:src="@drawable/image_app" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ayuntamiento"
+            android:textSize="30sp"
+            android:textColor="@color/green_darker"/>
 
         <EditText
             android:id="@+id/usuario_email"
             android:layout_width="300dp"
             android:layout_height="60dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/rectangle"
             android:padding="15dp"
             android:hint="@string/login_correo"
@@ -63,17 +62,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/registrarse_log_in"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:background="@android:color/transparent"
-            android:layout_gravity="start"
-            android:text="@string/login_registrate"
-            android:textColor="@color/green_03"
-            android:textStyle="bold"
-            android:textSize="13sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/boton_acceder"
             android:layout_width="200dp"
             android:layout_height="50dp"
@@ -84,15 +72,6 @@
             android:textColor="@color/black"
             android:textSize="15sp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/boton_invitado"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/rectangle_button_dark"
-            android:text="Acceder como invitado"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
     </LinearLayout>
 
 
@@ -102,25 +81,15 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/log_ayuntamiento"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
-            android:layout_gravity="start|bottom"
-            android:text="@string/login_ayuntamiento"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/contactanos"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="end|bottom"
-            android:layout_marginStart="50dp"
+            android:background="@android:color/transparent"
             android:text="@string/login_contacto"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            android:background="@android:color/transparent"/>
+            android:textSize="12sp" />
 
     </LinearLayout>
 
