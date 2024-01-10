@@ -61,7 +61,7 @@ class ApuntarseFragment : Fragment() {
         //val horario_apuntarse = binding.horarioUsuario
         // Variables para botones para que funcione ponerles un onclicklistener
         val boton_apuntarse : AppCompatButton = view.findViewById(R.id.apuntarse_boton_apuntarse)
-        val boton_cancelar = binding.botonCancelar
+        val boton_cancelar : AppCompatButton = view.findViewById(R.id.boton_cancelar)
 
 
         val myTextView = view.findViewById<TextView>(R.id.horario_usuario)
