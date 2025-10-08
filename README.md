@@ -119,6 +119,7 @@ TODO Add here the examples taken from the app in screenshots.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -134,7 +135,7 @@ Don't forget to give the project a star! Thanks again!
 ### Top contributors:
 
 <a href="https://github.com/Laner02/ConectaDeporte/graphs/contributors">
-  <img src="LearVue2.0\UI_interfaces\Resources\Images\Contributors.png" alt="Constributors" />
+  <img alt="Contributors" src="https://github.com/user-attachments/assets/fb08113d-298c-426a-b1c5-60adf64c2995" />
 </a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
