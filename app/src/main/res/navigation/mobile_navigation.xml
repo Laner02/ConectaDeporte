@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/log">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.laner.conectadeporte.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_curso"
+            app:destination="@id/nav_curso" />
+        <!-- Acciones del menu lateral -->
+        <action
+            android:id="@+id/action_to_perfil"
+            app:destination="@+id/nav_perfil" />
+        <action
+            android:id="@+id/action_to_cursos_apuntados"
+            app:destination="@+id/nav_cursos_apuntados" />
+        <action
+            android:id="@+id/action_to_search"
+            app:destination="@+id/nav_lista_busqueda" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_lista_busqueda"
+            app:destination="@id/nav_lista_busqueda" />
+        <action
+            android:id="@+id/action_to_login"
+            app:destination="@+id/log" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_curso"
+        android:name="com.laner.conectadeporte.ui.curso.CursoFragment"
+        android:label="Curso"
+        tools:layout="@layout/curso_frame" >
+        <action
+            android:id="@+id/action_registrarse_to_curso"
+            app:destination="@id/apuntarse_curso" />
+        <action
+            android:id="@+id/action_to_search"
+            app:destination="@+id/nav_lista_busqueda" />
+        <!-- Acciones del menu lateral -->
+        <action
+            android:id="@+id/action_to_perfil"
+            app:destination="@+id/nav_perfil" />
+        <action
+            android:id="@+id/action_to_cursos_apuntados"
+            app:destination="@+id/nav_cursos_apuntados" />
+        <action
+            android:id="@+id/action_to_login"
+            app:destination="@+id/log" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/apuntarse_curso"
+        android:name="com.laner.conectadeporte.ui.curso.ApuntarseFragment"
+        android:label="Apuntarse a Curso"
+        tools:layout="@layout/apuntarse_frame" >
+        <action
+            android:id="@+id/action_apuntarse_to_curso"
+            app:destination="@id/nav_curso" />
+        <!-- Acciones del menu lateral -->
+        <action
+            android:id="@+id/action_to_perfil"
+            app:destination="@+id/nav_perfil" />
+        <action
+            android:id="@+id/action_to_cursos_apuntados"
+            app:destination="@+id/nav_cursos_apuntados" />
+        <action
+            android:id="@+id/action_to_login"
+            app:destination="@+id/log" />
+        <action
+            android:id="@+id/action_apuntarse_curso_to_nav_contactenos"
+            app:destination="@id/nav_contactenos" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/log"
+        android:name="com.laner.conectadeporte.ui.register.LogInFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/log_in" >
+        <action
+            android:id="@+id/action_login_to_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_login_to_signup"
+            app:destination="@id/registrarse" />
+        <action
+            android:id="@+id/action_log_to_nav_contactenos"
+            app:destination="@id/nav_contactenos" />
+        <action
+            android:id="@+id/action_log_to_nav_log_in_ayuntamiento"
+            app:destination="@id/nav_log_in_ayuntamiento" />
+        <action
+            android:id="@+id/action_log_to_nav_log_in_ayuntamiento2"
+            app:destination="@id/nav_log_in_ayuntamiento" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registrarse"
+        android:name="com.laner.conectadeporte.ui.register.SignUpFragment"
+        android:label="Curso"
+        tools:layout="@layout/sign_up" >
+        <action
+            android:id="@+id/action_signup_to_login"
+            app:destination="@id/log" />
+        <action
+            android:id="@+id/action_registrarse_to_nav_contactenos"
+            app:destination="@id/nav_contactenos" />
+        <action
+            android:id="@+id/action_registrarse_to_nav_log_in_ayuntamiento"
+            app:destination="@id/nav_log_in_ayuntamiento" />
+    </fragment>
+
+    <!-- Fragments de las opciones del menu -->
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="com.laner.conectadeporte.ui.menu.PerfilFragment"
+        android:label="Perfil"
+        tools:layout="@layout/perfil_frame" >
+        <!-- TODO si metemos editar perfil, meterlo aqui -->
+        <action
+            android:id="@+id/action_to_home"
+            app:destination="@+id/nav_home" />
+        <action
+            android:id="@+id/action_to_login"
+            app:destination="@+id/log" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_cursos_apuntados"
+        android:name="com.laner.conectadeporte.ui.menu.CursosApuntadosFragment"
+        android:label="Cursos Apuntados"
+        tools:layout="@layout/cursos_apuntados_frame" >
+        <action
+            android:id="@+id/action_to_login"
+            app:destination="@+id/log" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_lista_busqueda"
+        android:name="com.laner.conectadeporte.ui.toolbar.ToolbarList"
+        android:label="Lista busqueda"
+        tools:layout="@layout/toolbar_list" >
+        <action
+            android:id="@+id/action_nav_lista_busqueda_to_nav_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_to_login"
+            app:destination="@+id/log" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_contactenos"
+        android:label="Contactos"
+        android:name="com.laner.conectadeporte.ui.register.Contactenos"
+        tools:layout="@layout/contactenos" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_log_in_ayuntamiento"
+        android:label="Log Ayuntamiento"
+        android:name="com.laner.conectadeporte.ui.register.LogInAyuntamientoFragment"
+        tools:layout="@layout/log_in_ayuntamiento" >
+        <action
+            android:id="@+id/action_nav_log_in_ayuntamiento_to_nav_curso_ayuntamientos"
+            app:destination="@id/nav_curso_ayuntamientos" />
+        <action
+            android:id="@+id/action_nav_log_in_ayuntamiento_to_nav_contactenos"
+            app:destination="@id/nav_contactenos" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_curso_ayuntamientos"
+        android:label="Cuso Ayuntamiento"
+        android:name="com.laner.conectadeporte.ui.curso.CursoAyuntamientoFragment"
+        tools:layout="@layout/fragment_home_ayuntamiento" >
+        <action
+            android:id="@+id/action_nav_curso_ayuntamientos_to_log"
+            app:destination="@id/log" />
+    </fragment>
+
+</navigation>

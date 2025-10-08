@@ -1,0 +1,107 @@
+<resources>
+    <string name="app_name">Conecta\nDeporte</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="registrarse">Registrarse</string>
+    <string name="usuario_nombre">Nombre</string>
+    <string name="usuario_apellidos">Apellidos</string>
+    <string name="usuario_id">Usuario</string>
+    <string name="usuario_email">Correo electrónico</string>
+    <string name="usuario_telefono">Numero de telefono</string>
+    <string name="boton_cancelar">Cancelar</string>
+    <string name="boton_registrarse">Registrarse</string>
+
+    <string name="registrarse_log_in">¿No tienes cuenta? Registrarse</string>
+
+    <!-- Apuntarse -->
+    <string name="apuntarse_title">Apuntarse</string>
+    <string name="apuntarse_nombre_usuario">Nombre</string>
+    <string name="apuntarse_apellidos_usuario">Apellidos</string>
+    <string name="apuntase_dni_usuario">DNI</string>
+    <string name="apuntarse_fnac">Fecha de nacimiento</string>
+    <string name="apuntase_horario">L/X 19h-20h 14-16 años</string>
+    <string name="apuntarse_cancelar">Cancelar</string>
+    <string name="apuntarse_apuntarse">Apuntarse</string>
+    <string name="apuntarse_condiciones">Condiciones de uso</string>
+    <string name="apuntarse_contactanos">Contactanos</string>
+
+    <!-- Plantilla de carta -->
+    <string name="card_image_descripcion">Imagen del Curso</string>
+    <string name="card_title">Titulo Deporte</string>
+    <string name="card_desc">Descripción breve del club que se oferta.</string>
+
+    <!-- Contactenos -->
+    <string name="contacto_contactenos">Contáctenos</string>
+    <string name="contacto_sara">Sara Aparicio Fernandez</string>
+    <string name="contacto_mail_sara">   sara.aparicio.fernandez</string>
+    <string name="contacto_mail_sara_2"> \@estudiantes.uva.es</string>
+    <string name="contacto_raul">Raúl Villa San Segundo</string>
+    <string name="contacto_mail_raul">   raul.villa@estudiantes.uva.es</string>
+
+    <!-- Curso -->
+    <string name="curso_localidad">Localidad</string>
+    <string name="curso_imagen_desc">Imagen del Curso</string>
+    <string name="curso_titulo">Titulo Deporte</string>
+    <string name="curso_desc">Descripción breve del club que se oferta.</string>
+    <string name="curso_ubicacion">Ubicación:</string>
+    <string name="curso_profesor">Profesor/es:</string>
+    <string name="curso_contacto">Email/teléfono:</string>
+    <string name="curso_precio">Precio</string>
+    <string name="curso_apuntarse">APUNTARSE</string>
+
+    <!-- Cursos Apuntados -->
+    <string name="cursos_apuntados_nombre">Cursos de Usuario</string>
+    <string name="cursos_apuntados_hint">Apuntate a un curso para que aparezca en esta página.</string>
+
+    <!-- Horario -->
+    <string name="horario_dias">Días</string>
+    <string name="horario_horario">Horario</string>
+    <string name="horario_edad">Edad</string>
+    <string name="horario_precio">Precio</string>
+    <string name="horario_lx">L/X</string>
+    <string name="horario_mj">M/J</string>
+    <string name="horario_1718">17h-18h</string>
+    <string name="horario_1920">19h-20h</string>
+    <string name="horario_2022">20h-22h</string>
+    <string name="horario_1416">14–16</string>
+    <string name="horario_1719">17–19</string>
+    <string name="horario_1922">19–22</string>
+    <string name="horario_precio1">20€/día</string>
+    <string name="horario_precio2">25€/día</string>
+
+    <!-- Login -->
+    <string name="login_title_desc">Titulo de la App</string>
+    <string name="login_logo_desc">Imagen de la App</string>
+    <string name="login_correo">Correo de usuario</string>
+    <string name="login_pass">Contraseña</string>
+    <string name="login_registrate">¿No tienes cuenta? Regístrate</string>
+    <string name="login_acceder">Acceder</string>
+    <string name="login_acceder_invitado">Acceder como invitado</string>
+    <string name="login_ayuntamiento">¿Eres ayuntamiento?</string>
+    <string name="login_contacto">Contáctanos</string>
+
+    <!-- Nav Header -->
+    <string name="nav_imagen_desc">Imagen de Usuario</string>
+    <string name="nav_correo">correo de usuario</string>
+
+    <!-- Perfil -->
+    <string name="perfil_nombre_completo">Nombre Completo:</string>
+    <string name="perfil_nombre_completo_hint">Nombre del usuario</string>
+    <string name="perfil_correo">Correo de Contacto:</string>
+    <string name="perfil_correo_hint">Correo del usuario</string>
+    <string name="perfil_telefono">Teléfono de Contacto:</string>
+    <string name="perfil_telefono_hint">Teléfono del usuario</string>
+
+    <!-- Signup -->
+    <string name="signup_pass_repeat">Repite la contraseña</string>
+    <string name="signup_login">¿Ya tienes cuenta? Iniciar sesión.</string>
+</resources>

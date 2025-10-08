@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray_light">#394F4F</color>
+    <color name="green_01">#00FF94</color>
+    <color name="green_02">#0B9159</color>
+    <color name="green_03">#007644</color>
+
+    <!-- PALETA DE COLORES DE LA APP -->
+    <!-- se ordenan los colores de la paleta de oscuro a claro -->
+    <color name="green_darker">#037462</color>
+    <color name="green_dark">#1CA786</color>
+    <color name="green">#4FC5AD</color>
+    <color name="green_light">#76D5B5</color>
+    <color name="green_lighter">#B9ECD9</color>
+
+</resources>

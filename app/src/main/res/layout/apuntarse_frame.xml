@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green_light"
+    android:padding="16dp"
+    tools:context=".ui.curso.ApuntarseFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="478dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/apuntarse_title"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/apuntarse_nombre_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:padding="10dp"
+                android:background="@drawable/rectangle"
+                android:hint="@string/apuntarse_nombre_usuario"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/apellidos_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:padding="10dp"
+                android:background="@drawable/rectangle"
+                android:hint="@string/apuntarse_apellidos_usuario"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/dni_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:padding="10dp"
+                android:background="@drawable/rectangle"
+                android:hint="@string/apuntase_dni_usuario"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/fnac_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:padding="10dp"
+                android:background="@drawable/rectangle"
+                android:hint="@string/apuntarse_fnac"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:inputType="date" />
+
+            <TextView
+                android:id="@+id/horario_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/rectangle"
+                android:hint="@string/apuntase_horario"
+                android:padding="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                    android:id="@+id/spinner_horario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:visibility="invisible"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="148dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/boton_cancelar"
+                android:layout_width="140dp"
+                android:layout_height="55dp"
+                android:layout_gravity="top"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="50dp"
+                android:background="@drawable/rectangle_button_dark"
+                android:text="@string/apuntarse_cancelar"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <!-- TODO meter este color como color de boton aceptar cuando sara suba el commit -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/apuntarse_boton_apuntarse"
+                android:layout_width="140dp"
+                android:layout_height="55dp"
+                android:layout_gravity="top"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rectangle_button_light"
+                android:text="@string/apuntarse_apuntarse"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/contactanos"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="end|bottom"
+                android:text="@string/apuntarse_contactanos"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:background="@android:color/transparent"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

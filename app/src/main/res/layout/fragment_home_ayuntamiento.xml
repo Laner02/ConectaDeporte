@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.curso.CursoAyuntamientoFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:gravity="center|start"
+        android:orientation="horizontal"
+        android:background="@color/green_dark"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/toggle_menu"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/iconoapp" />
+
+        <ImageView
+            android:id="@+id/icono_salir"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="260dp"
+            android:src="@drawable/salir" />
+
+    </LinearLayout>
+
+    <!-- Linear Layout para poner las tarjetas de cada deporte -->
+    <LinearLayout
+        android:id="@+id/main_scroll_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:layout_marginTop="76dp"
+        android:orientation="vertical"
+        android:gravity="top|center">
+
+        <TextView
+            android:id="@+id/localidad_actual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
+            android:textStyle="bold"
+            android:text="Valladolid"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="310dp"
+            android:layout_height="175dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="284dp"
+                android:layout_height="150dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="15dp"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/card_img"
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:src="@drawable/img_chess"
+                        android:contentDescription="@string/card_image_descripcion" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <!-- TODO habria que ver como poner aqui ids autogenerados y el texto del titulo -->
+                        <TextView
+                            android:id="@+id/card_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:text="Club de Ajedrez"/>
+
+                        <!-- TODO poner menos espacio entre titulo y descripcion -->
+                        <TextView
+                            android:id="@+id/card_desc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textSize="13sp"
+                            android:textColor="@color/black"
+                            android:text="Somos un club de ajedrez de La Pilarica, amigables y abiertos ..."/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="bottom|end"
+                                android:src="@drawable/iconoeditar" />
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="bottom|end"
+                                android:layout_marginStart="70dp"
+                                android:src="@drawable/iconoeliminar" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

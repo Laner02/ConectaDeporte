@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/green_light"
+    tools:context=".ui.menu.CursosApuntadosFragment">
+
+    <!-- Division entre header y contenido -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@color/green_dark"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/cursos_apuntados_flechaAtras"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/backarrowicon"
+                />
+
+            <ImageView
+                android:id="@+id/cursos_apuntados_ImagenUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:src="@drawable/iconoperfil"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/cursos_apuntados_nombreUsuario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="25sp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:text="@string/cursos_apuntados_nombre" />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- TODO hacer que sean scrollable o recycle view -->
+        <!-- Contenido -->
+        <LinearLayout
+            android:id="@+id/cursos_apuntados_contenido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="35dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!-- De momento por falta de tiempo no accedemos a los cursos -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/green_dark"
+                android:gravity="center"
+                android:text="@string/cursos_apuntados_hint" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

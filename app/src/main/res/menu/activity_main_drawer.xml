@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <!-- TODO meter aqui los items del menu con las opciones que tendremos -->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_miPerfil"
+            android:title="Mi Perfil" />
+        <item
+            android:id="@+id/nav_cursosApuntados"
+            android:title="Mis Cursos" />
+        <!-- TODO poner una vista especial con un switch verde aqui -->
+        <item
+            android:id="@+id/nav_modoOscuro"
+            android:checkable="false"
+            app:actionViewClass="android.widget.Switch"
+            android:title="Modo Oscuro" />
+        <item
+            android:id="@+id/nav_cerrarSesion"
+            android:title="Cerrar Sesión" />
+    </group>
+</menu>
